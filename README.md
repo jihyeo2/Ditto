@@ -7,5 +7,6 @@ Timeline
 
 
 | Date | About |
+| - | - |
 | | |
 | [Sat 06/06](/Timeline/06-06) | Introduction to Hackathon |
