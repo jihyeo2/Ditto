@@ -2,3 +2,11 @@
 Repo for Summer2020 Hackathon
 
 Helpful source: Type "CS196 at Illinois" on YouTube
+
+Timeline
+
+
+| Date | About |
+| - | - |
+| | **Java** |
+| [Sat 06/06](/Timeline/06-06) | Introduction to Hackathon |
