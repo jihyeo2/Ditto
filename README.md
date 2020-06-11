@@ -10,3 +10,4 @@ Timeline
 | - | - |
 | | |
 | [Sat 06/06](/Timeline/06-06.md) | Introduction to Hackathon |
+| [Sat 06/11](/Timeline/06-11.md) | Sharing Project Ideas |
