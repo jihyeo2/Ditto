@@ -13,7 +13,7 @@ Timeline
 | [Thu 06/11](/Timeline/06-11.md) | Sharing Project Ideas |
 | [Sat 06/13](/Timeline/06-13)    | Ideas cont. & Platform |
 | Sat 06/20  | Introduction to Ubuntu & Bash |
-| Thu 06/25  | Introduction to React |
+| [Thu 06/25](/Timeline/06-25)  | Introduction to React |
 | Sat 06/27  | Final Decision for the project idea |
 | Thu 07/02  | Wireframe + UI |
 | Sat 07/04  | BackEnd |
