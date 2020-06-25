@@ -14,4 +14,11 @@ Timeline
 | [Sat 06/13](/Timeline/06-13)    | Ideas cont. & Platform |
 | Sat 06/20  | Introduction to Ubuntu & Bash |
 | Thu 06/25  | Introduction to React |
+| Sat 06/27  | Final Decision for the project idea |
+| Thu 07/02  | Wireframe + UI |
+| Sat 07/04  | BackEnd |
+| Thu 07/09  | Combine front-end & back-end |
+| Sat 07/11  | Start creating documentation & Intro video |
+| Tue 07/14  | Finalization |
+| Wed 07/15  | Submission |
 
