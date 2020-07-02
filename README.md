@@ -21,7 +21,7 @@ Timeline
 | Sat 06/20  | Introduction to Ubuntu & Bash |
 | [Thu 06/25](/Timeline/06-25)  | Introduction to React |
 | [Sat 06/27](/Timeline/06-27.md)  | Confirmed UI knowledge & Learned Git |
-| [Thu 07/02](/Page_1.png) | Final Decision for the project idea |
+| [Thu 07/02](/Project Idea_Smart Senior Seller.md) | Final Decision for the project idea |
 | Sat 07/04  | Half-complete demo |
 | Tue 07/07  | Complete demo & Decide further modifications |
 | Sat 07/11  | Final product |
