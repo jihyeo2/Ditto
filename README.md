@@ -22,9 +22,9 @@ Timeline
 | [Thu 06/25](/Timeline/06-25)  | Introduction to React |
 | [Sat 06/27](/Timeline/06-27.md)  | Confirmed UI knowledge & Learned Git |
 | Thu 07/02  | Final Decision for the project idea |
-| Sat 07/04  |  |
-| Thu 07/09  |  |
-| Sat 07/11  | Start creating documentation & Intro video |
-| Tue 07/14  | Finalization |
-| Wed 07/15  | Submission |
+| Sat 07/04  | Half-complete demo |
+| Tue 07/07  | Complete demo & Decide further modifications |
+| Sat 07/11  | Final product |
+| Mon 07/13  | Start creating documentation & Intro video |
+| Tue 07/14  | Finalization & Submission |
 
