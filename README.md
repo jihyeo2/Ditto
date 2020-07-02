@@ -1,7 +1,11 @@
 # JOC
 Repo for Summer2020 Hackathon
 
-Helpful source: Type "CS196 at Illinois" on YouTube
+Helpful source: Type "CS196 at Illinois" on YouTube  
+Market App Tutorial_Mosh:  
+Id - umum3006@gmail.com
+Password - 제이오씨화이팅!  
+Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts
 
 Timeline
 
