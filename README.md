@@ -35,5 +35,5 @@ Timeline
 | Sat 07/18  | Final product |
 | Tue 07/21  | Start creating documentation & Intro video |
 | Wed 07/22  |  |
-| Thu 07/23  | Finalization % Submission |
+| Thu 07/23  | Finalization & Submission |
 
