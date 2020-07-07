@@ -11,7 +11,7 @@ Password - 제이오씨화이팅!
 Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts
 
 Hackathons:  
-[Virtual Hacks 2020 - 07/23](https://virtualhacks.devpost.com/?ref_content=recommended-hackathons&ref_feature=challenge&ref_medium=home)
+[Virtual Hacks 2020 - 07/23](https://virtualhacks.ca/)
 
 Timeline
 
