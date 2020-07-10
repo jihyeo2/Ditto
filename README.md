@@ -25,7 +25,7 @@ Timeline
 | Sat 06/20  | Introduction to Ubuntu & Bash |
 | [Thu 06/25](/Timeline/06-25)  | Introduction to React |
 | [Sat 06/27](/Timeline/06-27.md)  | Confirmed UI knowledge & Learned Git |
-| [Thu 07/02](/Page_2.png) | Final Decision for the project idea |
+| [Thu 07/02](/SSS/Page_2.png) | Final Decision for the project idea |
 | [Sat 07/04](/Timeline/07-04)  | Built the general skeleton of our app & Quarter-complete demo |
 | Tue 07/07  | Half-complete demo & Decide further modifications |
 | Sat 07/11  | Complete demo & Start developing |
