@@ -11,7 +11,7 @@ Password - 제이오씨화이팅!
 Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts
 
 Hackathons:  
-[Virtual Hacks 2020 - 07/23](https://virtualhacks.ca/)
+[Virtual Hacks 2020 - 07/30](https://virtualhacks.ca/)
 
 Timeline
 
@@ -30,8 +30,10 @@ Timeline
 | Tue 07/07  | Half-complete demo & Decide further modifications |
 | Sat 07/11  | Complete demo & Start developing |
 | Thu 07/16  |  |
-| Sat 07/18  | Final product |
-| Tue 07/21  | Start creating documentation & Intro video |
+| Sat 07/18  |  |
+| Thu 07/23  |  |
+| Sat 07/25  | Final product |
+| Tue 07/28  | Start creating documentation & Intro video |
 | Wed 07/22  |  |
-| Thu 07/23  | Finalization & Submission |
+| Thu 07/30  | Finalization & Submission |
 
