@@ -27,12 +27,12 @@ Timeline
 | [Thu 06/25](/Timeline/06-25)  | Introduction to React |
 | [Sat 06/27](/Timeline/06-27.md)  | Confirmed UI knowledge & Learned Git |
 | [Thu 07/02](/SSS/Page_2.png) | Final Decision for the project idea |
-| [Sat 07/04](/Timeline/07-04)  | Built the general skeleton of our app & Quarter-complete demo |
-| Tue 07/07  | Half-complete demo & Decide further modifications |
-| Sat 07/11  | Complete demo & Start developing |
-| Thu 07/16  |  |
-| Sat 07/18  |  |
-| Thu 07/23  |  |
+| [Sat 07/04](/Timeline/07-04)  | Drew the general skeleton of our app & Quarter-complete UI tutorial |
+| Tue 07/07  | Half-complete UI tutorial & Decide further modifications |
+| Sat 07/11  | Continue learning UI/Backend & Merge ideas on wireframe |
+| Thu 07/16  | Continue learning UI/Backend & Merge ideas on wireframe |
+| Sat 07/18  | Half-complete tutorial & Finalize wireframe |
+| Thu 07/23  | Complete tutorial & Continue app development |
 | Sat 07/25  | Final product |
 | Tue 07/28  | Start creating documentation & Intro video |
 | Wed 07/29  |  |
