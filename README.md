@@ -33,8 +33,8 @@ Timeline
 | Thu 07/16  | Continue learning UI/Backend & Merge ideas on wireframe |
 | Sat 07/18  | Half-complete tutorial & Finalize wireframe |
 | Thu 07/23  | Complete tutorial & Continue app development |
-| Sat 07/25  | Final product |
-| Tue 07/28  | Start creating documentation & Intro video |
-| Wed 07/29  |  |
+| Sat 07/25  | Continue dev |
+| Tue 07/28  | Final product |
+| Wed 07/29  | Start creating documentation & Intro video |
 | Thu 07/30  | Finalization & Submission |
 
