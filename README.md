@@ -13,6 +13,7 @@ The Complete Node.js Course - backend
 
 Hackathons:  
 [Virtual Hacks 2020 - 07/30](https://virtualhacks.ca/)
+[FursavsVirus Challenge - 07/30 9PM GTM+3](https://fursavsvirus-challenge.devpost.com/?ref_content=recommended-hackathons&ref_feature=challenge&ref_medium=home)
 
 Timeline
 
