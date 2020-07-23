@@ -13,6 +13,7 @@ const compression = require("compression");
 const config = require("config");
 const app = express();
 
+//test
 app.use(express.static("public"));
 app.use(express.json());
 app.use(helmet());
@@ -29,6 +30,6 @@ app.use("/api/expoPushTokens", expoPushTokens);
 app.use("/api/messages", messages);
 
 const port = process.env.PORT || config.get("port");
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Server started on port ${port}...`);
 });
