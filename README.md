@@ -12,8 +12,7 @@ Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts - fro
 The Complete Node.js Course - backend  
 
 Hackathons:  
-[Virtual Hacks 2020 - 07/30](https://virtualhacks.ca/)  
-[FursavsVirus Challenge - 07/30 9PM GTM+3](https://fursavsvirus-challenge.devpost.com/?ref_content=recommended-hackathons&ref_feature=challenge&ref_medium=home)
+[Virtual Hacks 2020 - 08/21](https://virtualhacks.ca/)  
 
 Timeline
 
@@ -34,8 +33,9 @@ Timeline
 | Thu 07/16  | Continue learning UI/Backend & Merge ideas on wireframe |
 | Sat 07/18  | Half-complete tutorial & Finalize wireframe |
 | Thu 07/23  | Complete tutorial & Continue app development |
-| Sat 07/25  | Continue dev |
-| Tue 07/28  | Final product |
-| Wed 07/29  | Start creating documentation & Intro video |
+| Sun 07/26  | Continue dev |
+| Thu 07/30  | Continue dev |
+| Sat 08/01  | Final product |
+| Thu 08/06  | Start creating documentation & Intro video |
 | Sat 08/08  | Finalization & Submission |
 
