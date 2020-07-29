@@ -25,6 +25,7 @@ function CategoryPickerItem({ item, onPress }) {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
+    paddingTop: 10,
     flex: 1,
   },
   category: {

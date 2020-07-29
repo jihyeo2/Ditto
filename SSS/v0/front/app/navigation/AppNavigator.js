@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import ListingEditScreen from "../screens/ListingEditScreen";
-import FeedNavigator from "./FeedNavigator";
+import ShopNavigator from "./ShopNavigator";
 import AccountNavigator from "./AccountNavigator";
-import NewListingButton from "./NewListingButton";
 import useNotifications from "../hooks/useNotifications";
 
 const Tab = createBottomTabNavigator();
@@ -16,23 +14,12 @@ const AppNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Shopping"
-        component={FeedNavigator}
+        component={ShopNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons name="store" size={size} color={color} />
           ),
         }}
-      />
-      <Tab.Screen
-        name="ListingEdit"
-        component={ListingEditScreen}
-        options={({ navigation }) => ({
-          tabBarButton: () => (
-            <NewListingButton
-              onPress={() => navigation.navigate("ListingEdit")}
-            />
-          ),
-        })}
       />
       <Tab.Screen
         name="Account"

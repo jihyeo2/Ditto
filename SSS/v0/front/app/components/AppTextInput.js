@@ -4,17 +4,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import colors from "../config/colors";
 
 function AppTextInput({
   clickButton,
   icon,
   width = "100%",
+  height = "100%",
   textInputStyle,
   onPress,
   ...otherProps
 }) {
   return (
-    <View style={[styles.container, { width }]}>
+    <View style={[styles.container, { width }, { height }]}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -46,16 +48,18 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
+    flex: 1,
     flexDirection: "row",
-    padding: 15,
     marginVertical: 10,
     alignItems: "center",
   },
   icon: {
     marginRight: 10,
   },
+
   searchIcon: {
-    marginLeft: 10,
+    alignSelf: "flex-end",
+    marginRight: 10,
   },
 });
 
