@@ -13,6 +13,7 @@ The Complete Node.js Course - backend
 
 Hackathons:  
 [Virtual Hacks 2020 - 08/08](https://virtualhacks.ca/)  
+  
 Timeline
 
 
