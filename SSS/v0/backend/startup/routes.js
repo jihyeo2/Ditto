@@ -1,5 +1,6 @@
 const express = require("express");
 const categories = require("../routes/categories");
+const stores = require("../routes/stores");
 const listings = require("../routes/listings");
 const listing = require("../routes/listing");
 const users = require("../routes/users");
@@ -14,6 +15,7 @@ module.exports = function (app) {
   app.use(express.static("public"));
   app.use(express.json());
   app.use("/api/categories", categories);
+  app.use("/api/stores", stores);
   app.use("/api/listing", listing);
   app.use("/api/listings", listings);
   app.use("/api/user", user);

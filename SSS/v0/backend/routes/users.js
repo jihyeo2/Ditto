@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.get("/me", auth, async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
+  if (!user)
+    return res.status(404).send("The user with the given ID was not found.");
   res.send(user);
 });
 
@@ -28,6 +30,36 @@ router.post("/", async (req, res) => {
   res
     .header("x-auth-token", token)
     .send(_.pick(user, ["_id", "name", "email"]));
+});
+
+router.put("/me", auth, async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const user = await User.findById(req.user._id);
+  if (!user)
+    return res.status(404).send("The user with the given ID was not found.");
+  user.name = req.body.name;
+  user.email = req.body.email;
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(req.body.password, salt);
+  if (req.body.store) {
+    user.store = req.body.store;
+  }
+  await user.save(); //TODO: Change to update()
+
+  const token = user.generateAuthToken();
+  res
+    .header("x-auth-token", token)
+    .send(_.pick(user, ["_id", "name", "email"]));
+});
+
+router.delete("/me", auth, async (req, res) => {
+  const user = await User.findByIdAndRemove(req.user._id);
+  if (!user)
+    return res.status(404).send("The user with the given ID was not found.");
+
+  res.send(user);
 });
 
 module.exports = router;
