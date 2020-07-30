@@ -2,7 +2,6 @@ import { useContext } from "react";
 import AuthContext from "./context";
 import authStorage from "./storage";
 import userInfoApi from "../api/userInfo";
-import testingApi from "../api/test";
 
 export default useAuth = () => {
   const { user, setUser } = useContext(AuthContext);

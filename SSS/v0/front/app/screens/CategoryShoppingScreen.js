@@ -1,46 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
-import colors from "../config/colors";
 import StorePickerItem from "../components/StorePickerItem";
 import routes from "../navigation/routes";
-import ListItemSeparator from "../components/lists/ListItemSeparator";
-import AppTextInput from "../components/AppTextInput";
-
-import vegetablesListings from "../store/vegetablesListings";
+import useApi from "../hooks/useApi";
+import storesApi from "../api/storesInCategory";
 
 function CategoryShoppingScreen({ route, navigation }) {
-  const { id } = route.params;
-  let listings = null;
-  switch (id) {
-    case 1:
-      console.log(vegetablesListings);
-      listings = vegetablesListings;
-      console.log(listings);
-      break;
-    case 2:
-      listings = vegetablesListings;
-      break;
-    case 3:
-      listings = vegetablesListings;
-      break;
-    default:
-      break;
-  }
+  let { _id } = route.params; //category_id
+
+  const getListingsApi = useApi(storesApi.getStores);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getListingsApi.request(_id);
+    }
+    fetchData();
+  }, []);
 
   return (
     <Screen>
       <View style={styles.container}>
         <FlatList
-          data={listings}
-          keyExtractor={(item) => item.id.toString()}
+          data={getListingsApi.data.stores}
+          keyExtractor={(item) => item._id.toString()}
           numColumns={1}
           width="100%"
           renderItem={({ item }) => (
             <StorePickerItem
               item={item}
-              onPress={() => navigation.navigate(routes.SEARCH_RESULTS)}
+              onPress={() => navigation.navigate(routes.STORE_DETAILS)}
             />
           )}
           // ItemSeparatorComponent={ListItemSeparator}

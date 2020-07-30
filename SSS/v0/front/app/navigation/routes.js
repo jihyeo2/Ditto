@@ -1,4 +1,5 @@
 export default Object.freeze({
+  STORE_DETAILS: "StoreDetails",
   CATEGORY_SHOPPING: "CategoryShopping",
   SEARCH_RESULTS: "SearchResults",
   SHOPPING: "Shopping",

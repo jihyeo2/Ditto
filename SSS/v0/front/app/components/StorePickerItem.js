@@ -33,7 +33,7 @@ function StorePickerItem({ item, onPress }) {
               source={require("../assets/trump.jpeg")}
             />
             <View>
-              <AppText style={{ color: colors.white }}>Trumppa</AppText>
+              <AppText style={{ color: colors.white }}>{item.name}</AppText>
               <AppText style={{ fontSize: 12, color: colors.white }}>
                 {item.location}
               </AppText>

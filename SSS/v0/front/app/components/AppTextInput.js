@@ -1,13 +1,12 @@
 import React from "react";
-import { View, TextInput, StyleSheet, Platform } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import colors from "../config/colors";
+import SearchButton from "./forms/SearchButton";
 
 function AppTextInput({
-  clickButton,
+  searchButton,
   icon,
   width = "100%",
   height = "100%",
@@ -30,16 +29,7 @@ function AppTextInput({
         style={[defaultStyles.text, textInputStyle]}
         {...otherProps}
       />
-      {clickButton && (
-        <TouchableWithoutFeedback onPress={onPress}>
-          <MaterialCommunityIcons
-            name="search-web"
-            size={30}
-            color={defaultStyles.colors.medium}
-            style={styles.searchIcon}
-          />
-        </TouchableWithoutFeedback>
-      )}
+      {searchButton && <SearchButton />}
     </View>
   );
 }

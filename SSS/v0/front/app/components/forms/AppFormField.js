@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormikContext } from "formik";
 
 import AppTextInput from "../AppTextInput";
 import ErrorMessage from "./ErrorMessage";
+import SearchItemContext from "../SearchItemContext";
 
 function AppFormField({ name, width, ...otherProps }) {
   const {
@@ -12,6 +13,8 @@ function AppFormField({ name, width, ...otherProps }) {
     touched,
     values,
   } = useFormikContext();
+  const { setSearchItem } = useContext(SearchItemContext);
+  setSearchItem(values[name]);
 
   return (
     <>

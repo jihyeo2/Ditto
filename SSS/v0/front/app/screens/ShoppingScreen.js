@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import routes from "../navigation/routes";
-import useApi from '../hooks/useApi';
-import categoriesApi from '../api/categories';
+import categoriesApi from "../api/categories";
 
 function ShoppingScreen({ navigation }) {
-  const getListingsApi = await useApi(categoriesApi.getCategories);
+  const getListingsApi = useApi(categoriesApi.getCategories);
 
-  const getListings = async() => {
-    const result = await getListingsApi.request();
-    console.log(result);
-    if (!result.ok) return;
-    return result.data
-  };
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getListingsApi.request();
+    }
+    fetchData();
+  }, []);
+
   return (
     <Screen>
       <View style={styles.container}>
         <FlatList
-          data={getListings()}
-          keyExtractor={(item) => item.id.toString()}
+          data={getListingsApi.data}
+          keyExtractor={(item) => item._id.toString()}
           numColumns={2}
           width="100%"
           renderItem={({ item }) => (

@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Image, StyleSheet } from "react-native";
 import AppTextInput from "../components/AppTextInput";
 import routes from "../navigation/routes";
+import * as Yup from "yup";
+import {
+  AppForm as Form,
+  AppFormField as FormField,
+} from "../components/forms";
+import SearchItemContext from "./SearchItemContext";
+
+const validationSchema = Yup.object().shape({
+  item: Yup.string().label("Item"),
+});
 
 function Header({ navigation }) {
+  const { searchItem } = useContext(SearchItemContext);
+
+  const handleSubmit = () => {
+    console.log(searchItem);
+    navigation.navigate(routes.SEARCH_RESULTS, searchItem);
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -16,19 +32,25 @@ function Header({ navigation }) {
         }}
         source={require("../assets/icon.png")}
       />
-      <AppTextInput
-        placeholder="Search items"
-        textInputStyle={{
-          flex: 1,
-          fontSize: 17,
-          margin: 7,
-          marginLeft: 12,
-        }}
-        clickButton
-        width={300}
-        height={40}
-        onPress={() => navigation.navigate(routes.SEARCH_RESULTS)}
-      />
+      <Form
+        initialValues={{ item: "" }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <FormField
+          name="item"
+          width={300}
+          textInputStyle={{
+            flex: 1,
+            fontSize: 17,
+            margin: 7,
+            marginLeft: 12,
+          }}
+          placeholder="Search items"
+          searchButton
+          height={40}
+        />
+      </Form>
     </View>
   );
 }
