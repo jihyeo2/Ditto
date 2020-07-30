@@ -54,6 +54,12 @@ const storeSchema = new mongoose.Schema({
     minlength: 9,
     maxlength: 12,
   },
+  keyword: {
+    type: String,
+    minlength: 3,
+    maxlength: 1024,
+    required: true,
+  },
   likes: {
     type: Number,
     default: 0,
@@ -71,6 +77,7 @@ function validateStore(store) {
     description: Joi.string().min(5).max(1024),
     location: Joi.string().required().min(2).max(1024),
     contact: Joi.string().required().min(9).max(12),
+    keyword: Joi.string().required().min(3).max(1024),
   };
 
   return Joi.validate(store, schema);

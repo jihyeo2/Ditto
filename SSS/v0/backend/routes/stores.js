@@ -10,7 +10,14 @@ const router = express.Router();
 Fawn.init(mongoose);
 
 router.get("/", async (req, res) => {
-  const stores = await Store.find().sort("name");
+  let stores = null;
+  console.log("keyword received", req.params.keyword);
+  if (req.params.keyword) {
+    stores = await Store.find({ keyword: req.params.keyword });
+    if (!stores) return res.status.send(400).send("None exists.");
+  } else {
+    stores = await Store.find().sort("name");
+  }
   res.send(stores);
 });
 
@@ -50,6 +57,7 @@ router.post("/", async (req, res) => {
     description: req.body.description,
     location: req.body.location,
     contact: req.body.contact,
+    keyword: req.body.keyword,
   });
 
   try {
@@ -72,37 +80,36 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.put('/:id', auth, async(req, res) => {
-//   const store = await Store.findById(req.params.id);
-//   if (!store)
-//   return res.status(404).send("The store with the given ID was not found.");
+router.put("/:id", auth, async (req, res) => {
+  const store = await Store.findById(req.params.id);
+  if (!store)
+    return res.status(404).send("The store with the given ID was not found.");
 
-//   if (store.user._id == req.user._id) {
-//     try {
-//       new Fawn.Task()
-//         .remove("stores", { _id: store._id })
-//         .update(
-//           "categories",
-//           { _id: store.category._id },
-//           {
-//             $set: { stores: store },
-//           }
-//         )
-//         .update("users", { _id: store.user._id }, { $unset: { store: "" } })
-//         .run();
+  if (store.user._id == req.user._id) {
+    try {
+      new Fawn.Task()
+        .remove("stores", { _id: store._id })
+        .update(
+          "categories",
+          { _id: store.category._id },
+          {
+            $set: { stores: store },
+          }
+        )
+        .update("users", { _id: store.user._id }, { $unset: { store: "" } })
+        .run();
 
-//       res.send(store);
-//     } catch (ex) {
-//       console.log(ex);
-//       res
-//         .status(500)
-//         .send("Error occured, thus the store was not deleted successfully.");
-//     }
-//   } else {
-//     res.status(401).send("Access denied. You are not the owner of this store.");
-//   }
-
-// });
+      res.send(store);
+    } catch (ex) {
+      console.log(ex);
+      res
+        .status(500)
+        .send("Error occured, thus the store was not deleted successfully.");
+    }
+  } else {
+    res.status(401).send("Access denied. You are not the owner of this store.");
+  }
+});
 
 router.delete("/:id", auth, async (req, res) => {
   const store = await Store.findById(req.params.id);
