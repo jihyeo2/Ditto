@@ -18,7 +18,7 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
 
   ```npm i```  
   
-### (Optional) Populate the Database  
+### (Optional)(Currently not provided) Populate the Database  
     
   ```node seed.js```
     
@@ -34,11 +34,11 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
     
   ```node index.js```  
     
-  This will launch the Node server on port 3900. If that port is busy, you can set a different point in     config/default.json.  
+  This will launch the Node server on port 9000. If that port is busy, you can set a different point in     config/default.json.  
 
   Open up your browser and head over to:  
 
-  http://localhost:3900/api/stores  
+  http://localhost:9000/api/stores  
 
   You should see the list of stores. That confirms that you have set up everything successfully.  
 
