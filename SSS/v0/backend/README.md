@@ -1,8 +1,8 @@
-Setup  
+## **Setup**  
   
 Make sure to follow all these steps exactly as explained below. Do not miss any steps or you won't be able to run this application.  
   
-* Install MongoDB  
+### * Install MongoDB  
   
   To run this project, you need to install the latest version of MongoDB Community Edition first.
   
@@ -12,17 +12,17 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
     
   Once you install MongoDB, make sure it's running.  
 
-* Install the Dependencies    
+### * Install the Dependencies    
   
   Next, from the project folder, install the dependencies:  
 
   ```npm i```  
   
-* (Optional) Populate the Database  
+### * (Optional) Populate the Database  
     
   ```node seed.js```
     
-* (Optional) Run the Tests  
+### * (Optional) Run the Tests  
   
   You're almost done! Run the tests to make sure everything is working:  
 
@@ -30,7 +30,7 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
     
   All tests should pass.  
 
-* Start the Server  
+### * Start the Server  
     
   ```node index.js```  
     
@@ -42,7 +42,7 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
 
   You should see the list of stores. That confirms that you have set up everything successfully.  
 
-* (Optional) Environment Variables  
+### * (Optional) Environment Variables  
   
     If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.  
 
