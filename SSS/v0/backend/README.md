@@ -22,7 +22,7 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
     
   ```node seed.js```
     
-### (Optional) Run the Tests  
+### (Optional)(Currently not provided) Run the Tests  
   
   You're almost done! Run the tests to make sure everything is working:  
 
