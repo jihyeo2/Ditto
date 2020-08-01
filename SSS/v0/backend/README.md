@@ -10,7 +10,17 @@ Make sure to follow all these steps exactly as explained below. Do not miss any 
   https://docs.mongodb.com/manual/installation/
   
     
-  Once you install MongoDB, make sure it's running.  
+  After you have followed the official document for installation, make sure you stopped mongb service and restarted it using the following command:  
+    
+   ```mongod```  
+      
+  Now, allow the access of all the files in mongodb to users other than the root:  
+    
+   ```sudo mkdir -p /data/db```  
+      
+   ```sudo chown -R `id -un` /data/db```  
+      
+  At last, leave it running as it is while you run the backend files.
 
 ### Install the Dependencies    
   
@@ -48,9 +58,9 @@ If you look at config/default.json, you'll see a property called jwtPrivateKey. 
 
 On Mac&linux:  
 
-    ```export sss_jwtPrivateKey=yourSecureKey```  
+  ```export sss_jwtPrivateKey=yourSecureKey```  
 
 On Windows:  
 
-    ```set sss_jwtPrivateKey=yourSecureKey```  
+  ```set sss_jwtPrivateKey=yourSecureKey```  
 
