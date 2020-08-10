@@ -36,6 +36,8 @@ Timeline
 | Sat 07/25  | Continue dev |
 | Thu 07/30  | Continue dev |
 | Sat 08/01  | Coninue dev |
-| Thu 08/06  | Final Product & Start creating documentation & Intro video |
-| Sat 08/08  | Finalization & Submission |
+| Thu 08/06  | Coninue dev |
+| Thu 08/13  | Coninue dev |
+| Fri 08/14  | Final Product & Start creating documentation & Intro video |
+| Sat 08/15  | Finalization & Submission |
 
