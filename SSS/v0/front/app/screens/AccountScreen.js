@@ -31,6 +31,8 @@ const menuItems = [
 function AccountScreen({ navigation }) {
   const { user, logOut } = useAuth();
 
+  console.log("user in account page", user);
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>

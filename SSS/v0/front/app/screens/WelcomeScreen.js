@@ -1,30 +1,17 @@
 import React from "react";
-import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import AppButton from "../components/AppButton";
-import useApi from "../hooks/useApi";
-import userInfoApi from "../api/userInfo";
+import Icon from "../components/Icon";
+import Screen from "../components/Screen";
 
 function WelcomeScreen({ navigation }) {
-  const testingApi = useApi(userInfoApi.show);
-
-  const handlePress = async () => {
-    console.log("started");
-    // const response = await testingApi.request(
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFjMTNkZjljNWZhNjY5MDk2YTNkOTIiLCJpYXQiOjE1OTU2ODA3MjF9.ZmQZF5QOM_etCSWCMuzRIgvdCZe-mQKqnnMLB9Tut2A"
-    // );
-    // console.log(response);
-    // console.log("ended");
-
-    // if (!result.ok) {
-    //   if (result.data) {
-    //     console.log(result.data.error);
-    //   } else {
-    //     console.log(result);
-    //   }
-    //   return;
-    // }
-  };
-
   return (
     <ImageBackground
       blurRadius={5}
@@ -32,13 +19,15 @@ function WelcomeScreen({ navigation }) {
       source={require("../assets/background.jpg")}
     >
       <View style={styles.logoContainer}>
+        <TouchableOpacity style={styles.close}>
+          <Icon name="close" />
+        </TouchableOpacity>
         <Image
           style={styles.logo}
           source={require("./../assets/logo-red.png")}
         />
         <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
-      <AppButton title="say hi" onPress={handlePress} />
       <View style={styles.buttonsContainer}>
         <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
         <AppButton
@@ -67,13 +56,18 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 70,
+    top: 30,
     alignItems: "center",
   },
   tagline: {
     fontSize: 25,
     fontWeight: "600",
     paddingVertical: 20,
+  },
+  close: {
+    alignSelf: "flex-end",
+    marginBottom: 40,
+    marginLeft: "85%",
   },
 });
 

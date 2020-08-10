@@ -1,25 +1,23 @@
 import React, { useContext } from "react";
 import { View, Image, StyleSheet } from "react-native";
-import AppTextInput from "../components/AppTextInput";
 import routes from "../navigation/routes";
 import * as Yup from "yup";
-import {
-  AppForm as Form,
-  AppFormField as FormField,
-} from "../components/forms";
+import { AppForm as Form } from "../components/forms";
+import SearchBarField from "./SearchBarField";
 import SearchItemContext from "./SearchItemContext";
 
 const validationSchema = Yup.object().shape({
-  item: Yup.string().label("Item"),
+  searchItem: Yup.string().label("searchItem"),
 });
 
 function Header({ navigation }) {
   const { searchItem } = useContext(SearchItemContext);
 
   const handleSubmit = () => {
-    console.log(searchItem);
+    console.log("res", searchItem);
     navigation.navigate(routes.SEARCH_RESULTS, searchItem);
   };
+
   return (
     <View style={styles.container}>
       <Image
@@ -33,13 +31,15 @@ function Header({ navigation }) {
         source={require("../assets/icon.png")}
       />
       <Form
-        initialValues={{ item: "" }}
+        initialValues={{ searchItem: "" }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <FormField
-          name="item"
+        <SearchBarField
+          name="searchItem"
           width={300}
+          autoCapitalize="none"
+          autoCorrect={false}
           textInputStyle={{
             flex: 1,
             fontSize: 17,

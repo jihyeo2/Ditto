@@ -6,6 +6,7 @@ import StorePickerItem from "../components/StorePickerItem";
 import routes from "../navigation/routes";
 import useApi from "../hooks/useApi";
 import storesApi from "../api/stores";
+import AppText from "../components/AppText";
 
 function SearchResultsScreen({ route, navigation }) {
   const searchItem = route.params;
@@ -24,7 +25,7 @@ function SearchResultsScreen({ route, navigation }) {
     <Screen>
       <View style={styles.container}>
         <FlatList
-          data={getListingsApi.data.stores}
+          data={getListingsApi.data}
           keyExtractor={(item) => item._id.toString()}
           numColumns={1}
           width="100%"

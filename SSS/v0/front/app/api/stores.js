@@ -1,7 +1,6 @@
 import client from "./client";
 
-const getStores = (word) =>
-  client.get("/stores", { params: { keyword: word } });
+const getStores = (keyword) => client.get(`/stores/search/${keyword}`);
 
 export default {
   getStores,
