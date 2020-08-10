@@ -9,7 +9,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/me", auth, async (req, res) => {
-  const user = await User.findById(req.user._id).select("-password");
+  const user = await User.findById(req.user._id);
+  console.log(user.name);
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
   res.send(user);
@@ -46,8 +47,8 @@ router.put("/me", auth, async (req, res) => {
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
 
-  const store = await Store.findById(user.store._id);
-  if (!store) return res.status(400).send("Invalid store.");
+  if (req.body.store == undefined || !req.body.store)
+    req.body.store = user.store;
 
   const salt = await bcrypt.genSalt(10);
   const new_password = await bcrypt.hash(req.body.password, salt);
@@ -58,26 +59,28 @@ router.put("/me", auth, async (req, res) => {
         "users",
         { _id: user._id },
         {
-          name: req.body.name,
-          email: req.body.email,
-          password: new_password,
-          store: req.body.store,
+          $set: {
+            name: req.body.name,
+            email: req.body.email,
+            password: new_password,
+            store: req.body.store,
+          },
         },
         { new: true }
       )
-      .run();
-    new Fawn.Task()
       .update(
         "stores",
-        { _id: store._id },
+        { _id: req.body.store._id },
         {
-          user: user,
+          $set: { user: user },
         }
       )
       .run();
+
     res.send(_.pick(user, ["_id", "name", "email"]));
     //Issue: {new: true} from update() does not work/ yet not covered auth transferral btw volunteers
   } catch (ex) {
+    console.log(ex);
     res
       .status(500)
       .send("Error occured, thus the user was not updated successfully.");
@@ -85,7 +88,7 @@ router.put("/me", auth, async (req, res) => {
 });
 
 router.delete("/me", auth, async (req, res) => {
-  const user = await User.findById(req.user._id).select("-password");
+  const user = await User.findById(req.user._id).select("-password -__v");
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
 

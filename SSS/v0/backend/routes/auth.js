@@ -6,7 +6,6 @@ const { User } = require("../models/user");
 const Joi = require("joi");
 
 router.post("/", async (req, res) => {
-  console.log("data received");
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -17,7 +16,6 @@ router.post("/", async (req, res) => {
   if (!validPassword) return res.status(400).send("Invalid email or password");
 
   const token = user.generateAuthToken();
-  console.log(token);
   res.send(token);
 });
 

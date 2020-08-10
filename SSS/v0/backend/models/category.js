@@ -1,15 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
-
-const storeSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 255,
-  },
-});
+const { storeSchema } = require("./store");
 
 const categorySchema = new mongoose.Schema({
   label: {
@@ -33,7 +25,7 @@ function validateCategory(category) {
   const schema = {
     label: Joi.string().required().min(2).max(255),
     icon: Joi.string().required().min(2).max(50),
-    // stores: Joi.array().items(Joi.objectId()),
+    // stores: Joi.array().items(Joi.objectId()), ---> no clue yet....
   };
 
   return Joi.validate(category, schema);

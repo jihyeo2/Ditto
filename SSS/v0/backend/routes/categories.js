@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const categories = await Category.find();
-  res.send(categories);
+  res.send(categories);``
 });
 
 //post request written just for testing

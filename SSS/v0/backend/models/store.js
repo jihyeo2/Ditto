@@ -84,4 +84,5 @@ function validateStore(store) {
 }
 
 exports.Store = Store;
+exports.storeSchema = storeSchema;
 exports.validate = validateStore;
