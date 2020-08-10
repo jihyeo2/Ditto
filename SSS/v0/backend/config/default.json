@@ -1,4 +1,6 @@
 {
   "delay": 1000,
-  "maxImageCount": 3
+  "maxImageCount": 3,
+  "jwtPrivateKey": "",
+  "db": "mongodb://localhost/sss"
 }
