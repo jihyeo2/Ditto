@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { AppLoading } from "expo";
 
-import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
@@ -31,7 +30,7 @@ function App() {
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        {user ? <AppNavigator /> : <AuthNavigator />}
+        <AppNavigator />
       </NavigationContainer>
     </AuthContext.Provider>
   );
