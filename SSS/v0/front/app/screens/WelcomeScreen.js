@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
-import Screen from "../components/Screen";
+import routes from "../navigation/routes";
 
 function WelcomeScreen({ navigation }) {
   return (
@@ -19,7 +19,10 @@ function WelcomeScreen({ navigation }) {
       source={require("../assets/background.jpg")}
     >
       <View style={styles.logoContainer}>
-        <TouchableOpacity style={styles.close}>
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() => navigation.navigate(routes.MAIN)}
+        >
           <Icon name="close" />
         </TouchableOpacity>
         <Image
