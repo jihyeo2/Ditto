@@ -21,7 +21,7 @@ function WelcomeScreen({ navigation }) {
       <View style={styles.logoContainer}>
         <TouchableOpacity
           style={styles.close}
-          onPress={() => navigation.navigate(routes.MAIN)}
+          onPress={() => navigation.navigate(routes.SHOPPING2)}
         >
           <Icon name="close" />
         </TouchableOpacity>

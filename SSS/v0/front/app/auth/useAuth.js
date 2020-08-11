@@ -8,9 +8,8 @@ export default useAuth = () => {
 
   const logIn = async (authToken) => {
     const result = await userInfoApi.show(authToken);
-    console.log("login result", result);
-    console.log("userdata", result.data);
     setUser(result.data);
+    console.log("after setting user", user);
     authStorage.storeToken(authToken);
   };
 
