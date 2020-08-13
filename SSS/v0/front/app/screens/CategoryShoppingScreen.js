@@ -3,12 +3,27 @@ import { View, FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
 import StorePickerItem from "../components/StorePickerItem";
-import routes from "../navigation/routes";
+//import routes from "../navigation/routes";
 import useApi from "../hooks/useApi";
 import storesApi from "../api/storesInCategory";
 
+const categories = [
+  {
+    id: "1",
+    name: "granpa rice cake",
+  },
+  {
+    id: "2",
+    name: "jelly beans",
+  },
+  {
+    id: "3",
+    name: "butter beer",
+  },
+];
+
 function CategoryShoppingScreen({ route, navigation }) {
-  let { _id } = route.params; //category_id
+  // let { _id } = route.params; //category_id
 
   const getListingsApi = useApi(storesApi.getStores);
 
@@ -23,9 +38,9 @@ function CategoryShoppingScreen({ route, navigation }) {
     <Screen>
       <View style={styles.container}>
         <FlatList
-          data={getListingsApi.data.stores}
-          keyExtractor={(item) => item._id.toString()}
-          numColumns={1}
+          data={categories}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
           width="100%"
           renderItem={({ item }) => (
             <StorePickerItem
