@@ -10,6 +10,9 @@ import {
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
 import routes from "../navigation/routes";
+import { Fontisto } from "@expo/vector-icons";
+
+import colors from "../config/colors";
 
 function WelcomeScreen({ navigation }) {
   return (

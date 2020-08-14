@@ -9,13 +9,11 @@ function AppTextInput({
   searchButton,
   icon,
   width = "100%",
-  height = "100%",
   textInputStyle,
-  onPress,
   ...otherProps
 }) {
   return (
-    <View style={[styles.container, { width }, { height }]}>
+    <View style={[styles.container, { width }]}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -26,7 +24,7 @@ function AppTextInput({
       )}
       <TextInput
         placeholderTextColor={defaultStyles.colors.medium}
-        style={[defaultStyles.text, textInputStyle]}
+        style={[defaultStyles.text, styles.text]}
         {...otherProps}
       />
       {searchButton && <SearchButton />}
@@ -38,9 +36,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
-    flex: 1,
     flexDirection: "row",
-    marginVertical: 10,
+    marginVertical: 5,
+    width: "100%",
+    padding: 15,
     alignItems: "center",
   },
   icon: {
@@ -50,6 +49,9 @@ const styles = StyleSheet.create({
   searchIcon: {
     alignSelf: "flex-end",
     marginRight: 10,
+  },
+  text: {
+    flex: 1,
   },
 });
 

@@ -1,8 +1,17 @@
 import React from "react";
-import { StyleSheet, View, Image, ImageBackground, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  ImageBackground,
+  Text,
+  ScrollView,
+} from "react-native";
 
 import colors from "../config/colors";
 import Screen from "../components/Screen";
+import ListItemSeparator from "../components/lists/ListItemSeparator";
+import AppText from "../components/AppText";
 
 const menuItems = [
   {
@@ -73,6 +82,52 @@ function StoreDetailsScreen(props) {
           </Text>
         </View>
       </View>
+
+      <View style={styles.container2}>
+        <ScrollView
+          data={menuItems}
+          keyExtractor={(menuItem) => menuItem.title}
+          ItemSeparatorComponent={ListItemSeparator}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
+              }
+            />
+          )}
+        />
+      </View>
+
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>모둠떡</AppText>
+        </View>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>꿀떡</AppText>
+        </View>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>쌀떡</AppText>
+        </View>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>메뉴1</AppText>
+        </View>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>메뉴2</AppText>
+        </View>
+        <View style={styles.scrollContainer}>
+          <Image style={styles.image} source={logo} />
+          <AppText>메뉴3</AppText>
+        </View>
+      </ScrollView>
     </Screen>
   );
 }

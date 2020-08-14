@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -14,11 +14,14 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import listingsApi from "../api/listings";
 import useLocation from "../hooks/useLocation";
 import UploadScreen from "./UploadScreen";
+import AnImageInput from "../components/AnImageInput";
 
 validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(1).label("Title"),
-  price: Yup.string().required().min(1).max(10000).label("Price"),
+  name: Yup.string().required().min(1).label("Name"),
   category: Yup.string().required().nullable().label("Category"),
+  location: Yup.string().required().min(1).label("Location"),
+  contact: Yup.string().required().min(9).max(12).label("Contact"),
+  openingHours: Yup.string().required().label("Opening Hours"),
   description: Yup.string().label("Description"),
   images: Yup.array().min(1, "Please select at least one image."),
 });
@@ -60,7 +63,7 @@ const categories = [
   },
 ];
 
-function ListingEditScreen(props) {
+function StoresInfoEditScreen(props) {
   const location = useLocation();
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -90,34 +93,18 @@ function ListingEditScreen(props) {
       />
       <Form
         initialValues={{
-          title: "",
-          price: "",
-          description: "",
+          name: "",
           category: null,
+          location: "",
+          contact: "",
+          openingHours: "",
+          description: "",
           images: [],
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <FormImagePicker name="images" />
-        <FormField
-          maxlength={255}
-          name="title"
-          textInputStyle={{
-            flex: 1,
-          }}
-          placeholder="Title"
-        ></FormField>
-        <FormField
-          name="price"
-          textInputStyle={{
-            flex: 1,
-          }}
-          keyboardType="numeric"
-          maxlength={8}
-          placeholder="Price"
-          width={120}
-        ></FormField>
+        <FormField maxlength={255} name="name" placeholder="Name"></FormField>
         <AppFormPicker
           name="category"
           items={categories}
@@ -128,15 +115,34 @@ function ListingEditScreen(props) {
         ></AppFormPicker>
         <FormField
           maxlength={255}
+          name="location"
+          placeholder="Location"
+        ></FormField>
+        <FormField
+          name="contact"
+          keyboardType="numeric"
+          maxlength={12}
+          placeholder="Contact"
+        ></FormField>
+        <FormField
+          maxlength={255}
+          multiline
+          numberOfLines={3}
+          name="openingHours"
+          placeholder="Opening Hours"
+        ></FormField>
+        <FormField
+          maxlength={255}
           multiline
           numberOfLines={3}
           name="description"
-          textInputStyle={{
-            flex: 1,
-          }}
-          placeholder="Description"
+          placeholder="Brief description"
         ></FormField>
-        <SubmitButton title="Post" />
+        <View style={styles.images}>
+          <AnImageInput name="Background" />
+          <AnImageInput name="Main" />
+        </View>
+        <SubmitButton title="Next" />
       </Form>
     </Screen>
   );
@@ -145,7 +151,11 @@ function ListingEditScreen(props) {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    paddingTop: 20,
+  },
+  images: {
+    flexDirection: "row",
   },
 });
 
-export default ListingEditScreen;
+export default StoresInfoEditScreen;
