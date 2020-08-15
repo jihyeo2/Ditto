@@ -39,7 +39,8 @@ const storeSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    minlength: 5,
+    required: true,
+    minlength: 3,
     maxlength: 1024,
   },
   location: {
@@ -54,10 +55,24 @@ const storeSchema = new mongoose.Schema({
     minlength: 9,
     maxlength: 12,
   },
+  openingHours: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 1024,
+  },
   keyword: {
     type: String,
-    minlength: 3,
-    maxlength: 1024,
+    minlength: 1,
+    maxlength: 30,
+    required: true,
+  },
+  backgroundImage: {
+    type: String,
+    required: true,
+  },
+  mainImage: {
+    type: String,
     required: true,
   },
   likes: {
@@ -74,10 +89,13 @@ function validateStore(store) {
     name: Joi.string().required().min(2).max(255),
     userId: Joi.objectId().required(),
     categoryId: Joi.objectId().required(),
-    description: Joi.string().min(5).max(1024),
+    description: Joi.string().min(3).max(1024).required(),
     location: Joi.string().required().min(2).max(1024),
     contact: Joi.string().required().min(9).max(12),
-    keyword: Joi.string().required().min(3).max(1024),
+    openingHours: Joi.string().required().min(2).max(1024),
+    backgroundImage: Joi.string().required(),
+    mainImage: Joi.string().required(),
+    keyword: Joi.string().required().min(1).max(30),
   };
 
   return Joi.validate(store, schema);

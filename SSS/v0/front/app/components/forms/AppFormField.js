@@ -20,7 +20,6 @@ function AppFormField({ name, width, height, ...otherProps }) {
         onChangeText={(text) => setFieldValue(name, text)}
         value={values[name]}
         width={width}
-        height={height}
         {...otherProps}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />

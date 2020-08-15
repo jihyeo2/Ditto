@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const categories = await Category.find();
-  res.send(categories);``
+  res.send(categories);
 });
 
 //post request written just for testing
@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 
   const category = new Category({
     label: req.body.label,
-    icon: req.body.icon,
+    imageUri: req.body.imageUri,
   });
   await category.save();
   res.send(category);

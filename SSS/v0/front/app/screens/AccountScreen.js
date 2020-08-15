@@ -26,6 +26,14 @@ const menuItems = [
     },
     targetScreen: routes.MESSAGES,
   },
+  {
+    title: "My Stores",
+    icon: {
+      name: "store",
+      backgroundColor: colors.third,
+    },
+    targetScreen: routes.STORESINFO_EDIT,
+  },
 ];
 
 function AccountScreen({ navigation }) {
