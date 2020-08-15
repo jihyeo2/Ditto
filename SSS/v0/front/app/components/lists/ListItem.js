@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   detailsContainer: {
-    marginLeft: 10,
+    marginLeft: 15,
     justifyContent: "center",
     flex: 1,
   },

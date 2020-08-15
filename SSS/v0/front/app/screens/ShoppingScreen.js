@@ -5,7 +5,6 @@ import Screen from "../components/Screen";
 import routes from "../navigation/routes";
 import categoriesApi from "../api/categories";
 import ShoppingScreenItem from "../components/ShoppingScreenItem";
-import SearchButton from "../components/forms/SearchButton";
 import colors from "../config/colors";
 
 const listings = [
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   screen: {
-    backgroundColor: "gainsboro",
+    backgroundColor: colors.light,
   },
   list: {
     justifyContent: "space-evenly",
