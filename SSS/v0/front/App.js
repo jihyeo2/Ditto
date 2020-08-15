@@ -10,6 +10,7 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import GrandNavigator from "./app/navigation/GrandNavigator";
 
 function App() {
   const [user, setUser] = useState();
@@ -25,28 +26,11 @@ function App() {
       <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
     );
 
-  const Stack = createStackNavigator();
-
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          {user ? (
-            <Stack.Screen name="Main" component={AppNavigator} />
-          ) : (
-            <Stack.Screen name="LoginRegister1" component={AuthNavigator} />
-          )}
-          {user ? (
-            <Stack.Screen name="LoginRegister1" component={AuthNavigator} />
-          ) : (
-            <Stack.Screen name="Main" component={AppNavigator} />
-          )}
-        </Stack.Navigator>
+        <GrandNavigator />
       </NavigationContainer>
     </AuthContext.Provider>
   );

@@ -8,7 +8,7 @@ import useApi from "../hooks/useApi";
 import storesApi from "../api/storesInCategory";
 
 function CategoryShoppingScreen({ route, navigation }) {
-  let { _id } = route.params; //category_id
+  const { _id } = route.params; //category_id
 
   const getListingsApi = useApi(storesApi.getStores);
 
@@ -30,7 +30,7 @@ function CategoryShoppingScreen({ route, navigation }) {
           renderItem={({ item }) => (
             <StorePickerItem
               item={item}
-              onPress={() => navigation.navigate(routes.STORE_DETAILS)}
+              onPress={() => navigation.navigate(routes.STORE_MAIN, item)}
             />
           )}
           // ItemSeparatorComponent={ListItemSeparator}

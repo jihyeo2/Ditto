@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useFormikContext } from "formik";
 
-import AppTextInput from "./AppTextInput";
+import SearchBarAppTextInput from "./SearchBarAppTextInput";
 import ErrorMessage from "./forms/ErrorMessage";
 import SearchItemContext from "./SearchItemContext";
 
@@ -19,7 +19,7 @@ function SearchBarField({ name, width, height, ...otherProps }) {
 
   return (
     <>
-      <AppTextInput
+      <SearchBarAppTextInput
         onBlur={() => setFieldTouched(name)}
         onChangeText={(text) => setFieldValue(name, text)}
         value={values[name]}

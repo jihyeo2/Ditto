@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ShoppingScreen from "../screens/ShoppingScreen";
 import SearchResultsScreen from "../screens/SearchResultsScreen";
 import CategoryShoppingScreen from "../screens/CategoryShoppingScreen";
-import StoreDetailsScreen from "../screens/StoreDetailsScreen";
+import StoreMainScreen from "../screens/StoreMainScreen";
 import Header from "../components/Header";
 import SearchItemContext from "../components/SearchItemContext";
 
@@ -30,7 +30,7 @@ function ShopNavigator() {
           name="CategoryShopping"
           component={CategoryShoppingScreen}
         />
-        <Stack.Screen name="StoreDetails" component={StoreDetailsScreen} />
+        <Stack.Screen name="StoreMain" component={StoreMainScreen} />
       </Stack.Navigator>
     </SearchItemContext.Provider>
   );

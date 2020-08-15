@@ -12,7 +12,6 @@ import {
 import authApi from "../api/auth";
 import useAuth from "../auth/useAuth";
 
-
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
@@ -22,12 +21,10 @@ function LoginScreen(props) {
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
-
   const handleSubmit = async ({ email, password }) => {
     const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    console.log("token", result.data);
     auth.logIn(result.data);
   };
 

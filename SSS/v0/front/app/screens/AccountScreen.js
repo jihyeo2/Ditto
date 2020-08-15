@@ -26,6 +26,14 @@ const menuItems = [
     },
     targetScreen: routes.MESSAGES,
   },
+  {
+    title: "My Stores",
+    icon: {
+      name: "store",
+      backgroundColor: colors.third,
+    },
+    targetScreen: routes.STORESINFO_EDIT,
+  },
 ];
 
 function AccountScreen({ navigation }) {
@@ -73,6 +81,7 @@ function AccountScreen({ navigation }) {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.light,
+    paddingVertical: 10,
   },
   container: {
     marginVertical: 20,

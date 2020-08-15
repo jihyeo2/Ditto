@@ -5,12 +5,14 @@ const prefix = "cache";
 const expiryInMinutes = 5;
 
 const store = async (key, value) => {
+  console.log("storing token called");
   try {
     const item = {
       value,
       timestamp: Date.now(),
     };
     await AsyncStorage.setItem(prefix + key, JOSN.stringify(item));
+    console.log("storing token ended");
   } catch (error) {
     console.log(error);
   }
