@@ -5,15 +5,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import SearchButton from "./forms/SearchButton";
 
-function AppTextInput({
+function SearchBarAppTextInput({
   searchButton,
   icon,
   width = "100%",
-  textInputStyle,
+  height,
   ...otherProps
 }) {
   return (
-    <View style={[styles.container, { width }]}>
+    <View style={[styles.container, { width }, { height }]}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -24,7 +24,7 @@ function AppTextInput({
       )}
       <TextInput
         placeholderTextColor={defaultStyles.colors.medium}
-        style={[defaultStyles.text, styles.text, textInputStyle]}
+        style={[defaultStyles.text, styles.text]}
         {...otherProps}
       />
       {searchButton && <SearchButton />}
@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: "row",
     marginVertical: 5,
-    width: "100%",
-    padding: 15,
+    paddingVertical: 5,
     alignItems: "center",
+    justifyContent: "center",
+    width: 50,
   },
   icon: {
     marginRight: 10,
@@ -48,11 +49,14 @@ const styles = StyleSheet.create({
 
   searchIcon: {
     alignSelf: "flex-end",
-    marginRight: 10,
+    marginRight: 5,
   },
   text: {
+    alignSelf: "flex-start",
     flex: 1,
+    fontSize: 15,
+    marginLeft: 15,
   },
 });
 
-export default AppTextInput;
+export default SearchBarAppTextInput;

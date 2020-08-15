@@ -41,7 +41,10 @@ function AnImageInput({ name }) {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       });
-      if (!result.cancelled) setFieldValue(name, result.uri);
+      if (!result.cancelled) {
+        console.log(result.uri);
+        setFieldValue(name, result.uri);
+      }
     } catch (error) {
       console.log("Error reading an image", error);
     }
@@ -84,7 +87,6 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   pic: {
-    flexDirection: "row",
     alignItems: "center",
   },
 });

@@ -5,13 +5,43 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
+
 import colors from "../config/colors";
 
-function CategoryWithImageItem({ title, image, onPress }) {
+function CategoryWithImageItem({ item, onPress }) {
+  let staticUri = null;
+  switch (item.imageUri) {
+    case 0:
+      staticUri = require("../assets/restaurant.jpg");
+      break;
+    case 1:
+      staticUri = require("../assets/grocery.jpg");
+      break;
+    case 2:
+      staticUri = require("../assets/coffee.jpg");
+      break;
+    case 3:
+      staticUri = require("../assets/cloth.jpg");
+      break;
+    case 4:
+      staticUri = require("../assets/bar.jpg");
+      break;
+    case 5:
+      staticUri = require("../assets/market.png");
+      break;
+    case 6:
+      staticUri = require("../assets/barber.jpg");
+      break;
+    case 7:
+      staticUri = require("../assets/other.jpg");
+      break;
+    default:
+      break;
+  }
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <ImageBackground style={styles.image} source={image}>
-        <Text style={styles.title}>{title}</Text>
+      <ImageBackground style={styles.imageUri} source={staticUri}>
+        <Text style={styles.label}>{item.label}</Text>
       </ImageBackground>
     </TouchableOpacity>
   );
@@ -20,22 +50,20 @@ function CategoryWithImageItem({ title, image, onPress }) {
 const styles = StyleSheet.create({
   button: {
     width: "50%",
-    height: 155,
-    //borderRadius: 15,
+    height: 159,
     backgroundColor: colors.white,
-    //marginVertical: 5,
     overflow: "hidden",
   },
-  image: {
+  imageUri: {
     width: "100%",
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
-  title: {
+  label: {
     fontSize: 23,
     fontWeight: "400",
-    fontFamily: "Georgia",
+    // fontFamily: "Georgia",
     color: colors.white,
     textAlign: "center",
     textShadowColor: colors.black,

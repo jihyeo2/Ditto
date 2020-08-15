@@ -17,9 +17,9 @@ import colors from "../config/colors";
 function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      blurRadius={5}
+      // blurRadius={5}
       style={styles.background}
-      source={require("../assets/background.jpg")}
+      source={require("../assets/marketwithpeople2.jpg")}
     >
       <View style={styles.logoContainer}>
         <TouchableOpacity
@@ -28,11 +28,9 @@ function WelcomeScreen({ navigation }) {
         >
           <Icon name="close" />
         </TouchableOpacity>
-        <Image
-          style={styles.logo}
-          source={require("./../assets/logo-red.png")}
-        />
-        <Text style={styles.tagline}>Sell What You Don't Need</Text>
+        <Fontisto name="shopping-store" size={60} color="moccasin" />
+        <Text style={styles.tagline}>Your Local Stores Finder</Text>
+        <Text style={styles.subtagline}>Support Small Business</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
@@ -56,19 +54,28 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "100%",
   },
-  logo: {
-    width: 100,
-    height: 100,
-  },
   logoContainer: {
     position: "absolute",
     top: 30,
     alignItems: "center",
   },
   tagline: {
-    fontSize: 25,
-    fontWeight: "600",
-    paddingVertical: 20,
+    fontSize: 29,
+    fontWeight: "400",
+    letterSpacing: 0.5,
+    paddingTop: 45,
+    color: colors.white,
+    textShadowColor: colors.black,
+    textShadowRadius: 5,
+  },
+  subtagline: {
+    fontSize: 17,
+    fontWeight: "300",
+    color: colors.white,
+    paddingTop: 18,
+    textTransform: "uppercase",
+    letterSpacing: 5,
+    textAlign: "center",
   },
   close: {
     alignSelf: "flex-end",

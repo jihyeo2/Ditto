@@ -6,7 +6,6 @@ import StorePickerItem from "../components/StorePickerItem";
 import routes from "../navigation/routes";
 import useApi from "../hooks/useApi";
 import storesApi from "../api/stores";
-import AppText from "../components/AppText";
 
 function SearchResultsScreen({ route, navigation }) {
   const searchItem = route.params;
@@ -32,7 +31,7 @@ function SearchResultsScreen({ route, navigation }) {
           renderItem={({ item }) => (
             <StorePickerItem
               item={item}
-              onPress={() => navigation.navigate(routes.STORE_DETAILS)}
+              onPress={() => navigation.navigate(routes.STORE_MAIN)}
             />
           )}
           // ItemSeparatorComponent={ListItemSeparator}

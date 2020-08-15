@@ -4,6 +4,8 @@ import MessagesScreen from "../screens/MessagesScreen";
 import AccountScreen from "../screens/AccountScreen";
 import AuthNavigator from "../navigation/AuthNavigator";
 import AuthContext from "../auth/context";
+import StoresInfoEditScreen from "../screens/StoresInfoEditScreen";
+import StoresMenuEditScreen from "../screens/StoresMenuEditScreen";
 
 function AccountNavigator(props) {
   const { user } = useContext(AuthContext);
@@ -22,6 +24,8 @@ function AccountNavigator(props) {
       ) : (
         <Stack.Screen name="LoginRegister2" component={AuthNavigator} />
       )}
+      <Stack.Screen name="StoresInfoEdit" component={StoresInfoEditScreen} />
+      <Stack.Screen name="StoresMenuEdit" component={StoresMenuEditScreen} />
     </Stack.Navigator>
   );
   return <AccountNavigator />;

@@ -1,7 +1,7 @@
 export default {
   primary: "seagreen",
   secondary: "chocolate",
-  third: "moccasin",
+  third: "gold",
   black: "#000",
   white: "#fff",
   medium: "#6e6969",

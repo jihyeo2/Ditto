@@ -1,8 +1,10 @@
 export default Object.freeze({
+  STORESMENU_EDIT: "StoresMenuEdit",
+  STORESINFO_EDIT: "StoresInfoEdit",
   LOGINREGISTER2: "LoginRegister2",
   LOGINREGISTER1: "LoginRegister1",
   MAIN: "Main",
-  STORE_DETAILS: "StoreDetails",
+  STORE_MAIN: "StoreMain",
   CATEGORY_SHOPPING: "CategoryShopping",
   SEARCH_RESULTS: "SearchResults",
   SHOPPING2: "Shopping2",
