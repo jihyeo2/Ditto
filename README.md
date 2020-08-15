@@ -12,7 +12,7 @@ Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts - fro
 The Complete Node.js Course - backend  
 
 Hackathons:  
-[Virtual Hacks 2020 - 08/08](https://virtualhacks.ca/)  
+[Virtual Hacks 2020 - 08/21](https://virtualhacks.ca/)  
   
 Timeline
 
@@ -35,9 +35,11 @@ Timeline
 | Thu 07/23  | Complete tutorial & Continue app development |
 | Sat 07/25  | Continue dev |
 | Thu 07/30  | Continue dev |
-| Sat 08/01  | Coninue dev |
-| Thu 08/06  | Coninue dev |
-| Thu 08/13  | Coninue dev |
-| Fri 08/14  | Final Product & Start creating documentation & Intro video |
-| Sat 08/15  | Finalization & Submission |
+| Sat 08/01  | Continue dev |
+| Thu 08/06  | Continue dev |
+| Thu 08/13  | Continue dev |
+| Sat 08/15  | Continue dev |
+| Mon 08/17  | 7:30pm - Continue dev |
+| Wed 08/19  | Final Product & Start creating documentation & Intro video |
+| Fri 08/21  | Finalization & Submission |
 
