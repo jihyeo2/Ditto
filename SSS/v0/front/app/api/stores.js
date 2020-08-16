@@ -1,7 +1,8 @@
 import client from "./client";
 
-const getStores = (keyword) => client.get(`/stores/search/${keyword}`);
-const addStores = (store) => {
+const getStoresById = (id) => client.get(`/stores/${id}`);
+const getStoresByKeyword = (keyword) => client.get(`/stores/search/${keyword}`);
+const addStores = (store, onUploadProgress) => {
   const data = new FormData();
   data.append("name", store.basicInfo.name);
   data.append("userId", store.user._id);
@@ -16,9 +17,13 @@ const addStores = (store) => {
 
   console.log("data at the end", data);
 
-  return client.post("/stores", data);
+  return client.post("/stores", data, {
+    onUploadProgress: (progress) =>
+      onUploadProgress(progress.loaded / progress.total),
+  });
 };
 export default {
-  getStores,
+  getStoresById,
+  getStoresByKeyword,
   addStores,
 };

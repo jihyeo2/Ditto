@@ -24,10 +24,10 @@ function ShopNavigator() {
           headerLeft: null,
         })}
       >
-        <Stack.Screen name="Shoppings" component={ShoppingScreen} />
+        <Stack.Screen name="CategoryShopping" component={ShoppingScreen} />
         <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
         <Stack.Screen
-          name="CategoryShopping"
+          name="CategoryShoppingResults"
           component={CategoryShoppingScreen}
         />
         <Stack.Screen name="StoreMain" component={StoreMainScreen} />

@@ -17,7 +17,7 @@ const AuthNavigator = () => (
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
     <Stack.Screen
-      name="Shopping2"
+      name="App"
       component={AppNavigator}
       options={{ headerShown: false }}
     />

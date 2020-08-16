@@ -24,7 +24,7 @@ function WelcomeScreen({ navigation }) {
       <View style={styles.logoContainer}>
         <TouchableOpacity
           style={styles.close}
-          onPress={() => navigation.navigate(routes.SHOPPING2)}
+          onPress={() => navigation.navigate(routes.APP)}
         >
           <Icon name="close" />
         </TouchableOpacity>
@@ -33,11 +33,14 @@ function WelcomeScreen({ navigation }) {
         <Text style={styles.subtagline}>Support Small Business</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
+        <AppButton
+          title="Login"
+          onPress={() => navigation.navigate(routes.LOGIN)}
+        />
         <AppButton
           title="Register"
           color="secondary"
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate(routes.REGISTER)}
         />
       </View>
     </ImageBackground>

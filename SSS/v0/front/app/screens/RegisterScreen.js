@@ -14,14 +14,16 @@ import usersApi from "../api/users";
 import authApi from "../api/auth";
 import ActivityIndicator from "../components/ActivityIndicator";
 import useApi from "../hooks/useApi";
-
-validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(5).label("Password"),
-});
+import AnImageInput from "../components/AnImageInput";
 
 function RegisterScreen(props) {
+  validationSchema = Yup.object().shape({
+    profileImage: Yup.string().label("profileImage"),
+    name: Yup.string().required().label("Name"),
+    email: Yup.string().required().email().label("Email"),
+    password: Yup.string().required().min(5).label("Password"),
+  });
+
   const registerApi = useApi(usersApi.register);
   const loginApi = useApi(authApi.login);
   const auth = useAuth();
@@ -29,12 +31,11 @@ function RegisterScreen(props) {
   const [registerFailed, setRegisterFailed] = useState(false);
 
   const handleSubmit = async (userInfo) => {
-    console.log("submitted!");
     console.log("userInfo", userInfo);
     const result = await registerApi.request(userInfo);
-    console.log("Result");
 
     if (!result.ok) {
+      console.log(result);
       if (result.data) {
         console.log(result.data.error);
         setError(result.data.error);
@@ -59,10 +60,16 @@ function RegisterScreen(props) {
       <Screen style={styles.container}>
         <ErrorMessage error={error} visible={registerFailed} />
         <Form
-          initialValues={{ name: "", email: "", password: "" }}
+          initialValues={{
+            profileImage: null,
+            name: "",
+            email: "",
+            password: "",
+          }}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
+          <AnImageInput name="profileImage" />
           <FormField
             name="name"
             textInputStyle={{
