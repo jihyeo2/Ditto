@@ -11,7 +11,7 @@ function SearchResultsScreen({ route, navigation }) {
   const searchItem = route.params;
   console.log(searchItem);
 
-  const getListingsApi = useApi(storesApi.getStores);
+  const getListingsApi = useApi(storesApi.getStoresByKeyword);
 
   useEffect(() => {
     async function fetchData() {

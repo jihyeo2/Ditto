@@ -16,19 +16,17 @@ import useApi from "../hooks/useApi";
 import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 
-validationSchema = Yup.object().shape({
-  name: Yup.string().required().min(1).label("Name"),
-  category: Yup.string().required().nullable().label("Category"),
-  // keyword: Yup.string().required().max(30).label("Keyword"),
-  location: Yup.string().required().min(1).label("Location"),
-  contact: Yup.string().required().min(9).max(12).label("Contact"),
-  openingHours: Yup.string().required().label("Opening Hours"),
-  description: Yup.string().label("Description"),
-  backgroundImage: Yup.string().required().label("BackgroundImage"),
-  mainImage: Yup.string().required().label("mainImage"),
-});
-
 function StoresInfoEditScreen({ navigation }) {
+  validationSchema = Yup.object().shape({
+    name: Yup.string().required().min(1).label("Name"),
+    category: Yup.string().required().nullable().label("Category"),
+    location: Yup.string().required().min(1).label("Location"),
+    contact: Yup.string().required().min(9).max(12).label("Contact"),
+    openingHours: Yup.string().required().label("Opening Hours"),
+    description: Yup.string().required().label("Brief description"),
+    backgroundImage: Yup.string().required().label("backgroundImage"),
+    mainImage: Yup.string().required().label("mainImage"),
+  });
   const getListingsApi = useApi(categoriesApi.getCategories);
 
   useEffect(() => {
@@ -50,7 +48,6 @@ function StoresInfoEditScreen({ navigation }) {
           initialValues={{
             name: "",
             category: null,
-            // keyword: "",
             location: "",
             contact: "",
             openingHours: "",
@@ -62,21 +59,13 @@ function StoresInfoEditScreen({ navigation }) {
           validationSchema={validationSchema}
         >
           <FormField maxlength={255} name="name" placeholder="Name"></FormField>
-          <View style={{ flexDirection: "row" }}>
-            <AppFormPicker
-              name="category"
-              items={getListingsApi.data}
-              PickerItemComponent={PickerItem}
-              placeholder="Category"
-              width="48%"
-            ></AppFormPicker>
-            {/* <FormField
-              maxlength={30}
-              name="keyword"
-              placeholder="Keyword"
-              width="48%"
-            ></FormField> */}
-          </View>
+          <AppFormPicker
+            name="category"
+            items={getListingsApi.data}
+            PickerItemComponent={PickerItem}
+            placeholder="Category"
+            width="48%"
+          ></AppFormPicker>
           <FormField
             maxlength={255}
             name="location"
@@ -103,8 +92,8 @@ function StoresInfoEditScreen({ navigation }) {
             placeholder="Brief description"
           ></FormField>
           <View style={styles.images}>
-            <AnImageInput name="backgroundImage" />
-            <AnImageInput name="mainImage" />
+            <AnImageInput name="backgroundImage" width="47%" height={100} />
+            <AnImageInput name="mainImage" width="47%" height={100} />
           </View>
           <SubmitButton title="Next" />
         </Form>
@@ -120,6 +109,7 @@ const styles = StyleSheet.create({
   },
   images: {
     flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
 

@@ -23,7 +23,9 @@ router.post("/", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered.");
 
-  user = new User(_.pick(req.body, ["name", "email", "password"]));
+  user = new User(
+    _.pick(req.body, ["profileImage", "name", "email", "password"])
+  );
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
@@ -31,7 +33,7 @@ router.post("/", async (req, res) => {
   const token = user.generateAuthToken();
   res
     .header("x-auth-token", token)
-    .send(_.pick(user, ["_id", "name", "email"]));
+    .send(_.pick(user, ["_id", "profileImage", "name", "email"]));
 });
 
 /*
@@ -60,6 +62,7 @@ router.put("/me", auth, async (req, res) => {
         { _id: user._id },
         {
           $set: {
+            profileImage: req.body.profileImage,
             name: req.body.name,
             email: req.body.email,
             password: new_password,
@@ -88,7 +91,9 @@ router.put("/me", auth, async (req, res) => {
 });
 
 router.delete("/me", auth, async (req, res) => {
-  const user = await User.findById(req.user._id).select("-password -__v");
+  const user = await User.findById(req.user._id).select(
+    "-password -__v -profileImage"
+  );
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
 

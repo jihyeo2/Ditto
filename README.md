@@ -38,6 +38,6 @@ Timeline
 | Thu 08/06                       | Continue dev                                                        |
 | Thu 08/13                       | Continue dev                                                        |
 | Sat 08/15                       | Continue dev                                                        |
-| Mon 08/17                       | 7:30pm - Continue dev                                               |
+| [Mon 08/17](/Timeline/08-17)    | 7:30pm - Continue dev                                               |
 | Wed 08/19                       | Final Product & Start creating documentation & Intro video          |
 | Fri 08/21                       | Finalization & Submission                                           |

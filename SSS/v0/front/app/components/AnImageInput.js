@@ -12,8 +12,9 @@ import { useFormikContext } from "formik";
 
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
+import ErrorMessage from "../components/forms/ErrorMessage";
 
-function AnImageInput({ name }) {
+function AnImageInput({ name, width = 150, height = 150 }) {
   const { setFieldValue, errors, touched, values } = useFormikContext();
   const imageUri = values[name];
 
@@ -50,24 +51,33 @@ function AnImageInput({ name }) {
     }
   };
 
+  const errorMessage = `${name} is a required field`;
+
   return (
-    <TouchableWithoutFeedback onPress={handlePress}>
-      <View style={styles.container}>
-        {!imageUri && (
-          <View style={styles.pic}>
-            <MaterialCommunityIcons
-              name="camera"
-              size={40}
-              color={defaultStyles.colors.medium}
-            />
-            <AppText style={{ color: defaultStyles.colors.medium }}>
-              {name}
-            </AppText>
-          </View>
-        )}
-        {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
-      </View>
-    </TouchableWithoutFeedback>
+    <>
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={[styles.container, { width }, { height }]}>
+          {!imageUri && (
+            <View style={styles.pic}>
+              <MaterialCommunityIcons
+                name="camera"
+                size={40}
+                color={defaultStyles.colors.medium}
+              />
+              <AppText style={{ color: defaultStyles.colors.medium }}>
+                {name}
+              </AppText>
+            </View>
+          )}
+          {imageUri && (
+            <Image source={{ uri: imageUri }} style={styles.image} />
+          )}
+        </View>
+      </TouchableWithoutFeedback>
+      {errors[name] ? (
+        <ErrorMessage error={errorMessage} visible={touched[name]} />
+      ) : null}
+    </>
   );
 }
 
@@ -75,12 +85,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 15,
-    width: "47%",
-    height: 100,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
     margin: 5,
+    alignSelf: "center",
   },
   image: {
     width: "100%",

@@ -1,74 +1,85 @@
-import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "../components/Screen";
 import ListItem from "../components/lists/ListItem";
 import Icon from "../components/Icon";
 import colors from "../config/colors";
-import ListItemSeparator from "../components/lists/ListItemSeparator";
 import routes from "../navigation/routes";
 import useAuth from "../auth/useAuth";
-
-const menuItems = [
-  {
-    title: "My Listings",
-    icon: {
-      name: "format-list-bulleted",
-      backgroundColor: colors.primary,
-    },
-    targetScreen: routes.LISTINGS,
-  },
-  {
-    title: "My Messages",
-    icon: {
-      name: "email",
-      backgroundColor: colors.secondary,
-    },
-    targetScreen: routes.MESSAGES,
-  },
-  {
-    title: "My Stores",
-    icon: {
-      name: "store",
-      backgroundColor: colors.third,
-    },
-    targetScreen: routes.STORESINFO_EDIT,
-  },
-];
+import useApi from "../hooks/useApi";
+import userApi from "../api/userInfo";
+import authStorage from "../auth/storage";
+import storesApi from "../api/stores";
+import StorePickerItem from "../components/StorePickerItem";
+import AppText from "../components/AppText";
 
 function AccountScreen({ navigation }) {
   const { user, logOut } = useAuth();
-
   console.log("user in account page", user);
+
+  const token = authStorage.getToken();
+  const getUserApi = useApi(userApi.show);
+  const getStoresApi = useApi(storesApi.getStoresById);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await getUserApi.request(token);
+      if (data.store._id) {
+        response = await getStoresApi.request(data.store._id);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem
-          title={user.name}
-          subTitle={user.email}
-          image={require("../assets/mosh.jpg")}
-        />
+        {user.profileImage ? (
+          <ListItem
+            title={user.name}
+            subTitle={user.email}
+            image={{ uri: user.profileImage }}
+          />
+        ) : (
+          <ListItem
+            title={user.name}
+            subTitle={user.email}
+            IconComponent={
+              <MaterialCommunityIcons name="account-circle-outline" size={50} />
+            }
+          />
+        )}
       </View>
-      <View style={styles.container}>
-        <FlatList
-          data={menuItems}
-          keyExtractor={(menuItem) => menuItem.title}
-          renderItem={({ item }) => (
-            <ListItem
-              title={item.title}
-              IconComponent={
-                <Icon
-                  name={item.icon.name}
-                  backgroundColor={item.icon.backgroundColor}
-                />
-              }
-              onPress={() => navigation.navigate(item.targetScreen)}
-            />
-          )}
-          ItemSeparatorComponent={ListItemSeparator}
-        />
-      </View>
+      <ScrollView
+        style={{
+          backgroundColor: colors.white,
+          marginBottom: 20,
+        }}
+      >
+        {getStoresApi.data ? (
+          <>
+            <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
+            <TouchableOpacity
+              style={styles.addButton}
+              onPress={() => navigation.navigate(routes.STORESINFO_EDIT)}
+            >
+              <Icon name="plus" size={60} backgroundColor={colors.secondary} />
+            </TouchableOpacity>
+            <ScrollView>
+              <StorePickerItem
+                item={getStoresApi.data}
+                onPress={() =>
+                  navigation.navigate(routes.STORE_MAIN, getStoresApi.data)
+                }
+              />
+            </ScrollView>
+          </>
+        ) : (
+          <AppText>You have not registered a store.</AppText>
+        )}
+      </ScrollView>
       <ListItem
         title="Log out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
@@ -85,6 +96,12 @@ const styles = StyleSheet.create({
   },
   container: {
     marginVertical: 20,
+  },
+  addButton: {
+    position: "absolute",
+    right: 10,
+    top: 10,
+    marginBottom: 20,
   },
 });
 

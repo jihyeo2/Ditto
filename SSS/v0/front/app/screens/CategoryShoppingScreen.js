@@ -33,7 +33,6 @@ function CategoryShoppingScreen({ route, navigation }) {
               onPress={() => navigation.navigate(routes.STORE_MAIN, item)}
             />
           )}
-          // ItemSeparatorComponent={ListItemSeparator}
         />
       </View>
     </Screen>

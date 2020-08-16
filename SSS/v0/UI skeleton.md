@@ -1,17 +1,21 @@
-- ```Stack Navigator```  
-  - ```Main```  
-    - ```ShopNavigator```  
-       ```Shopping```  
-       ```SearchResults```  
-       ```CategoryShopping```  
-       ```StoreDetails```  
-    - ```AccountNavigator```  
-       ```Account```  
-       ```Message```  
-  - ```LoginRegister```  
-     ```Welcome```  
-     ```Login```  
-     ```Register```  
+- ```+Head Navigator```  
+  - ```+(User) App```  
+    - ```+Shopping```  
+       -  ```CategoryShopping```  
+       - ```SearchResults```  
+       - ```CategoryShoppingResults```  
+       - ```StoreMain```  
+    - ```+Account```  
+       - ```(User) MyAccount```  
+       - ```(!User) Welcome```  
+       - ```StoresInfoEdit```  
+       - ```StoresMenuEdit```  
+  - ```+(!User) Auth```  
+     - ```Welcome```  
+     - ```Login```  
+     - ```Register```  
+     - ```+(close button) App```
    
-* LoginRegister comes first if there is no user, and Main if there is a saved user. 
+* Name is unique to each navigator/screen.
+* Navigators are suffixed with "+".
     
