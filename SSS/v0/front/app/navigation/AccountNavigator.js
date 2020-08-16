@@ -6,6 +6,7 @@ import AuthNavigator from "../navigation/AuthNavigator";
 import AuthContext from "../auth/context";
 import StoresInfoEditScreen from "../screens/StoresInfoEditScreen";
 import StoresMenuEditScreen from "../screens/StoresMenuEditScreen";
+import WelcomeScreen from "../screens/WelcomeScreen";
 
 function AccountNavigator(props) {
   const { user } = useContext(AuthContext);
@@ -17,12 +18,9 @@ function AccountNavigator(props) {
       }}
     >
       {user ? (
-        <>
-          <Stack.Screen name="Account" component={AccountScreen} />
-          <Stack.Screen name="Messages" component={MessagesScreen} />
-        </>
+        <Stack.Screen name="MyAccount" component={AccountScreen} />
       ) : (
-        <Stack.Screen name="LoginRegister2" component={AuthNavigator} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
       )}
       <Stack.Screen name="StoresInfoEdit" component={StoresInfoEditScreen} />
       <Stack.Screen name="StoresMenuEdit" component={StoresMenuEditScreen} />

@@ -12,12 +12,13 @@ import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function StorePickerItem({ item, onPress }) {
+  console.log("this is the item receivded", item);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.store} onPress={onPress}>
         <ImageBackground
           style={styles.image}
-          source={require("../assets/ricecake.jpeg")}
+          source={{ uri: item.backgroundImage }}
         >
           <View style={styles.likes}>
             <MaterialCommunityIcons
@@ -28,10 +29,7 @@ function StorePickerItem({ item, onPress }) {
             <AppText style={{ color: colors.white }}>{item.likes}</AppText>
           </View>
           <View style={styles.content}>
-            <Image
-              style={styles.owner}
-              source={require("../assets/trump.jpeg")}
-            />
+            <Image style={styles.owner} source={{ uri: item.mainImage }} />
             <View>
               <AppText style={{ color: colors.white }}>{item.name}</AppText>
               <AppText style={{ fontSize: 12, color: colors.white }}>

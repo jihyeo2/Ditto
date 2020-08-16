@@ -13,13 +13,17 @@ import useApi from "../hooks/useApi";
 import AppText from "../components/AppText";
 import authStorage from "../auth/storage";
 import userInfoApi from "../api/userInfo";
-
-validationSchema = Yup.object().shape({
-  keyword: Yup.string().required().max(30).label("Keyword"),
-});
+import UploadScreen from "./UploadScreen";
+import routes from "../navigation/routes";
 
 function StoresInfoEditScreen({ navigation, route }) {
+  validationSchema = Yup.object().shape({
+    keyword: Yup.string().required().max(30).label("Keyword"),
+  });
+
   const basicInfo = route.params;
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const addListingsApi = useApi(storesApi.addStores);
 
@@ -33,19 +37,31 @@ function StoresInfoEditScreen({ navigation, route }) {
   }, []);
 
   const handleSubmit = async (listing, { resetForm }) => {
-    const result = await addListingsApi.request({
-      ...listing,
-      basicInfo,
-      user,
-    });
+    setProgress(0);
+    setUploadVisible(true);
+    const result = await addListingsApi.request(
+      {
+        ...listing,
+        basicInfo,
+        user,
+      },
+      (progress) => setProgress(progress)
+    );
     if (!result.ok) {
+      setUploadVisible(false);
       return alert("Could not save the listing.");
     }
     resetForm();
+    navigation.navigate(routes.STORESINFO_EDIT);
   };
 
   return (
     <Screen style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <AppText>Menu/Service</AppText>
       <Form
         initialValues={{

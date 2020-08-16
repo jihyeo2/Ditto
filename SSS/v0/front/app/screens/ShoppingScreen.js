@@ -25,7 +25,9 @@ function ShoppingScreen({ navigation }) {
       renderItem={({ item }) => (
         <CategoryWithImageItem
           item={item}
-          onPress={() => navigation.navigate(routes.CATEGORY_SHOPPING, item)}
+          onPress={() =>
+            navigation.navigate(routes.CATEGORYSHOPPING_RESULTS, item)
+          }
         />
       )}
     />

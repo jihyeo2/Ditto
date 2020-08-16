@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 const userSchema = new mongoose.Schema({
+  profileImage: {
+    type: String,
+  },
   name: {
     type: String,
     required: true,
@@ -47,6 +50,7 @@ const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   const schema = {
+    profileImage: Joi.string(),
     name: Joi.string().required().min(3).max(50),
     email: Joi.string().required().min(5).max(255).email(),
     password: Joi.string().required().min(5).max(1024),

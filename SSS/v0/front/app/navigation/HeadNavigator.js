@@ -1,26 +1,26 @@
 import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import AuthNavigator from "../navigation/AuthNavigator";
-import AppNavigator from "../navigation/AppNavigator";
+import AuthNavigator from "./AuthNavigator";
+import AppNavigator from "./AppNavigator";
 import AuthContext from "../auth/context";
 
-function GrandNavigator(props) {
+function HeadNavigator(props) {
   const { user } = useContext(AuthContext);
   const Stack = createStackNavigator();
-  const GrandNavigator = () => (
+  const HeadNavigator = () => (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
       {user ? (
-        <Stack.Screen name="Main" component={AppNavigator} />
+        <Stack.Screen name="App" component={AppNavigator} />
       ) : (
-        <Stack.Screen name="LoginRegister1" component={AuthNavigator} />
+        <Stack.Screen name="Auth" component={AuthNavigator} />
       )}
     </Stack.Navigator>
   );
-  return <GrandNavigator />;
+  return <HeadNavigator />;
 }
 
-export default GrandNavigator;
+export default HeadNavigator;

@@ -5,13 +5,6 @@ import colors from "../config/colors";
 import LottieView from "lottie-react-native";
 
 function UploadScreen({ onDone, progress = 0, visible = false }) {
-  if (onDone == undefined) {
-    console.log("onDone");
-  } else if (progress == undefined) {
-    console.log("progress");
-  } else if (visible == undefined) {
-    console.log("visible");
-  }
   return (
     <Modal visible={visible}>
       <View style={styles.container}>
