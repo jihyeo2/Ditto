@@ -8,8 +8,8 @@
     - ```+Account```  
        - ```(User) MyAccount```  
        - ```(!User) Welcome```  
-       - ```StoresInfoEdit```  
-       - ```StoresMenuEdit```  
+       - ```StoresInfoAdd```  
+       - ```StoresMenuAdd```  
   - ```+(!User) Auth```  
      - ```Welcome```  
      - ```Login```  
