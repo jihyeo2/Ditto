@@ -10,9 +10,7 @@ import {
 } from "../components/forms";
 
 import AppButton from "../components/AppButton";
-import AppFormPicker from "../components/forms/AppFormPicker";
-import PickerItem from "../components/PickerItem";
-import AnImageInput from "../components/AnImageInput";
+
 import categoriesApi from "../api/categories";
 import useApi from "../hooks/useApi";
 import routes from "../navigation/routes";
