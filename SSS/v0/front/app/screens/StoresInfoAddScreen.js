@@ -16,8 +16,8 @@ import useApi from "../hooks/useApi";
 import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 
-function StoresInfoEditScreen({ navigation }) {
-  validationSchema = Yup.object().shape({
+function StoresInfoAddScreen({ navigation, route }) {
+  const validationSchema = Yup.object().shape({
     name: Yup.string().required().min(1).label("Name"),
     category: Yup.string().required().nullable().label("Category"),
     location: Yup.string().required().min(1).label("Location"),
@@ -27,6 +27,32 @@ function StoresInfoEditScreen({ navigation }) {
     backgroundImage: Yup.string().required().label("backgroundImage"),
     mainImage: Yup.string().required().label("mainImage"),
   });
+
+  const storeToEdit = route.params;
+  console.log("storeToEdit", storeToEdit);
+  let initial = {
+    name: "",
+    category: null,
+    location: "",
+    contact: "",
+    openingHours: "",
+    description: "",
+    backgroundImage: null,
+    mainImage: null,
+  };
+  if (storeToEdit) {
+    initial = {
+      name: storeToEdit.name,
+      category: storeToEdit.category,
+      location: storeToEdit.location,
+      contact: storeToEdit.contact,
+      openingHours: storeToEdit.openingHours,
+      description: storeToEdit.description,
+      backgroundImage: storeToEdit.backgroundImage,
+      mainImage: storeToEdit.mainImage,
+    };
+  }
+
   const getListingsApi = useApi(categoriesApi.getCategories);
 
   useEffect(() => {
@@ -37,7 +63,15 @@ function StoresInfoEditScreen({ navigation }) {
   }, []);
 
   const handleSubmit = (listing) => {
-    navigation.navigate(routes.STORESMENU_EDIT, listing);
+    if (storeToEdit) {
+      navigation.navigate(routes.STORESMENU_ADD, {
+        ...listing,
+        keyword: storeToEdit.keyword,
+        _id: storeToEdit._id,
+      });
+    } else {
+      navigation.navigate(routes.STORESMENU_ADD, listing);
+    }
   };
 
   return (
@@ -45,16 +79,7 @@ function StoresInfoEditScreen({ navigation }) {
       <ScrollView>
         <AppText>Basic Information</AppText>
         <Form
-          initialValues={{
-            name: "",
-            category: null,
-            location: "",
-            contact: "",
-            openingHours: "",
-            description: "",
-            backgroundImage: null,
-            mainImage: null,
-          }}
+          initialValues={initial}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
@@ -113,4 +138,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoresInfoEditScreen;
+export default StoresInfoAddScreen;

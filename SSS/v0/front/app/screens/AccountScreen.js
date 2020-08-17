@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -22,12 +22,16 @@ function AccountScreen({ navigation }) {
   const token = authStorage.getToken();
   const getUserApi = useApi(userApi.show);
   const getStoresApi = useApi(storesApi.getStoresById);
+  const [hasStore, setHasStore] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       const { data } = await getUserApi.request(token);
-      if (data.store._id) {
-        response = await getStoresApi.request(data.store._id);
+      console.log("dataaaaaa", data);
+      if (data.store) {
+        const response = await getStoresApi.request(data.store);
+        setHasStore(true);
+        console.log("sfgidsjdsldsijd", getStoresApi.data);
       }
     }
     fetchData();
@@ -52,34 +56,70 @@ function AccountScreen({ navigation }) {
           />
         )}
       </View>
-      <ScrollView
+      <View
         style={{
-          backgroundColor: colors.white,
+          justifyContent: "center",
           marginBottom: 20,
+          backgroundColor: colors.white,
         }}
       >
-        {getStoresApi.data ? (
-          <>
-            <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
-            <TouchableOpacity
-              style={styles.addButton}
-              onPress={() => navigation.navigate(routes.STORESINFO_EDIT)}
+        <ScrollView>
+          {hasStore ? (
+            <>
+              <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
+              <TouchableOpacity
+                style={styles.addButton}
+                onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
+              >
+                <Icon
+                  name="plus"
+                  size={60}
+                  backgroundColor={colors.secondary}
+                />
+              </TouchableOpacity>
+              <ScrollView>
+                <FlatList
+                  data={getStoresApi.data}
+                  keyExtractor={(item) => item._id.toString()}
+                  numColumns={1}
+                  width="100%"
+                  renderItem={({ item }) => (
+                    <StorePickerItem
+                      item={item}
+                      onPress={() =>
+                        navigation.navigate(routes.STORE_MAIN, {
+                          ...getStoresApi.data,
+                          editButton: true,
+                        })
+                      }
+                    />
+                  )}
+                />
+              </ScrollView>
+            </>
+          ) : (
+            <View
+              style={{
+                minHeight: 250,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              <Icon name="plus" size={60} backgroundColor={colors.secondary} />
-            </TouchableOpacity>
-            <ScrollView>
-              <StorePickerItem
-                item={getStoresApi.data}
-                onPress={() =>
-                  navigation.navigate(routes.STORE_MAIN, getStoresApi.data)
-                }
-              />
-            </ScrollView>
-          </>
-        ) : (
-          <AppText>You have not registered a store.</AppText>
-        )}
-      </ScrollView>
+              <AppText>You have not registered a store.</AppText>
+              <TouchableOpacity
+                style={styles.addButton}
+                onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
+              >
+                <Icon
+                  name="plus"
+                  size={60}
+                  backgroundColor={colors.secondary}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
+        </ScrollView>
+      </View>
       <ListItem
         title="Log out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
@@ -99,8 +139,8 @@ const styles = StyleSheet.create({
   },
   addButton: {
     position: "absolute",
-    right: 10,
-    top: 10,
+    right: 20,
+    top: 20,
     marginBottom: 20,
   },
 });

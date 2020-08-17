@@ -12,7 +12,6 @@ import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function StorePickerItem({ item, onPress }) {
-  console.log("this is the item receivded", item);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.store} onPress={onPress}>
@@ -20,14 +19,6 @@ function StorePickerItem({ item, onPress }) {
           style={styles.image}
           source={{ uri: item.backgroundImage }}
         >
-          <View style={styles.likes}>
-            <MaterialCommunityIcons
-              name="heart"
-              color={colors.primary}
-              size={30}
-            />
-            <AppText style={{ color: colors.white }}>{item.likes}</AppText>
-          </View>
           <View style={styles.content}>
             <Image style={styles.owner} source={{ uri: item.mainImage }} />
             <View>
@@ -97,11 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     margin: 10,
-  },
-  likes: {
-    flexDirection: "row",
-    position: "absolute",
-    right: 10,
   },
 });
 
