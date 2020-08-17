@@ -1,10 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../../config/colors";
 import AppText from "../AppText";
-import Swipeable from "react-native-gesture-handler/Swipeable";
 
 function MenuItem({ title, subTitle, image }) {
   return (

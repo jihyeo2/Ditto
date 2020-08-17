@@ -4,10 +4,11 @@ import { ImageBackground, View, Image, Text, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
 function StoreInfoMain({ backImage, frontImage, title, subtitle }) {
+  console.log("this is the backImage", backImage);
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.back} source={backImage}>
-        <Image style={styles.front} source={frontImage} />
+      <ImageBackground source={{ uri: backImage }} style={styles.back}>
+        <Image style={styles.front} source={{ uri: frontImage }} />
       </ImageBackground>
       <View>
         <Text style={styles.title}>{title}</Text>
@@ -20,7 +21,7 @@ function StoreInfoMain({ backImage, frontImage, title, subtitle }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    height: 360,
+    paddingBottom: 15,
     marginBottom: 15,
   },
   imageContainer: {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: "500",
-    fontFamily: "Georgia",
+    // fontFamily: "Georgia",
     color: colors.dark,
     textAlign: "center",
     marginBottom: 8,

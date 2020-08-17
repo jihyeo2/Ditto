@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 import ListItem from "./lists/ListItem";
 import ListItemSeparator from "./lists/ListItemSeparator";
 
-function StoreInfoSub({ address, phone, hour }) {
+function StoreInfoSub({ address, phone, hour, delivery }) {
   return (
     <View style={styles.container}>
       <ListItem
@@ -17,7 +17,7 @@ function StoreInfoSub({ address, phone, hour }) {
             color={colors.primary}
           />
         }
-        subTitle={address}
+        title={address}
         showChevrons={false}
       />
       <ListItemSeparator />
@@ -25,7 +25,7 @@ function StoreInfoSub({ address, phone, hour }) {
         IconComponent={
           <SimpleLineIcons name="phone" size={24} color={colors.secondary} />
         }
-        subTitle={phone}
+        title={phone}
         showChevrons={false}
       />
       <ListItemSeparator />
@@ -33,7 +33,15 @@ function StoreInfoSub({ address, phone, hour }) {
         IconComponent={
           <SimpleLineIcons name="clock" size={24} color={colors.third} />
         }
-        subTitle={hour}
+        title={hour}
+        showChevrons={false}
+      />
+      <ListItemSeparator />
+      <ListItem
+        IconComponent={
+          <MaterialIcons name="motorcycle" size={24} color="purple" />
+        }
+        title={delivery}
         showChevrons={false}
       />
     </View>

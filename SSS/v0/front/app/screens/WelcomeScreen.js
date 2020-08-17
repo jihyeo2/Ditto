@@ -1,51 +1,53 @@
 import React from "react";
-import { ImageBackground, StyleSheet, View, Text } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import AppButton from "../components/AppButton";
-import useApi from "../hooks/useApi";
-import userInfoApi from "../api/userInfo";
+import Icon from "../components/Icon";
+import routes from "../navigation/routes";
 import { Fontisto } from "@expo/vector-icons";
 
 import colors from "../config/colors";
+import { color } from "react-native-reanimated";
 
 function WelcomeScreen({ navigation }) {
-  const testingApi = useApi(userInfoApi.show);
-
-  const handlePress = async () => {
-    console.log("started");
-    // const response = await testingApi.request(
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFjMTNkZjljNWZhNjY5MDk2YTNkOTIiLCJpYXQiOjE1OTU2ODA3MjF9.ZmQZF5QOM_etCSWCMuzRIgvdCZe-mQKqnnMLB9Tut2A"
-    // );
-    // console.log(response);
-    // console.log("ended");
-
-    // if (!result.ok) {
-    //   if (result.data) {
-    //     console.log(result.data.error);
-    //   } else {
-    //     console.log(result);
-    //   }
-    //   return;
-    // }
-  };
-
   return (
     <ImageBackground
-      //blurRadius={5}
+      // blurRadius={5}
       style={styles.background}
       source={require("../assets/marketwithpeople2.jpg")}
     >
       <View style={styles.logoContainer}>
-        <Fontisto name="shopping-store" size={60} color="moccasin" />
-        <Text style={styles.tagline}>Your Local Stores Finder</Text>
-        <Text style={styles.subtagline}>Support Small Business</Text>
+        <Fontisto name="shopping-store" size={60} color={colors.third} />
+        <Text style={styles.tagline}>Ditto</Text>
+        <Text style={styles.subtagline}>Your Local Stores Finder</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
+        <AppButton
+          title="Login"
+          onPress={() => navigation.navigate(routes.LOGIN)}
+        />
         <AppButton
           title="Register"
           color="secondary"
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate(routes.REGISTER)}
         />
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() => navigation.navigate(routes.APP)}
+        >
+          <Text
+            style={{ color: colors.third, textDecorationLine: "underline" }}
+          >
+            I'll register next time.
+          </Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -61,33 +63,36 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "100%",
   },
-  // logo: {
-  //   width: 100,
-  //   height: 100,
-  // },
   logoContainer: {
     position: "absolute",
-    top: 130,
+    top: 100,
     alignItems: "center",
   },
   tagline: {
-    fontSize: 29,
-    fontWeight: "400",
-    fontFamily: "Georgia",
+    fontSize: 40,
+    fontWeight: "500",
+    fontFamily: Platform.OS === "android" ? "sans-serif-thin" : "Georgia",
+    fontStyle: "italic",
     letterSpacing: 0.5,
     paddingTop: 45,
     color: colors.white,
     textShadowColor: colors.black,
-    textShadowRadius: 5,
+    textShadowRadius: 8,
   },
   subtagline: {
     fontSize: 17,
     fontWeight: "300",
     color: colors.white,
-    paddingTop: 18,
+    paddingTop: 15,
     textTransform: "uppercase",
-    letterSpacing: 5,
+    letterSpacing: 3,
     textAlign: "center",
+    textShadowColor: colors.black,
+    textShadowRadius: 5,
+  },
+  close: {
+    alignSelf: "center",
+    margin: 15,
   },
 });
 

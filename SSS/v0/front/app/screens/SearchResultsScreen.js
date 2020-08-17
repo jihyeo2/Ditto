@@ -11,7 +11,7 @@ function SearchResultsScreen({ route, navigation }) {
   const searchItem = route.params;
   console.log(searchItem);
 
-  const getListingsApi = useApi(storesApi.getStores);
+  const getListingsApi = useApi(storesApi.getStoresByKeyword);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,14 +24,14 @@ function SearchResultsScreen({ route, navigation }) {
     <Screen>
       <View style={styles.container}>
         <FlatList
-          data={getListingsApi.data.stores}
+          data={getListingsApi.data}
           keyExtractor={(item) => item._id.toString()}
           numColumns={1}
           width="100%"
           renderItem={({ item }) => (
             <StorePickerItem
               item={item}
-              onPress={() => navigation.navigate(routes.STORE_DETAILS)}
+              onPress={() => navigation.navigate(routes.STORE_MAIN)}
             />
           )}
           // ItemSeparatorComponent={ListItemSeparator}

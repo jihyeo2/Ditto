@@ -4,32 +4,17 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableWithoutFeedback,
+  ScrollView,
+  TouchableOpacity,
 } from "react-native";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ListItemSeparator from "../components/lists/ListItemSeparator";
 import MenuItem from "../components/lists/MenuItem";
-
 import StoreInfoMain from "../components/StoreInfoMain";
 import StoreInfoSub from "../components/StoreInfoSub";
-import { ScrollView } from "react-native";
-
-const store = [
-  {
-    //id: "1",
-    backImage: require("../assets/marketwithpeople.jpg"),
-    frontImage: require("../assets/mosh.jpg"),
-    title: "Beautiful Shop",
-    subtitle:
-      "The most beautiful shop in town! Even better than the Pretty Shop! Another placeholder!",
-    //maximum subtitle word count: 85 characters (2 lines)
-    address: "Baker St. 211 Rm B.",
-    phone: "010-5236-8567",
-    hour: "9:00 ~ 20:00",
-  },
-];
+import Icon from "../components/Icon";
 
 //메뉴를 store[]에 포함시키면 스크롤이 안됨.ㅠㅠㅠ
 const menu = [
@@ -53,26 +38,37 @@ const menu = [
   },
 ];
 
-function ShopMainScreen(props) {
+function StoreMainScreen({ navigation, route, editButton }) {
+  const item = route.params;
   return (
-    <ScrollView>
-      <Screen style={styles.screen}>
+    <Screen style={styles.screen}>
+      {editButton ? (
+        <TouchableOpacity style={styles.button}>
+          <Icon
+            name="lead-pencil"
+            size={60}
+            backgroundColor={colors.secondary}
+          />
+        </TouchableOpacity>
+      ) : null}
+      <ScrollView>
         <StoreInfoMain
-          backImage={store[0].backImage}
-          frontImage={store[0].frontImage}
-          title={store[0].title}
-          subtitle={store[0].subtitle}
+          backImage={item.backgroundImage}
+          frontImage={item.mainImage}
+          title={item.name}
+          subtitle={item.description}
         />
         <StoreInfoSub
-          address={store[0].address}
-          phone={store[0].phone}
-          hour={store[0].hour}
+          address={item.location}
+          phone={item.contact}
+          hour={item.openingHours}
+          delivery={item.delivery}
         />
         <View style={styles.menuContainter}>
           <Text style={styles.heading}>Menu/Item</Text>
           <FlatList
             data={menu}
-            keyExtractor={(menu) => menu.id.toString()}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <MenuItem
                 title={item.name}
@@ -83,14 +79,21 @@ function ShopMainScreen(props) {
             ItemSeparatorComponent={ListItemSeparator}
           />
         </View>
-      </Screen>
-    </ScrollView>
+      </ScrollView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  button: {
+    position: "absolute",
+    right: 20,
+    bottom: 20,
+    zIndex: 1,
+  },
   screen: {
     backgroundColor: colors.light,
+    paddingTop: 0,
   },
   menuContainter: {
     backgroundColor: colors.white,
@@ -98,9 +101,8 @@ const styles = StyleSheet.create({
   heading: {
     fontWeight: "400",
     fontSize: 20,
-    fontFamily: "Georgia",
     padding: 15,
   },
 });
 
-export default ShopMainScreen;
+export default StoreMainScreen;

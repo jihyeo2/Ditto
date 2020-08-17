@@ -1,28 +1,27 @@
 import React, { useContext } from "react";
 import { View, Image, StyleSheet } from "react-native";
-import AppTextInput from "../components/AppTextInput";
 import routes from "../navigation/routes";
 import * as Yup from "yup";
-import {
-  AppForm as Form,
-  AppFormField as FormField,
-} from "../components/forms";
+import { AppForm as Form } from "../components/forms";
+import SearchBarField from "./SearchBarField";
 import SearchItemContext from "./SearchItemContext";
+import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
-  item: Yup.string().label("Item"),
+  searchItem: Yup.string().label("searchItem"),
 });
 
 function Header({ navigation }) {
   const { searchItem } = useContext(SearchItemContext);
 
   const handleSubmit = () => {
-    console.log(searchItem);
+    console.log("res", searchItem);
     navigation.navigate(routes.SEARCH_RESULTS, searchItem);
   };
+
   return (
     <View style={styles.container}>
-      <Image
+      {/* <Image
         style={{
           width: 40,
           height: 40,
@@ -31,20 +30,21 @@ function Header({ navigation }) {
           marginRight: 10,
         }}
         source={require("../assets/icon.png")}
-      />
+      /> */}
       <Form
-        initialValues={{ item: "" }}
+        initialValues={{ searchItem: "" }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <FormField
-          name="item"
-          width={300}
+        <SearchBarField
+          name="searchItem"
+          width="100%"
+          autoCapitalize="none"
+          autoCorrect={false}
           textInputStyle={{
             flex: 1,
-            fontSize: 17,
-            margin: 7,
-            marginLeft: 12,
+            fontSize: 15,
+            marginLeft: 15,
           }}
           placeholder="Search items"
           searchButton
@@ -56,9 +56,9 @@ function Header({ navigation }) {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
 });
 

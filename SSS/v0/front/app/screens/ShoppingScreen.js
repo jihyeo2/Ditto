@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
-import Screen from "../components/Screen";
+import CategoryWithImageItem from "../components/CategoryWithImageItem";
 import routes from "../navigation/routes";
 import categoriesApi from "../api/categories";
-import ShoppingScreenItem from "../components/ShoppingScreenItem";
-import colors from "../config/colors";
+import useApi from "../hooks/useApi";
 
 const listings = [
   {
@@ -51,48 +50,36 @@ const listings = [
 ];
 
 function ShoppingScreen({ navigation }) {
-  const getListingsApi = useApi(categoriesApi.getCategories);
+  // const getListingsApi = useApi(categoriesApi.getCategories);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await getListingsApi.request();
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await getListingsApi.request();
+  //   }
+  //   fetchData();
+  // }, []);
 
   return (
-    <Screen style={styles.screen}>
-      <View style={styles.container}>
-        <FlatList
-          data={listings}
-          keyExtractor={(listing) => listing.id.toString()}
-          numColumns={2}
-          columnWrapperStyle={styles.list}
-          //width="100%"
-          renderItem={({ item }) => (
-            <ShoppingScreenItem
-              title={item.title}
-              image={item.image}
-              onPress={() =>
-                navigation.navigate(routes.CATEGORY_SHOPPING, item)
-              }
-            />
-          )}
+    <FlatList
+      data={listings}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      columnWrapperStyle={styles.list}
+      renderItem={({ item }) => (
+        <CategoryWithImageItem
+          item={item}
+          onPress={() =>
+            navigation.navigate(routes.CATEGORYSHOPPING_RESULTS, item)
+          }
         />
-      </View>
-    </Screen>
+      )}
+    />
   );
 }
 
 //want to make the list scrollable? already it is
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-  },
-  screen: {
-    backgroundColor: colors.light,
-  },
   list: {
     justifyContent: "space-evenly",
   },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
@@ -25,7 +25,6 @@ function LoginScreen(props) {
     const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    console.log("token", result.data);
     auth.logIn(result.data);
   };
 
@@ -74,7 +73,8 @@ function LoginScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    //padding: 10,
+    marginHorizontal: 12,
   },
   logo: {
     width: 80,

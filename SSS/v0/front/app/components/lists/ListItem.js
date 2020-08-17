@@ -50,9 +50,10 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: colors.white,
     alignItems: "center",
+    justifyContent: "center",
   },
   detailsContainer: {
-    marginLeft: 15,
+    marginLeft: 10,
     justifyContent: "center",
     flex: 1,
   },

@@ -12,6 +12,7 @@ import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function StorePickerItem({ item, onPress }) {
+  console.log("this is the item receivded", item);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.store} onPress={onPress}>
