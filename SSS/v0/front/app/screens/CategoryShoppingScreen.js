@@ -15,6 +15,7 @@ function CategoryShoppingScreen({ route, navigation }) {
   useEffect(() => {
     async function fetchData() {
       const response = await getListingsApi.request(_id);
+      console.log("list of stores in category", getListingsApi.data.stores);
     }
     fetchData();
   }, []);

@@ -15,44 +15,79 @@ import authStorage from "../auth/storage";
 import userInfoApi from "../api/userInfo";
 import UploadScreen from "./UploadScreen";
 import routes from "../navigation/routes";
+import auth from "../api/auth";
 
-function StoresInfoEditScreen({ navigation, route }) {
-  validationSchema = Yup.object().shape({
+function StoresInfoAddScreen({ navigation, route }) {
+  console.log("stores edit");
+
+  const validationSchema = Yup.object().shape({
     keyword: Yup.string().required().max(30).label("Keyword"),
   });
 
   const basicInfo = route.params;
+  let initial = {
+    keyword: "",
+  };
+  if (basicInfo.keyword) {
+    initial = {
+      keyword: basicInfo.keyword,
+    };
+  }
+
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const addListingsApi = useApi(storesApi.addStores);
+  const editListingsApi = useApi(storesApi.editStores);
 
   let user = null;
+  let authToken = null;
   useEffect(() => {
     async function fetchData() {
-      const { data } = await userInfoApi.show(authStorage.getToken());
+      authToken = authStorage.getToken();
+      const { data } = await userInfoApi.show(authToken);
       user = data;
     }
     fetchData();
   }, []);
 
   const handleSubmit = async (listing, { resetForm }) => {
+    console.log("pressed the edit done button");
     setProgress(0);
     setUploadVisible(true);
-    const result = await addListingsApi.request(
-      {
-        ...listing,
-        basicInfo,
-        user,
-      },
-      (progress) => setProgress(progress)
-    );
-    if (!result.ok) {
-      setUploadVisible(false);
-      return alert("Could not save the listing.");
+    console.log({ ...listing, ...basicInfo });
+    console.log("authtoken", authToken);
+    if (basicInfo.keyword) {
+      const result = await editListingsApi.request(
+        authToken,
+        {
+          ...listing,
+          ...basicInfo,
+        },
+        (progress) => setProgress(progress)
+      );
+      if (!result.ok) {
+        setUploadVisible(false);
+        return alert("Could not save the listing.");
+      }
+      resetForm();
+      navigation.navigate(routes.STORE_MAIN);
+    } else {
+      const result = await addListingsApi.request(
+        authToken,
+        {
+          ...listing,
+          ...basicInfo,
+        },
+        (progress) => setProgress(progress)
+      );
+      if (!result.ok) {
+        setUploadVisible(false);
+        return alert("Could not save the listing.");
+      }
+      resetForm();
+      navigation.navigate(routes.STORESINFO_ADD);
     }
-    resetForm();
-    navigation.navigate(routes.STORESINFO_EDIT);
   };
 
   return (
@@ -64,9 +99,7 @@ function StoresInfoEditScreen({ navigation, route }) {
       />
       <AppText>Menu/Service</AppText>
       <Form
-        initialValues={{
-          keyword: "",
-        }}
+        initialValues={initial}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
@@ -91,4 +124,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoresInfoEditScreen;
+export default StoresInfoAddScreen;

@@ -4,6 +4,17 @@ Joi.objectId = require("joi-objectid")(Joi);
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
+const storeSchema = {
+  type: new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
+    },
+  }),
+};
+
 const userSchema = new mongoose.Schema({
   profileImage: {
     type: String,
@@ -26,16 +37,7 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
-  store: {
-    type: new mongoose.Schema({
-      name: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 255,
-      },
-    }),
-  },
+  stores: [storeSchema],
 });
 
 userSchema.methods.generateAuthToken = function () {

@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import MessagesScreen from "../screens/MessagesScreen";
 import AccountScreen from "../screens/AccountScreen";
-import AuthNavigator from "../navigation/AuthNavigator";
 import AuthContext from "../auth/context";
-import StoresInfoEditScreen from "../screens/StoresInfoEditScreen";
-import StoresMenuEditScreen from "../screens/StoresMenuEditScreen";
+import StoresInfoAddScreen from "../screens/StoresInfoAddScreen";
+import StoresMenuAddScreen from "../screens/StoresMenuAddScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+import StoreMainScreen from "../screens/StoreMainScreen";
 
 function AccountNavigator(props) {
   const { user } = useContext(AuthContext);
@@ -22,8 +21,9 @@ function AccountNavigator(props) {
       ) : (
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
       )}
-      <Stack.Screen name="StoresInfoEdit" component={StoresInfoEditScreen} />
-      <Stack.Screen name="StoresMenuEdit" component={StoresMenuEditScreen} />
+      <Stack.Screen name="StoresInfoAdd" component={StoresInfoAddScreen} />
+      <Stack.Screen name="StoresMenuAdd" component={StoresMenuAddScreen} />
+      <Stack.Screen name="StoreMain" component={StoreMainScreen} />
     </Stack.Navigator>
   );
   return <AccountNavigator />;

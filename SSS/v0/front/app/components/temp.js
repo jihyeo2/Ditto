@@ -6,11 +6,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import navigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
-import AppNavigator from "./app/navigation/AppNavigator";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
-import AuthNavigator from "./app/navigation/AuthNavigator";
-import GrandNavigator from "./app/navigation/GrandNavigator";
+import HeadNavigator from "./app/navigation/HeadNavigator";
 
 function App() {
   const [user, setUser] = useState();
@@ -30,7 +28,7 @@ function App() {
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        <GrandNavigator />
+        <HeadNavigator />
       </NavigationContainer>
     </AuthContext.Provider>
   );

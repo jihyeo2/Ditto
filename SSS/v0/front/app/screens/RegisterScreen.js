@@ -17,13 +17,12 @@ import useApi from "../hooks/useApi";
 import AnImageInput from "../components/AnImageInput";
 
 function RegisterScreen(props) {
-  validationSchema = Yup.object().shape({
+  const validationSchema = Yup.object().shape({
     profileImage: Yup.string().label("profileImage"),
-    name: Yup.string().required().label("Name"),
-    email: Yup.string().required().email().label("Email"),
-    password: Yup.string().required().min(5).label("Password"),
+    name: Yup.string().required().min(3).max(50).label("Name"),
+    email: Yup.string().required().email().min(5).max(255).label("Email"),
+    password: Yup.string().required().min(5).max(1024).label("Password"),
   });
-
   const registerApi = useApi(usersApi.register);
   const loginApi = useApi(authApi.login);
   const auth = useAuth();

@@ -15,6 +15,7 @@ import MenuItem from "../components/lists/MenuItem";
 import StoreInfoMain from "../components/StoreInfoMain";
 import StoreInfoSub from "../components/StoreInfoSub";
 import Icon from "../components/Icon";
+import routes from "../navigation/routes";
 
 //메뉴를 store[]에 포함시키면 스크롤이 안됨.ㅠㅠㅠ
 const menu = [
@@ -38,12 +39,17 @@ const menu = [
   },
 ];
 
-function StoreMainScreen({ navigation, route, editButton }) {
+function StoreMainScreen({ navigation, route }) {
   const item = route.params;
+  console.log("well then", item);
+  const { editButton } = route.params;
   return (
     <Screen style={styles.screen}>
       {editButton ? (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate(routes.STORESINFO_ADD, item)}
+        >
           <Icon
             name="lead-pencil"
             size={60}
