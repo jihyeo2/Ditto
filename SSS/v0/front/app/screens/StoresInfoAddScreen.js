@@ -18,12 +18,20 @@ import AppText from "../components/AppText";
 
 function StoresInfoAddScreen({ navigation, route }) {
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required().min(1).label("Name"),
+    name: Yup.string().required().min(2).max(255).label("Name"),
     category: Yup.string().required().nullable().label("Category"),
-    location: Yup.string().required().min(1).label("Location"),
+    location: Yup.string().required().min(2).max(1024).label("Location"),
     contact: Yup.string().required().min(9).max(12).label("Contact"),
-    openingHours: Yup.string().required().label("Opening Hours"),
-    description: Yup.string().required().label("Brief description"),
+    openingHours: Yup.string()
+      .required()
+      .min(2)
+      .max(1024)
+      .label("Opening Hours"),
+    description: Yup.string()
+      .required()
+      .min(2)
+      .max(1024)
+      .label("Brief description"),
     backgroundImage: Yup.string().required().label("backgroundImage"),
     mainImage: Yup.string().required().label("mainImage"),
   });

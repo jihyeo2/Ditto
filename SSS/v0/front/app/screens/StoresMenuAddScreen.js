@@ -15,6 +15,7 @@ import authStorage from "../auth/storage";
 import userInfoApi from "../api/userInfo";
 import UploadScreen from "./UploadScreen";
 import routes from "../navigation/routes";
+import auth from "../api/auth";
 
 function StoresInfoAddScreen({ navigation, route }) {
   console.log("stores edit");
@@ -40,9 +41,11 @@ function StoresInfoAddScreen({ navigation, route }) {
   const editListingsApi = useApi(storesApi.editStores);
 
   let user = null;
+  let authToken = null;
   useEffect(() => {
     async function fetchData() {
-      const { data } = await userInfoApi.show(authStorage.getToken());
+      authToken = authStorage.getToken();
+      const { data } = await userInfoApi.show(authToken);
       user = data;
     }
     fetchData();
@@ -52,13 +55,14 @@ function StoresInfoAddScreen({ navigation, route }) {
     console.log("pressed the edit done button");
     setProgress(0);
     setUploadVisible(true);
-    console.log({ ...listing, ...basicInfo, user });
+    console.log({ ...listing, ...basicInfo });
+    console.log("authtoken", authToken);
     if (basicInfo.keyword) {
       const result = await editListingsApi.request(
+        authToken,
         {
           ...listing,
           ...basicInfo,
-          user, //see if this works or "user: userId" works
         },
         (progress) => setProgress(progress)
       );
@@ -70,10 +74,10 @@ function StoresInfoAddScreen({ navigation, route }) {
       navigation.navigate(routes.STORE_MAIN);
     } else {
       const result = await addListingsApi.request(
+        authToken,
         {
           ...listing,
           ...basicInfo,
-          user,
         },
         (progress) => setProgress(progress)
       );

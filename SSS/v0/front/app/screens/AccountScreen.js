@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { FlatList, View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "../components/Screen";
@@ -11,7 +11,6 @@ import useAuth from "../auth/useAuth";
 import useApi from "../hooks/useApi";
 import userApi from "../api/userInfo";
 import authStorage from "../auth/storage";
-import storesApi from "../api/stores";
 import StorePickerItem from "../components/StorePickerItem";
 import AppText from "../components/AppText";
 
@@ -21,17 +20,16 @@ function AccountScreen({ navigation }) {
 
   const token = authStorage.getToken();
   const getUserApi = useApi(userApi.show);
-  const getStoresApi = useApi(storesApi.getStoresById);
   const [hasStore, setHasStore] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       const { data } = await getUserApi.request(token);
       console.log("dataaaaaa", data);
-      if (data.store) {
-        const response = await getStoresApi.request(data.store);
+      console.log(data.stores != undefined); //figure out better way for this
+      if (data.stores != undefined) {
         setHasStore(true);
-        console.log("sfgidsjdsldsijd", getStoresApi.data);
+        console.log("hasStore", hasStore);
       }
     }
     fetchData();
@@ -63,62 +61,56 @@ function AccountScreen({ navigation }) {
           backgroundColor: colors.white,
         }}
       >
-        <ScrollView>
-          {hasStore ? (
-            <>
-              <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
-              <TouchableOpacity
-                style={styles.addButton}
-                onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
-              >
-                <Icon
-                  name="plus"
-                  size={60}
-                  backgroundColor={colors.secondary}
-                />
-              </TouchableOpacity>
-              <ScrollView>
-                <FlatList
-                  data={getStoresApi.data}
-                  keyExtractor={(item) => item._id.toString()}
-                  numColumns={1}
-                  width="100%"
-                  renderItem={({ item }) => (
-                    <StorePickerItem
-                      item={item}
-                      onPress={() =>
-                        navigation.navigate(routes.STORE_MAIN, {
-                          ...getStoresApi.data,
-                          editButton: true,
-                        })
-                      }
-                    />
-                  )}
-                />
-              </ScrollView>
-            </>
-          ) : (
-            <View
-              style={{
-                minHeight: 250,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+        {hasStore ? (
+          <FlatList
+            ListHeaderComponent={
+              <>
+                <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
+                <TouchableOpacity
+                  style={styles.addButton}
+                  onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
+                >
+                  <Icon
+                    name="plus"
+                    size={60}
+                    backgroundColor={colors.secondary}
+                  />
+                </TouchableOpacity>
+              </>
+            }
+            data={getUserApi.data.stores}
+            keyExtractor={(item) => item._id.toString()}
+            numColumns={1}
+            width="100%"
+            renderItem={({ item }) => (
+              <StorePickerItem
+                item={item}
+                onPress={() =>
+                  navigation.navigate(routes.STORE_MAIN, {
+                    ...item,
+                    editButton: true,
+                  })
+                }
+              />
+            )}
+          />
+        ) : (
+          <View
+            style={{
+              minHeight: 250,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <AppText>You have not registered a store.</AppText>
+            <TouchableOpacity
+              style={styles.addButton}
+              onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
             >
-              <AppText>You have not registered a store.</AppText>
-              <TouchableOpacity
-                style={styles.addButton}
-                onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
-              >
-                <Icon
-                  name="plus"
-                  size={60}
-                  backgroundColor={colors.secondary}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-        </ScrollView>
+              <Icon name="plus" size={60} backgroundColor={colors.secondary} />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
       <ListItem
         title="Log out"
