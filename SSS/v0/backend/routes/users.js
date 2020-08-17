@@ -107,7 +107,7 @@ router.delete("/me", auth, async (req, res) => {
     try {
       new Fawn.Task()
         .remove("users", { _id: user._id })
-        .remove("stores", { _id: store._id })
+        .remove("stores", { _id: store._id }) //should remove multiple or none
         .update(
           "categories",
           { _id: category._id },

@@ -75,11 +75,6 @@ const storeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  likes: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
 });
 
 const Store = mongoose.model("Store", storeSchema);
