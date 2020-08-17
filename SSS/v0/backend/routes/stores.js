@@ -7,6 +7,7 @@ const Fawn = require("fawn");
 const multer = require("multer");
 const config = require("config");
 const express = require("express");
+const { urlencoded } = require("body-parser");
 const router = express.Router();
 
 Fawn.init(mongoose);
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
   res.send(stores);
 });
 
-router.get("/:id", auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   const store = await Store.findById(req.params.id);
 
   if (!store)
@@ -39,28 +40,23 @@ router.get("/search/:keyword", async (req, res) => {
 
 router.post(
   "/",
+  auth,
   upload.array("images", config.get("maxImageCount")),
   async (req, res) => {
-    console.log("data received via post", req);
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     let store = await Store.findOne({ name: req.body.name }); //TODO: later change to userId
     if (store) return res.status(400).send("Store already registered.");
 
-    const user = await User.findById(req.body.userId);
-    if (!user) return res.status(400).send("Invalid user.");
-
     const category = await Category.findById(req.body.categoryId);
     if (!category) return res.status(400).send("Invalid category.");
 
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(400).send("Invalid user.");
+
     store = new Store({
       name: req.body.name,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
       category: {
         _id: category._id,
         label: category.label,
@@ -74,9 +70,12 @@ router.post(
       mainImage: req.body.mainImage,
     });
 
+    console.log("useId", req.user._id);
+
     try {
       new Fawn.Task()
         .save("stores", store)
+        .update("users", { _id: user._id }, { $addToSet: { stores: store } })
         .update(
           "categories",
           { _id: category._id },
@@ -84,7 +83,6 @@ router.post(
             $addToSet: { stores: store },
           }
         )
-        .update("users", { _id: user._id }, { $set: { store: store } })
         .run();
       res.send(store);
     } catch (ex) {
@@ -102,6 +100,7 @@ all values that have not changed should also be passed. If not passed, an error 
 
 router.put(
   "/:id",
+  auth,
   upload.array("images", config.get("maxImageCount")),
   async (req, res) => {
     console.log("data received via put", req.body);
@@ -115,16 +114,12 @@ router.put(
     const category = await Category.findById(req.body.categoryId);
     if (error) return res.status(400).send("Invalid category");
 
-    const user = await User.findById(req.body.userId);
+    const user = await User.findById(req.user._id);
     if (error) return res.status(400).send("Invalid user");
 
     const update = {
+      _id: store._id,
       name: req.body.name,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
       category: {
         _id: category._id,
         label: category.label,
@@ -148,8 +143,15 @@ router.put(
           }
         )
         .update(
-          "categories",
-          { _id: category._id },
+          "users",
+          { _id: user._id },
+          {
+            $push: { stores: update },
+          }
+        )
+        .update(
+          "users",
+          { _id: user._id },
           {
             $pull: { stores: store },
           }
@@ -158,21 +160,14 @@ router.put(
           "categories",
           { _id: category._id },
           {
-            $push: { stores: new Store(update) },
+            $push: { stores: update },
           }
         )
         .update(
-          "users",
-          { _id: user._id },
+          "categories",
+          { _id: category._id },
           {
-            $pull: { store: store },
-          }
-        )
-        .update(
-          "users",
-          { _id: user._id },
-          {
-            $push: { store: new Store(update) },
+            $pull: { stores: store },
           }
         )
         // .update(
@@ -238,7 +233,7 @@ router.delete("/:id", auth, async (req, res) => {
           $pull: { stores: store },
         }
       )
-      .update("users", { _id: store.user._id }, { $unset: { store: "" } })
+      .update("users", { _id: store.user._id }, { $pull: { stores: "" } })
       .run();
 
     res.send(store);

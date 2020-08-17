@@ -9,23 +9,6 @@ const storeSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 255,
   },
-  user: {
-    type: new mongoose.Schema({
-      name: {
-        type: String,
-        required: true,
-        minlength: 3,
-        maxlength: 50,
-      },
-      email: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 255,
-      },
-    }),
-    required: true,
-  },
   category: {
     type: new mongoose.Schema({
       label: {
@@ -40,7 +23,7 @@ const storeSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minlength: 3,
+    minlength: 2,
     maxlength: 1024,
   },
   location: {
@@ -82,7 +65,6 @@ const Store = mongoose.model("Store", storeSchema);
 function validateStore(store) {
   const schema = {
     name: Joi.string().required().min(2).max(255),
-    userId: Joi.objectId().required(),
     categoryId: Joi.objectId().required(),
     description: Joi.string().min(3).max(1024).required(),
     location: Joi.string().required().min(2).max(1024),
