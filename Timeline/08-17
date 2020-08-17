@@ -3,7 +3,8 @@ Ask when to show the header
       
 Issues in UI:   
     1. close button goes above status bar
-    2. keyboard covers up the blanks in StoreInfoAddScreen.js
+    2. keyboard covers up the blanks in StoreInfoAddScreen.js  
+    
     
           
 Issues in Backend:   
