@@ -1,2 +1,11 @@
 Ask when to show the header  
-    where to place edit button
+    where to place edit button  
+      
+Issues in UI:   
+    1. close button goes above status bar
+    2. keyboard covers up the blanks in StoreInfoAddScreen.js
+    
+          
+Issues in Backend:   
+    1. location -> address
+    
