@@ -44,7 +44,7 @@ function AccountScreen({ navigation }) {
             title={getUserApi.data.name}
             subTitle={getUserApi.data.email}
             image={{ uri: getUserApi.data.profileImage }}
-            showChevrons={false}
+            showChevrons={true}
             onPress={() =>
               navigation.navigate(routes.ACCOUNTEDIT, getUserApi.data)
             }
@@ -72,7 +72,7 @@ function AccountScreen({ navigation }) {
         }}
       >
         {hasStore ? (
-          <ScrollView style={{ height: 450 }}>
+          <ScrollView style={{ height: 300 }}>
             <FlatList
               ListHeaderComponent={
                 <>
