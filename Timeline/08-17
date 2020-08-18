@@ -1,5 +1,5 @@
 Ask when to show the header  
-    what to use: camera, cameraRoll, or library  
+    what to use: camera, cameraRoll, or library --> when clicked, ask either  
     where to end up with after submitting each button
     if we want to double-check the current password when the user changes it --> double-check newPassword
       
