@@ -36,11 +36,6 @@ router.post("/", async (req, res) => {
     .send(_.pick(user, ["_id", "profileImage", "name", "email"]));
 });
 
-/*
-put request should be done in the following manner: 
-all values that have not changed should also be passed. If not passed, an error rises
-*/
-
 router.put("/me", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -48,9 +43,6 @@ router.put("/me", auth, async (req, res) => {
   const user = await User.findById(req.user._id);
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
-
-  if (req.body.store == undefined || !req.body.store)
-    req.body.store = user.store;
 
   const salt = await bcrypt.genSalt(10);
   const new_password = await bcrypt.hash(req.body.password, salt);
@@ -70,13 +62,6 @@ router.put("/me", auth, async (req, res) => {
           },
         },
         { new: true }
-      )
-      .update(
-        "stores",
-        { _id: req.body.store._id },
-        {
-          $set: { user: user },
-        }
       )
       .run();
 

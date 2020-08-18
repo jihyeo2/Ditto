@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 255,
   },
+  currentPassword: {
+    type: String,
+    minlength: 5,
+    maxlength: 1024,
+  },
   password: {
     type: String,
     required: true,
@@ -55,6 +60,7 @@ function validateUser(user) {
     profileImage: Joi.string(),
     name: Joi.string().required().min(3).max(50),
     email: Joi.string().required().min(5).max(255).email(),
+    currentPassword: Joi.string().min(5).max(1024),
     password: Joi.string().required().min(5).max(1024),
     // store: Joi.objectId(),
   };
