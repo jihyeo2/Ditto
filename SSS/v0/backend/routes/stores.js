@@ -41,15 +41,16 @@ router.get("/search/:keyword", async (req, res) => {
 router.post(
   "/",
   auth,
-  upload.array("images", config.get("maxImageCount")),
+  // upload.array("images", config.get("maxImageCount")),
   async (req, res) => {
-    const { error } = validate(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    // const { error } = validate(req.body);
+    // if (error) return res.status(400).send(error.details[0].message);
+    //find another way to validate the request body
 
     let store = await Store.findOne({ name: req.body.name }); //TODO: later change to userId
     if (store) return res.status(400).send("Store already registered.");
 
-    const category = await Category.findById(req.body.categoryId);
+    const category = await Category.findById(req.body.category._id);
     if (!category) return res.status(400).send("Invalid category.");
 
     const user = await User.findById(req.user._id);
@@ -65,9 +66,9 @@ router.post(
       location: req.body.location,
       contact: req.body.contact,
       openingHours: req.body.openingHours,
-      keyword: req.body.keyword,
       backgroundImage: req.body.backgroundImage,
       mainImage: req.body.mainImage,
+      menus: req.body.menus,
     });
 
     console.log("useId", req.user._id);
@@ -111,7 +112,7 @@ router.put(
     if (!store)
       return res.status(404).send("The store with the given ID was not found.");
 
-    const category = await Category.findById(req.body.categoryId);
+    const category = await Category.findById(req.body.category_id);
     if (error) return res.status(400).send("Invalid category");
 
     const user = await User.findById(req.user._id);
@@ -128,9 +129,9 @@ router.put(
       location: req.body.location,
       contact: req.body.contact,
       openingHours: req.body.openingHours,
-      keyword: req.body.keyword,
       backgroundImage: req.body.backgroundImage,
       mainImage: req.body.mainImage,
+      menus: req.body.menus,
     };
 
     try {
