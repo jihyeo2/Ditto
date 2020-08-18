@@ -1,5 +1,6 @@
 Ask when to show the header  
     what to use: camera, cameraRoll, or library  
+    where to end up with after submitting each button
       
 Issues in UI:   
     1. close button goes above status bar
