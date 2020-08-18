@@ -1,5 +1,5 @@
 Ask when to show the header  
-    where to place edit button  
+    what to use: camera, cameraRoll, or library  
       
 Issues in UI:   
     1. close button goes above status bar
