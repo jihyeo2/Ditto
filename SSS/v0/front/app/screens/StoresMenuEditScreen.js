@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -15,6 +15,34 @@ import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 import ListItemSeparator from "../components/lists/ListItemSeparator";
 import colors from "../config/colors";
+import MenuEntryItem from "../components/MenuEntryItem";
+
+const menu = [
+  {
+    id: "1",
+    name: "A Peace of Cake",
+    price: "$5.5",
+    image: require("../assets/ricecake.jpeg"),
+  },
+  {
+    id: "2",
+    name: "A Peace of Cake",
+    price: "$5.5",
+    image: require("../assets/ricecake.jpeg"),
+  },
+  {
+    id: "3",
+    name: "A Peace of Cake",
+    price: "$5.5",
+    image: require("../assets/ricecake.jpeg"),
+  },
+  {
+    id: "4",
+    name: "A Peace of Cake",
+    price: "$5.5",
+    image: require("../assets/ricecake.jpeg"),
+  },
+];
 
 function StoresMenuEditScreen({ navigation }) {
   validationSchema = Yup.object().shape({
@@ -78,6 +106,17 @@ function StoresMenuEditScreen({ navigation }) {
           <SubmitButton title="Add" />
           <ListItemSeparator />
         </Form>
+        <FlatList
+          data={menu}
+          keyExtractor={(menu) => menu.id.toString()}
+          renderItem={({ item }) => (
+            <MenuEntryItem
+              name={item.name}
+              price={item.price}
+              image={item.image}
+            />
+          )}
+        />
       </ScrollView>
     </Screen>
   );

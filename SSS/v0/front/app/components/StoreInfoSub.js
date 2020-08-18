@@ -39,7 +39,7 @@ function StoreInfoSub({ address, phone, hour, delivery }) {
       <ListItemSeparator />
       <ListItem
         IconComponent={
-          <MaterialIcons name="motorcycle" size={24} color="purple" />
+          <MaterialIcons name="motorcycle" size={24} color="brown" />
         }
         title={delivery}
         showChevrons={false}

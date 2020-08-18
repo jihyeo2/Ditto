@@ -9,7 +9,6 @@ import {
   Platform,
 } from "react-native";
 import AppButton from "../components/AppButton";
-import Icon from "../components/Icon";
 import routes from "../navigation/routes";
 import { Fontisto } from "@expo/vector-icons";
 
