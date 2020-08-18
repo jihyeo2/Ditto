@@ -77,7 +77,9 @@ function AccountScreen({ navigation }) {
             </ScrollView>
           </>
         ) : (
-          <AppText>You have not registered a store.</AppText>
+          <AppText color={colors.medium}>
+            You have not registered a store.
+          </AppText>
         )}
       </ScrollView>
       <ListItem
