@@ -21,19 +21,20 @@ function UserProfile({ frontImage, title, subtitle }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    height: 360,
-    marginBottom: 15,
+    height: 270,
+    marginBottom: 0,
+    marginRight: 10,
   },
   imageContainer: {
     marginBottom: 10,
   },
   back: {
     width: "100%",
-    height: 150,
+    height: 140,
     marginBottom: 60,
   },
   front: {
-    top: 100,
+    top: 80,
     alignSelf: "center",
     width: 120,
     height: 120,
