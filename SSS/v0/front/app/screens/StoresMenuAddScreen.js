@@ -12,7 +12,7 @@ import storesApi from "../api/stores";
 import useApi from "../hooks/useApi";
 import AppText from "../components/AppText";
 import authStorage from "../auth/storage";
-import userInfoApi from "../api/userInfo";
+import userInfoApi from "../api/users";
 import UploadScreen from "./UploadScreen";
 import routes from "../navigation/routes";
 import auth from "../api/auth";

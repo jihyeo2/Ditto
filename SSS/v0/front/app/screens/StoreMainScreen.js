@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
   },
   screen: {
     backgroundColor: colors.light,
-    paddingTop: 0,
   },
   menuContainter: {
     backgroundColor: colors.white,

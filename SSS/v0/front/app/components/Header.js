@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import routes from "../navigation/routes";
 import * as Yup from "yup";
 import { AppForm as Form } from "../components/forms";
 import SearchBarField from "./SearchBarField";
 import SearchItemContext from "./SearchItemContext";
-import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
   searchItem: Yup.string().label("searchItem"),
