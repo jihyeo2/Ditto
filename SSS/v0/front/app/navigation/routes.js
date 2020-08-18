@@ -7,6 +7,7 @@ export default Object.freeze({
   STORE_MAIN: "StoreMain",
   ACCOUNT: "Account",
   MYACCOUNT: "MyAccount",
+  ACCOUNTEDIT: "AccountEdit",
   STORESINFO_ADD: "StoresInfoAdd",
   STORESMENU_ADD: "StoresMenuAdd",
   AUTH: "Auth",

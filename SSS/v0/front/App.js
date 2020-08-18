@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { AppLoading } from "expo";
-import { createStackNavigator } from "@react-navigation/stack";
 
 import navigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
