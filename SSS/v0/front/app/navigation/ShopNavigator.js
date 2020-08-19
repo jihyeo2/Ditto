@@ -20,7 +20,7 @@ function ShopNavigator() {
         }}
         screenOptions={({ navigation }) => ({
           headerTitle: (props) => <Header navigation={navigation} />,
-          headerStatusBarHeight: 30,
+          headerStatusBarHeight: 40,
           headerLeft: null,
         })}
       >

@@ -35,13 +35,14 @@ function SearchBarAppTextInput({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
+    borderRadius: 20,
     flexDirection: "row",
     marginVertical: 5,
     paddingVertical: 5,
     alignItems: "center",
     justifyContent: "center",
     width: 50,
+    bottom: 10,
   },
   icon: {
     marginRight: 10,

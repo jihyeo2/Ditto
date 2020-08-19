@@ -20,16 +20,6 @@ function Header({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <Image
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          marginLeft: 17,
-          marginRight: 10, 
-        }}
-        source={require("../assets/icon.png")}
-      /> */}
       <Form
         initialValues={{ searchItem: "" }}
         onSubmit={handleSubmit}
@@ -42,7 +32,8 @@ function Header({ navigation }) {
           autoCorrect={false}
           placeholder="Search items"
           searchButton
-          height={40}
+          height={45}
+          top={10}
         />
       </Form>
     </View>
