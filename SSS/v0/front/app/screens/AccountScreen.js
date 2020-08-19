@@ -44,7 +44,7 @@ function AccountScreen({ navigation }) {
             title={getUserApi.data.name}
             subTitle={getUserApi.data.email}
             image={{ uri: getUserApi.data.profileImage }}
-            showChevrons={true}
+            showChevrons
             onPress={() =>
               navigation.navigate(routes.ACCOUNTEDIT, getUserApi.data)
             }
@@ -56,7 +56,7 @@ function AccountScreen({ navigation }) {
             IconComponent={
               <MaterialCommunityIcons name="account-circle-outline" size={50} />
             }
-            showChevrons={false}
+            showChevrons
             onPress={() =>
               navigation.navigate(routes.ACCOUNTEDIT, getUserApi.data)
             }
@@ -72,7 +72,7 @@ function AccountScreen({ navigation }) {
         }}
       >
         {hasStore ? (
-          <ScrollView style={{ height: 300 }}>
+          <ScrollView style={{ height: 350 }}>
             <FlatList
               ListHeaderComponent={
                 <>
@@ -114,7 +114,9 @@ function AccountScreen({ navigation }) {
               justifyContent: "center",
             }}
           >
-            <AppText>You have not registered a store.</AppText>
+            <AppText style={{ color: colors.medium }}>
+              You have not registered a store.
+            </AppText>
             <TouchableOpacity
               style={styles.addButton}
               onPress={() => navigation.navigate(routes.STORESINFO_ADD)}

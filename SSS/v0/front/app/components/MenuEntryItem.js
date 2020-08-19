@@ -15,10 +15,7 @@ function MenuEntryItem({ name, price, image }) {
           <AppText style={{ color: colors.third }}>{price}</AppText>
         </View>
         <View style={styles.optionsContainer}>
-          <TouchableOpacity
-            style={styles.options}
-            //onPress={() => navigation.navigate(routes.APP)}
-          >
+          <TouchableOpacity style={styles.options}>
             <Icon name="trash-can" size={35} backgroundColor={"brown"} />
           </TouchableOpacity>
         </View>

@@ -2,6 +2,24 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 
+const menuSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 255,
+  },
+  price: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 8,
+  },
+  image: {
+    type: String,
+  },
+});
+
 const storeSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -26,6 +44,12 @@ const storeSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 1024,
   },
+  delivery: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 1024,
+  },
   location: {
     type: String,
     required: true,
@@ -44,12 +68,7 @@ const storeSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 1024,
   },
-  keyword: {
-    type: String,
-    minlength: 1,
-    maxlength: 30,
-    required: true,
-  },
+  menus: [menuSchema],
   backgroundImage: {
     type: String,
     required: true,
@@ -67,12 +86,13 @@ function validateStore(store) {
     name: Joi.string().required().min(2).max(255),
     categoryId: Joi.objectId().required(),
     description: Joi.string().min(3).max(1024).required(),
+    delivery: Joi.string().min(3).max(1024).required(),
     location: Joi.string().required().min(2).max(1024),
     contact: Joi.string().required().min(9).max(12),
     openingHours: Joi.string().required().min(2).max(1024),
     backgroundImage: Joi.string().required(),
     mainImage: Joi.string().required(),
-    keyword: Joi.string().required().min(1).max(30),
+    menus: Joi.array().items(Joi.object()), //objectId or object?
   };
 
   return Joi.validate(store, schema);

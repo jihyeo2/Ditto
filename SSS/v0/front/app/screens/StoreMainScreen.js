@@ -68,12 +68,13 @@ function StoreMainScreen({ navigation, route }) {
           address={item.location}
           phone={item.contact}
           hour={item.openingHours}
+          delivery={item.delivery}
         />
         <View style={styles.menuContainter}>
           <Text style={styles.heading}>Menu/Item</Text>
           <FlatList
-            data={menu}
-            keyExtractor={(item) => item.id.toString()}
+            data={item.menus}
+            keyExtractor={(item) => item.name}
             renderItem={({ item }) => (
               <MenuItem
                 title={item.name}

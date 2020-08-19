@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import {
-  AppForm as Form,
-  AppFormField as FormField,
-  SubmitButton,
-} from "../components/forms";
+import { AppForm as Form, SubmitButton } from "../components/forms";
 import storesApi from "../api/stores";
 import useApi from "../hooks/useApi";
 import AppText from "../components/AppText";
@@ -15,22 +11,22 @@ import authStorage from "../auth/storage";
 import userInfoApi from "../api/users";
 import UploadScreen from "./UploadScreen";
 import routes from "../navigation/routes";
-import auth from "../api/auth";
+import FormMenuPicker from "../components/forms/FormMenuPicker";
 
 function StoresInfoAddScreen({ navigation, route }) {
   console.log("stores edit");
 
   const validationSchema = Yup.object().shape({
-    keyword: Yup.string().required().max(30).label("Keyword"),
+    menus: Yup.array().min(1, "Please add at least one menu."),
   });
 
   const basicInfo = route.params;
   let initial = {
-    keyword: "",
+    menus: [],
   };
-  if (basicInfo.keyword) {
+  if (basicInfo.menus) {
     initial = {
-      keyword: basicInfo.keyword,
+      menus: basicInfo.menus,
     };
   }
 
@@ -51,21 +47,42 @@ function StoresInfoAddScreen({ navigation, route }) {
     fetchData();
   }, []);
 
-  const handleSubmit = async (listing, { resetForm }) => {
-    console.log("pressed the edit done button");
+  const handleSubmit = async (menus, { resetForm }) => {
     setProgress(0);
     setUploadVisible(true);
-    console.log({ ...listing, ...basicInfo });
-    console.log("authtoken", authToken);
-    if (basicInfo.keyword) {
+    if (basicInfo.menus) {
+      const unwrap = (({
+        _id,
+        name,
+        category,
+        location,
+        contact,
+        openingHours,
+        description,
+        delivery,
+        backgroundImage,
+        mainImage,
+      }) => ({
+        _id,
+        name,
+        category,
+        location,
+        contact,
+        openingHours,
+        description,
+        delivery,
+        backgroundImage,
+        mainImage,
+      }))(basicInfo);
       const result = await editListingsApi.request(
         authToken,
         {
-          ...listing,
-          ...basicInfo,
+          ...menus,
+          ...unwrap,
         },
         (progress) => setProgress(progress)
       );
+      console.log({ ...menus, ...unwrap });
       if (!result.ok) {
         setUploadVisible(false);
         return alert("Could not save the listing.");
@@ -76,7 +93,7 @@ function StoresInfoAddScreen({ navigation, route }) {
       const result = await addListingsApi.request(
         authToken,
         {
-          ...listing,
+          ...menus,
           ...basicInfo,
         },
         (progress) => setProgress(progress)
@@ -97,19 +114,17 @@ function StoresInfoAddScreen({ navigation, route }) {
         progress={progress}
         visible={uploadVisible}
       />
-      <AppText>Menu/Service</AppText>
-      <Form
-        initialValues={initial}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <FormField
-          maxlength={255}
-          name="keyword"
-          placeholder="Keyword"
-        ></FormField>
-        <SubmitButton title="Submit" />
-      </Form>
+      <ScrollView>
+        <AppText>Menu/Service</AppText>
+        <Form
+          initialValues={initial}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <FormMenuPicker name="menus" />
+          <SubmitButton title="Submit" />
+        </Form>
+      </ScrollView>
     </Screen>
   );
 }
