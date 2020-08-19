@@ -44,6 +44,12 @@ const storeSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 1024,
   },
+  delivery: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 1024,
+  },
   location: {
     type: String,
     required: true,
@@ -80,6 +86,7 @@ function validateStore(store) {
     name: Joi.string().required().min(2).max(255),
     categoryId: Joi.objectId().required(),
     description: Joi.string().min(3).max(1024).required(),
+    delivery: Joi.string().min(3).max(1024).required(),
     location: Joi.string().required().min(2).max(1024),
     contact: Joi.string().required().min(9).max(12),
     openingHours: Joi.string().required().min(2).max(1024),
