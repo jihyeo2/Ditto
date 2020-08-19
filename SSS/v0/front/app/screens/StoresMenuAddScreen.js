@@ -74,6 +74,10 @@ function StoresInfoAddScreen({ navigation, route }) {
         backgroundImage,
         mainImage,
       }))(basicInfo);
+      console.log({
+        ...menus,
+        ...unwrap,
+      });
       const result = await editListingsApi.request(
         authToken,
         {
@@ -82,13 +86,12 @@ function StoresInfoAddScreen({ navigation, route }) {
         },
         (progress) => setProgress(progress)
       );
-      console.log({ ...menus, ...unwrap });
       if (!result.ok) {
         setUploadVisible(false);
         return alert("Could not save the listing.");
       }
       resetForm();
-      navigation.navigate(routes.STORE_MAIN);
+      navigation.navigate(routes.MYACCOUNT);
     } else {
       const result = await addListingsApi.request(
         authToken,
@@ -103,7 +106,7 @@ function StoresInfoAddScreen({ navigation, route }) {
         return alert("Could not save the listing.");
       }
       resetForm();
-      navigation.navigate(routes.STORESINFO_ADD);
+      navigation.navigate(routes.MYACCOUNT);
     }
   };
 

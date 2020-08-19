@@ -5,17 +5,17 @@ import * as Yup from "yup";
 import { AppForm as Form } from "../components/forms";
 import SearchBarField from "./SearchBarField";
 import SearchItemContext from "./SearchItemContext";
+import SearchBarAppTextInput from "./SearchBarAppTextInput";
 
 const validationSchema = Yup.object().shape({
   searchItem: Yup.string().label("searchItem"),
 });
 
 function Header({ navigation }) {
-  const { searchItem } = useContext(SearchItemContext);
-
-  const handleSubmit = () => {
-    console.log("res", searchItem);
-    navigation.navigate(routes.SEARCH_RESULTS, searchItem);
+  const handleSubmit = (result, { resetForm }) => {
+    console.log("res", result);
+    navigation.navigate(routes.SEARCH_RESULTS, result);
+    resetForm();
   };
 
   return (
@@ -26,7 +26,7 @@ function Header({ navigation }) {
           height: 40,
           borderRadius: 10,
           marginLeft: 17,
-          marginRight: 10,
+          marginRight: 10, 
         }}
         source={require("../assets/icon.png")}
       /> */}
@@ -40,11 +40,6 @@ function Header({ navigation }) {
           width="100%"
           autoCapitalize="none"
           autoCorrect={false}
-          textInputStyle={{
-            flex: 1,
-            fontSize: 15,
-            marginLeft: 15,
-          }}
           placeholder="Search items"
           searchButton
           height={40}

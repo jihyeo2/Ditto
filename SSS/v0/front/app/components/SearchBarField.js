@@ -14,9 +14,6 @@ function SearchBarField({ name, width, height, ...otherProps }) {
     values,
   } = useFormikContext();
 
-  const { setSearchItem } = useContext(SearchItemContext);
-  setSearchItem(values[name]);
-
   return (
     <>
       <SearchBarAppTextInput

@@ -8,19 +8,17 @@ import {
   AppFormField as FormField,
   SubmitButton,
 } from "../components/forms";
-import * as ImagePicker from "expo-image-picker";
 
-import AppButton from "../components/AppButton";
 import userApi from "../api/users";
 import useApi from "../hooks/useApi";
 import routes from "../navigation/routes";
 import AppText from "../components/AppText";
-import UserProfile from "../components/UserProfile";
 import AnImageInput from "../components/AnImageInput";
 import authStorage from "../auth/storage";
+import UploadScreen from "./UploadScreen";
 
 function AccountEditScreen({ navigation, route }) {
-  validationSchema = Yup.object().shape({
+  const validationSchema = Yup.object().shape({
     profileImage: Yup.string().label("profileImage"),
     name: Yup.string().required().min(3).max(50).label("Name"),
     email: Yup.string().required().email().min(5).max(255).label("Email"),
@@ -35,44 +33,31 @@ function AccountEditScreen({ navigation, route }) {
   const user = route.params;
   const token = authStorage.getToken();
   const editUserApi = useApi(userApi.edit);
-  const [error, setError] = useState();
-  const [editFailed, setEditFailed] = useState(false);
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (userInfo) => {
     console.log("userInfo", userInfo);
-    const result = await editUserApi.request(token, userInfo);
+    const result = await editUserApi.request(token, userInfo, (progress) =>
+      setProgress(progress)
+    );
 
     if (!result.ok) {
-      console.log(result);
-      if (result.data) {
-        console.log(result.data.error);
-        setError(result.data.error);
-      } else {
-        setError("An unexpected error occurred.");
-        console.log(result);
-      }
-      setEditFailed(true);
-      return;
+      setUploadVisible(false);
+      return alert("Could not save the user information.");
     }
-
+    //resetForm();
     navigation.navigate(routes.MYACCOUNT);
   };
 
   return (
     <Screen style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <ScrollView>
-        {/* <View style={styles.horiz}>
-          <UserProfile
-            frontImage={{ uri: user.profileImage }}
-            title={user.name}
-            subtitle={user.email}
-          />
-          <View style={styles.container}>
-            <Text>Change Pic</Text>
-            <AppButton title="camera" />
-            <AppButton title="photo library" onPress={handlePressLibrary}/>
-          </View>
-        </View> */}
         {/* Issue: saved profileImage not getting uploaded */}
         <Form
           initialValues={{

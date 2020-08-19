@@ -17,28 +17,6 @@ import StoreInfoSub from "../components/StoreInfoSub";
 import Icon from "../components/Icon";
 import routes from "../navigation/routes";
 
-//메뉴를 store[]에 포함시키면 스크롤이 안됨.ㅠㅠㅠ
-const menu = [
-  {
-    id: "1",
-    name: "Menu One",
-    price: "$100",
-    image: require("../assets/ricecake.jpeg"),
-  },
-  {
-    id: "2",
-    name: "Menu Two",
-    price: "$10.8",
-    image: require("../assets/restaurant.jpg"),
-  },
-  {
-    id: "3",
-    name: "Menu Three",
-    price: "$53.2",
-    image: require("../assets/coffee.jpg"),
-  },
-];
-
 function StoreMainScreen({ navigation, route }) {
   const item = route.params;
   console.log("well then", item);
