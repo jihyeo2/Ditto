@@ -11,6 +11,8 @@ Password - 제이오씨화이팅!
 Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts - frontend  
 The Complete Node.js Course - backend
 
+Project Page (Currently only UI is supported): https://expo.io/@umum3006/Ditto?release-channel=staging
+
 Hackathons:  
 [Virtual Hacks 2020 - 08/21](https://virtualhacks.ca/)
 
