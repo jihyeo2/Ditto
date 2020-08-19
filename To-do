@@ -1,25 +1,12 @@
 Frontend & Backend 
   
-1. Change search bar keyword to store name/menu  
 2. Modify StoreAdd pg1 to save its data when returned from pg2  
 3. Change profileImage optional 
 4. EditMenu --> add edit feature & button?
-5. AccountScreen: change to NewPassword & check NewPassword 
-
-Frontend only
-
-1. "search items" in the middle of the search bar
-2. Enable multiline for InfoSub
-3. change PickerItem to show store name & category
-  
-Backend only  
-  
-1. Complete search feature
 
 Issues  
   
 1. MyStore in AccountScreen appears too slow(3 secs)  
-2. storeMain does not get updated immediately --> either fix it or navigate to account screen  
 
 Must at the end
 1. remove all "console.log"s
