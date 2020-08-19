@@ -17,3 +17,7 @@ Issues
 2. MyStore in AccountScreen appears too slow(3 secs)  
 3. Category sometimes disappear after editing the store  
 4. storeMain does not get updated immediately --> either fix it or navigate to account screen  
+
+Later
+
+[Deep validation for Yup](https://stackoverflow.com/questions/59197551/yup-deep-validation-in-array-of-objects)
