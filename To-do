@@ -1,7 +1,7 @@
 Frontend & Backend 
   
 0. Add StoresInNeedScreen
-1. Add openPhoneBook feature in StoreMainscreen
+1. Add openPhoneBook & Camera feature in StoreMainscreen
 2. Allow editing in StoresMenuAddScreen
 2. Modify StoreAdd pg1 to save its data when returned from pg2  
 3. Change profileImage optional 
@@ -9,9 +9,11 @@ Frontend & Backend
 
 Frontend
 
+0. Change logo to ours("ditto")
 1. (iOS) vertically center "Search items" in search bar
 2. (iOS) let the formfield appear above the keyboard
 3. Improve phone number and price entry form (ex. dollar sign in front of price field)
+4. Make one line for store name in StorePickerItem
 
 
 Must at the end
