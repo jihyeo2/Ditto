@@ -54,7 +54,6 @@ function MenuInput({ menu, onChangeMenu }) {
         validationSchema={validationSchema}
       >
         <Menu icon={icon} />
-        {/* <SubmitButton name="submit" /> */}
       </Form>
     </Screen>
   );

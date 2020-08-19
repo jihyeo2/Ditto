@@ -8,7 +8,7 @@ import AppText from "../AppText";
 function MenuItem({ title, subTitle, image }) {
   return (
     <View style={styles.container}>
-      {image && <Image style={styles.image} source={image} />}
+      {image && <Image style={styles.image} source={{ uri: image }} />}
       <View style={styles.detailsContainer}>
         <AppText style={styles.title} numberOfLines={1}>
           {title}

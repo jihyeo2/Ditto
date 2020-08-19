@@ -17,7 +17,7 @@ function StoresInfoAddScreen({ navigation, route }) {
   console.log("stores edit");
 
   const validationSchema = Yup.object().shape({
-    menus: Yup.array().min(1, "Please select at least one image."),
+    menus: Yup.array().min(1, "Please add at least one menu."),
   });
 
   const basicInfo = route.params;
@@ -48,22 +48,41 @@ function StoresInfoAddScreen({ navigation, route }) {
   }, []);
 
   const handleSubmit = async (menus, { resetForm }) => {
-    console.log("pressed the edit done button");
-    console.log("list", {
-      ...menus,
-      ...basicInfo,
-    });
     setProgress(0);
     setUploadVisible(true);
     if (basicInfo.menus) {
+      const unwrap = (({
+        _id,
+        name,
+        category,
+        location,
+        contact,
+        openingHours,
+        description,
+        delivery,
+        backgroundImage,
+        mainImage,
+      }) => ({
+        _id,
+        name,
+        category,
+        location,
+        contact,
+        openingHours,
+        description,
+        delivery,
+        backgroundImage,
+        mainImage,
+      }))(basicInfo);
       const result = await editListingsApi.request(
         authToken,
         {
           ...menus,
-          ...basicInfo,
+          ...unwrap,
         },
         (progress) => setProgress(progress)
       );
+      console.log({ ...menus, ...unwrap });
       if (!result.ok) {
         setUploadVisible(false);
         return alert("Could not save the listing.");
@@ -98,9 +117,7 @@ function StoresInfoAddScreen({ navigation, route }) {
       <ScrollView>
         <AppText>Menu/Service</AppText>
         <Form
-          initialValues={{
-            menus: [],
-          }}
+          initialValues={initial}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >

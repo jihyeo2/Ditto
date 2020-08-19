@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AppButton from "../components/AppButton";
-import Icon from "../components/Icon";
 import routes from "../navigation/routes";
 import { Fontisto } from "@expo/vector-icons";
 
@@ -17,20 +16,13 @@ import colors from "../config/colors";
 function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      // blurRadius={5}
       style={styles.background}
       source={require("../assets/marketwithpeople2.jpg")}
     >
       <View style={styles.logoContainer}>
-        <TouchableOpacity
-          style={styles.close}
-          onPress={() => navigation.navigate(routes.APP)}
-        >
-          <Icon name="close" />
-        </TouchableOpacity>
-        <Fontisto name="shopping-store" size={60} color="moccasin" />
-        <Text style={styles.tagline}>Your Local Stores Finder</Text>
-        <Text style={styles.subtagline}>Support Small Business</Text>
+        <Fontisto name="shopping-store" size={60} color={colors.third} />
+        <Text style={styles.tagline}>Ditto</Text>
+        <Text style={styles.subtagline}>Your Local Stores Finder</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton
@@ -42,6 +34,16 @@ function WelcomeScreen({ navigation }) {
           color="secondary"
           onPress={() => navigation.navigate(routes.REGISTER)}
         />
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() => navigation.navigate(routes.APP)}
+        >
+          <Text
+            style={{ color: colors.third, textDecorationLine: "underline" }}
+          >
+            I'll register next time.
+          </Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -59,31 +61,34 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 30,
+    top: 100,
     alignItems: "center",
   },
   tagline: {
-    fontSize: 29,
-    fontWeight: "400",
+    fontSize: 40,
+    fontWeight: "500",
+    fontFamily: Platform.OS === "android" ? "sans-serif" : "Georgia",
+    fontStyle: "italic",
     letterSpacing: 0.5,
     paddingTop: 45,
     color: colors.white,
     textShadowColor: colors.black,
-    textShadowRadius: 5,
+    textShadowRadius: 8,
   },
   subtagline: {
     fontSize: 17,
     fontWeight: "300",
     color: colors.white,
-    paddingTop: 18,
+    paddingTop: 15,
     textTransform: "uppercase",
-    letterSpacing: 5,
+    letterSpacing: 3,
     textAlign: "center",
+    textShadowColor: colors.black,
+    textShadowRadius: 5,
   },
   close: {
-    alignSelf: "flex-end",
-    marginBottom: 40,
-    marginLeft: "85%",
+    alignSelf: "center",
+    margin: 15,
   },
 });
 

@@ -20,7 +20,7 @@ function StoresInfoAddScreen({ navigation, route }) {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required().min(2).max(255).label("Name"),
     category: Yup.string().required().nullable().label("Category"),
-    location: Yup.string().required().min(2).max(1024).label("Location"),
+    location: Yup.string().required().min(2).max(1024).label("Address"),
     contact: Yup.string().required().min(9).max(12).label("Contact"),
     openingHours: Yup.string()
       .required()
@@ -32,6 +32,7 @@ function StoresInfoAddScreen({ navigation, route }) {
       .min(2)
       .max(1024)
       .label("Brief description"),
+    delivery: Yup.string().required().min(2).max(1024).label("Delivery Option"),
     backgroundImage: Yup.string().required().label("backgroundImage"),
     mainImage: Yup.string().required().label("mainImage"),
   });
@@ -45,6 +46,7 @@ function StoresInfoAddScreen({ navigation, route }) {
     contact: "",
     openingHours: "",
     description: "",
+    delivery: "",
     backgroundImage: null,
     mainImage: null,
   };
@@ -56,6 +58,7 @@ function StoresInfoAddScreen({ navigation, route }) {
       contact: storeToEdit.contact,
       openingHours: storeToEdit.openingHours,
       description: storeToEdit.description,
+      delivery: storeToEdit.delivery,
       backgroundImage: storeToEdit.backgroundImage,
       mainImage: storeToEdit.mainImage,
     };
@@ -74,7 +77,7 @@ function StoresInfoAddScreen({ navigation, route }) {
     if (storeToEdit) {
       navigation.navigate(routes.STORESMENU_ADD, {
         ...listing,
-        keyword: storeToEdit.keyword,
+        menus: storeToEdit.menus,
         _id: storeToEdit._id,
       });
     } else {
@@ -85,7 +88,16 @@ function StoresInfoAddScreen({ navigation, route }) {
   return (
     <Screen style={styles.container}>
       <ScrollView>
-        <AppText>Basic Information</AppText>
+        <AppText
+          style={{
+            fontSize: 27,
+            fontWeight: "bold",
+            marginTop: 25,
+            marginLeft: 12,
+          }}
+        >
+          Store Information
+        </AppText>
         <Form
           initialValues={initial}
           onSubmit={handleSubmit}
@@ -101,8 +113,15 @@ function StoresInfoAddScreen({ navigation, route }) {
           ></AppFormPicker>
           <FormField
             maxlength={255}
+            multiline
+            numberOfLines={3}
+            name="description"
+            placeholder="Brief description"
+          ></FormField>
+          <FormField
+            maxlength={255}
             name="location"
-            placeholder="Location"
+            placeholder="Address"
           ></FormField>
           <FormField
             name="contact"
@@ -121,8 +140,8 @@ function StoresInfoAddScreen({ navigation, route }) {
             maxlength={255}
             multiline
             numberOfLines={3}
-            name="description"
-            placeholder="Brief description"
+            name="delivery"
+            placeholder="Delivery Option (Example: Available through Uber Eats."
           ></FormField>
           <View style={styles.images}>
             <AnImageInput name="backgroundImage" width="47%" height={100} />

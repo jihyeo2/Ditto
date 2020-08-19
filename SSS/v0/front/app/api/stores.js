@@ -10,20 +10,7 @@ const addStores = (authToken, store, onUploadProgress) => {
   });
 };
 const editStores = (authToken, store, onUploadProgress) => {
-  const data = new FormData();
-  data.append("name", store.name);
-  data.append("categoryId", store.category._id);
-  data.append("location", store.location);
-  data.append("contact", store.contact);
-  data.append("openingHours", store.openingHours);
-  data.append("description", store.description);
-  data.append("backgroundImage", store.backgroundImage);
-  data.append("mainImage", store.mainImage);
-  data.append("menus", store.menus);
-
-  console.log("data at the end", data);
-
-  return client.put(`/stores/${store._id}`, data, {
+  return client.put(`/stores/${store._id}`, store, {
     headers: { "x-auth-token": authToken },
     onUploadProgress: (progress) =>
       onUploadProgress(progress.loaded / progress.total),
