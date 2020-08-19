@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   FlatList,
+  Text,
   View,
   StyleSheet,
   TouchableOpacity,
@@ -19,6 +20,7 @@ import authStorage from "../auth/storage";
 import StorePickerItem from "../components/StorePickerItem";
 import AppText from "../components/AppText";
 import useAuth from "../auth/useAuth";
+import ListItemSeparator from "../components/lists/ListItemSeparator";
 
 function AccountScreen({ navigation }) {
   const token = authStorage.getToken();
@@ -39,6 +41,17 @@ function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
+        <AppText
+          style={{
+            fontSize: 30,
+            fontWeight: "bold",
+            marginTop: 20,
+            marginLeft: 15,
+            marginBottom: 10,
+          }}
+        >
+          My Account
+        </AppText>
         {getUserApi.data.profileImage ? (
           <ListItem
             title={getUserApi.data.name}
@@ -62,33 +75,42 @@ function AccountScreen({ navigation }) {
             }
           />
         )}
+        <ListItemSeparator />
+        <ListItem
+          title="Log out"
+          IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+          onPress={() => logOut()}
+        />
       </View>
 
       <View
         style={{
           justifyContent: "center",
-          marginBottom: 20,
           backgroundColor: colors.white,
         }}
       >
+        <View style={{ flexDirection: "row", marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "400",
+              marginTop: 15,
+              marginLeft: 15,
+              marginBottom: 10,
+            }}
+          >
+            My Stores
+          </Text>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
+          >
+            <Icon name="plus" size={40} backgroundColor={colors.secondary} />
+          </TouchableOpacity>
+        </View>
         {hasStore ? (
-          <ScrollView style={{ height: 350 }}>
+          <ScrollView style={{ height: 290 }}>
             <FlatList
-              ListHeaderComponent={
-                <>
-                  <AppText style={{ marginBottom: 60 }}>My Stores</AppText>
-                  <TouchableOpacity
-                    style={styles.addButton}
-                    onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
-                  >
-                    <Icon
-                      name="plus"
-                      size={60}
-                      backgroundColor={colors.secondary}
-                    />
-                  </TouchableOpacity>
-                </>
-              }
               data={getUserApi.data.stores}
               keyExtractor={(item) => item._id.toString()}
               numColumns={1}
@@ -114,23 +136,12 @@ function AccountScreen({ navigation }) {
               justifyContent: "center",
             }}
           >
-            <AppText style={{ color: colors.medium }}>
-              You have not registered a store.
+            <AppText style={{ color: "gray" }}>
+              You haven't registered a store yet!
             </AppText>
-            <TouchableOpacity
-              style={styles.addButton}
-              onPress={() => navigation.navigate(routes.STORESINFO_ADD)}
-            >
-              <Icon name="plus" size={60} backgroundColor={colors.secondary} />
-            </TouchableOpacity>
           </View>
         )}
       </View>
-      <ListItem
-        title="Log out"
-        IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-        onPress={() => logOut()}
-      />
     </Screen>
   );
 }
@@ -138,16 +149,15 @@ function AccountScreen({ navigation }) {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.light,
-    paddingVertical: 10,
   },
   container: {
-    marginVertical: 20,
+    marginVertical: 15,
   },
   addButton: {
     position: "absolute",
-    right: 20,
-    top: 20,
-    marginBottom: 20,
+    right: 15,
+    top: 10,
+    marginBottom: 5,
   },
 });
 
