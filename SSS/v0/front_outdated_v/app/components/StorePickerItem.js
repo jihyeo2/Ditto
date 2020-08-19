@@ -9,6 +9,7 @@ import {
 
 import AppText from "../components/AppText";
 import colors from "../config/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function StorePickerItem({ item, onPress }) {
   return (
@@ -20,23 +21,10 @@ function StorePickerItem({ item, onPress }) {
         >
           <View style={styles.content}>
             <Image style={styles.owner} source={{ uri: item.mainImage }} />
-            <View style={{ left: "7%", top: "3%" }}>
-              <AppText
-                style={{
-                  fontSize: 20,
-                  color: colors.dark,
-                  fontWeight: "500",
-                }}
-                numberOfLines={1}
-              >
-                {item.name}
-              </AppText>
-
-              <AppText style={{ fontSize: 13, color: colors.primary }}>
+            <View>
+              <AppText style={{ color: colors.white }}>{item.name}</AppText>
+              <AppText style={{ fontSize: 12, color: colors.white }}>
                 {item.category.label}
-              </AppText>
-              <AppText style={{ fontSize: 13, color: colors.medium }}>
-                {item.contact}
               </AppText>
             </View>
           </View>
@@ -49,17 +37,21 @@ function StorePickerItem({ item, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 2,
-    marginBottom: 15,
-    height: 210,
+    padding: 10,
+    height: 250,
     justifyContent: "center",
     alignItems: "center",
   },
   store: {
-    width: "95%",
+    width: "90%",
     height: "100%",
     borderRadius: 20,
     overflow: "hidden",
+  },
+  label: {
+    marginTop: 5,
+    fontSize: 17,
+    textAlign: "center",
   },
   content: {
     width: "100%",
@@ -68,6 +60,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-evenly",
     zIndex: 1,
   },
   image: {
@@ -78,21 +71,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   box: {
-    backgroundColor: colors.white,
-    opacity: 0.75,
+    backgroundColor: colors.black,
+    opacity: 0.5,
     width: "100%",
-    height: "35%",
+    height: "45%",
     position: "absolute",
     bottom: 0,
   },
   owner: {
-    width: 110,
-    height: 110,
-    borderRadius: 55,
-    borderColor: colors.white,
-    borderWidth: 5,
-    bottom: "5%",
-    left: "5%",
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
     margin: 10,
   },
 });

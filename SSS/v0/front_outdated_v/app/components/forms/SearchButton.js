@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableWithoutFeedback, StyleSheet } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFormikContext } from "formik";
 
 import defaultStyles from "../../config/styles";
@@ -10,8 +10,8 @@ function SearchButton(props) {
 
   return (
     <TouchableWithoutFeedback onPress={handleSubmit}>
-      <MaterialIcons
-        name="search"
+      <MaterialCommunityIcons
+        name="search-web"
         size={30}
         color={defaultStyles.colors.medium}
         style={styles.searchIcon}

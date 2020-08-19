@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "SSS",
+    "slug": "SSS",
+    "privacy": "unlisted",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/icon.png",
+    "splash": {
+      "image": "./app/assets/marketwithpeople2.png",
+      "resizeMode": "cover"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.umum2006.donewithit",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.umum2006.donewithit",
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./app/assets/favicon.png"
+    },
+    "description": "This is an app I created following Mosh's tutorial. I am uploading this just to see how publishing works in expo.",
+    "notification": {
+      "iosDisplayInForeground": true
+    },
+    "extra": {
+      "bugsnag": {
+        "apiKey": "0a92209f7e02337878d6b535f4aaeb14"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
