@@ -37,12 +37,25 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/me", auth, async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  // const { error } = validate(req.body);
+  // if (error) return res.status(400).send(error.details[0].message);
+  console.log("req body", req.body);
 
   const user = await User.findById(req.user._id);
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
+
+  console.log("user pw", user);
+  const validPassword = await bcrypt.compare(
+    req.body.currentPassword,
+    user.password
+  );
+  if (!validPassword) {
+    console.log("not yet");
+    return res.status(400).send("Invalid password");
+  }
+
+  console.log("here?");
 
   const salt = await bcrypt.genSalt(10);
   const new_password = await bcrypt.hash(req.body.password, salt);
@@ -58,7 +71,6 @@ router.put("/me", auth, async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: new_password,
-            store: req.body.store,
           },
         },
         { new: true }

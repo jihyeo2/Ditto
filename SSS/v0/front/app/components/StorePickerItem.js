@@ -24,10 +24,7 @@ function StorePickerItem({ item, onPress }) {
             <View>
               <AppText style={{ color: colors.white }}>{item.name}</AppText>
               <AppText style={{ fontSize: 12, color: colors.white }}>
-                {item.location}
-              </AppText>
-              <AppText style={{ fontSize: 12, color: colors.white }}>
-                {item.contact}
+                {item.category.label}
               </AppText>
             </View>
           </View>
