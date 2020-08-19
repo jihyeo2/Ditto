@@ -47,9 +47,7 @@ function SearchResultsScreen({ route, navigation }) {
             )}
           />
         ) : (
-          <AppText style={{ color: colors.medium }}>
-            You have not registered a store.
-          </AppText>
+          <AppText style={{ color: colors.medium }}>No result</AppText>
         )}
       </View>
     </Screen>

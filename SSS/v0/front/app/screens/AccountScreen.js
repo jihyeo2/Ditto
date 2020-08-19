@@ -109,7 +109,7 @@ function AccountScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         {hasStore ? (
-          <ScrollView style={{ height: 290 }}>
+          <ScrollView style={{ height: "45%" }}>
             <FlatList
               data={getUserApi.data.stores}
               keyExtractor={(item) => item._id.toString()}
