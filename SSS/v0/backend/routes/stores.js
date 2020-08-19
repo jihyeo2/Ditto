@@ -27,7 +27,12 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/search/:keyword", async (req, res) => {
-  const stores = await Store.find({ keyword: req.params.keyword });
+  const stores = await Store.find({
+    $or: [
+      { name: req.params.keyword },
+      { menus: { $elemMatch: { name: req.params.keyword } } },
+    ],
+  });
   if (!stores) return res.status.send(400).send("None exists.");
   res.send(stores);
 });
@@ -97,23 +102,18 @@ all values that have not changed should also be passed. If not passed, an error 
 router.put("/:id", auth, async (req, res) => {
   // const { error } = validate(req.body);
   // if (error) return res.status(400).send(error.details[0].message);
+  console.log("put res", req.body);
 
   const store = await Store.findById(req.params.id);
   if (!store)
     return res.status(404).send("The store with the given ID was not found.");
 
-  const category = await Category.findById(req.body.category._id);
-  if (!category) return res.status(400).send("Invalid category");
-
-  const user = await User.findById(req.user._id);
-  if (!user) return res.status(400).send("Invalid user");
-
   const update = {
     _id: store._id,
     name: req.body.name,
     category: {
-      _id: category._id,
-      label: category.label,
+      _id: req.body.category._id,
+      label: req.body.category.label,
     },
     description: req.body.description,
     delivery: req.body.delivery,
@@ -125,6 +125,50 @@ router.put("/:id", auth, async (req, res) => {
     menus: req.body.menus,
   };
 
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: {
+        "stores.$[elem].name": update.name,
+        "stores.$[elem].category": {
+          _id: update.category._id,
+          label: update.category.label,
+        },
+        "stores.$[elem].description": update.description,
+        "stores.$[elem].location": update.location,
+        "stores.$[elem].contact": update.contact,
+        "stores.$[elem].openingHours": update.openingHours,
+        "stores.$[elem].delivery": update.delivery,
+        "stores.$[elem].backgroundImage": update.backgroundImage,
+        "stores.$[elem].mainImage": update.mainImage,
+        "stores.$[elem].menus": update.menus,
+      },
+    },
+    { arrayFilters: [{ "elem._id": update._id }] }
+  );
+
+  const category = await Category.findByIdAndUpdate(
+    update.category._id,
+    {
+      $set: {
+        "stores.$[elem].name": update.name,
+        "stores.$[elem].category": {
+          _id: update.category._id,
+          label: update.category.label,
+        },
+        "stores.$[elem].description": update.description,
+        "stores.$[elem].location": update.location,
+        "stores.$[elem].contact": update.contact,
+        "stores.$[elem].openingHours": update.openingHours,
+        "stores.$[elem].delivery": update.delivery,
+        "stores.$[elem].backgroundImage": update.backgroundImage,
+        "stores.$[elem].mainImage": update.mainImage,
+        "stores.$[elem].menus": update.menus,
+      },
+    },
+    { arrayFilters: [{ "elem._id": update._id }] }
+  );
+
   try {
     new Fawn.Task()
       .update(
@@ -134,71 +178,6 @@ router.put("/:id", auth, async (req, res) => {
           $set: update,
         }
       )
-      .update(
-        "users",
-        { _id: user._id },
-        {
-          $push: { stores: update },
-        }
-      )
-      .update(
-        "users",
-        { _id: user._id },
-        {
-          $pull: { stores: store },
-        }
-      )
-      .update(
-        "categories",
-        { _id: category._id },
-        {
-          $push: { stores: update },
-        }
-      )
-      .update(
-        "categories",
-        { _id: category._id },
-        {
-          $pull: { stores: store },
-        }
-      )
-      // .update(
-      //   "users",
-      //   { _id: user._id },
-      //   {
-      //     $pull: { store: store },
-      //     $addToSet: { store: new Store(update) },
-      //   }
-      // )
-      // .update("users", { _id: user._id }, { $set: { store: store } })
-      // .update(
-      //   "categories",
-      //   { _id: category._id },
-      //   {
-      //     $set: {
-      //       "stores.$[elem].name": update.name,
-      //       "stores.$[elem].user": {
-      //         _id: update.user._id,
-      //         name: update.user.name,
-      //         email: update.user.email,
-      //       },
-      //       "stores.$[elem].category": {
-      //         _id: update.category._id,
-      //         label: update.category.label,
-      //       },
-      //       "stores.$[elem].description": update.description,
-      //       "stores.$[elem].location": update.location,
-      //       "stores.$[elem].contact": update.contact,
-      //       "stores.$[elem].openingHours": update.openingHours,
-      //       "stores.$[elem].keyword": update.keyword,
-      //       "stores.$[elem].backgroundImage": update.backgroundImage,
-      //       "stores.$[elem].mainImage": update.mainImage,
-      //     },
-      //   },
-      //   {
-      //     arrayFilters: [{} "elem._id": req.params.id  }],
-      //   }
-      // )
       .run();
     res.send(store);
   } catch (ex) {
