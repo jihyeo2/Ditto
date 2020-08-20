@@ -7,8 +7,9 @@
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "splash": {
-      "image": "./app/assets/marketwithpeople2.png",
-      "resizeMode": "cover"
+      "image": "./app/assets/opening.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#2e8b57"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
