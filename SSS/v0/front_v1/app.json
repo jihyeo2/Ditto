@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Ditto",
+    "slug": "Ditto",
+    "privacy": "unlisted",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/icon.png",
+    "splash": {
+      "image": "./app/assets/marketwithpeople2.png",
+      "resizeMode": "cover"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.umum2006.donewithit",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.umum2006.donewithit",
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./app/assets/favicon.png"
+    },
+    "description": "Ditto was created to connect local sellers who are struggling in online marketing and students who are willing to help them",
+    "notification": {
+      "iosDisplayInForeground": true
+    },
+    "extra": {
+      "bugsnag": {
+        "apiKey": "0a92209f7e02337878d6b535f4aaeb14"
+      }
+    },
+    "hooks": {
+      "postPublish": []
+    }
+  }
+}
