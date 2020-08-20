@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "Ditto",
-    "slug": "Ditto",
+    "name": "SSS",
+    "slug": "SSS",
     "privacy": "unlisted",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "splash": {
-      "image": "./app/assets/marketwithpeople2.png",
-      "resizeMode": "cover"
+      "image": "./app/assets/opening.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#2e8b57"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -26,7 +27,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "Ditto was created to connect local sellers who are struggling in online marketing and students who are willing to help them",
+    "description": "This is an app I created following Mosh's tutorial. I am uploading this just to see how publishing works in expo.",
     "notification": {
       "iosDisplayInForeground": true
     },
@@ -36,7 +37,12 @@
       }
     },
     "hooks": {
-      "postPublish": []
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
     }
   }
 }

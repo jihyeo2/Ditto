@@ -27,7 +27,16 @@ function SearchResultsScreen({ route, navigation }) {
   return (
     <Screen>
       <View style={styles.container}>
-        <AppText>You searched "{searchItem.searchItem}"</AppText>
+        <AppText
+          style={{
+            margin: 5,
+            marginLeft: 10,
+            alignSelf: "center",
+            color: colors.secondary,
+          }}
+        >
+          You searched "{searchItem.searchItem}"
+        </AppText>
         {getListingsApi.data[0] ? (
           <FlatList
             data={getListingsApi.data}
@@ -47,7 +56,7 @@ function SearchResultsScreen({ route, navigation }) {
             )}
           />
         ) : (
-          <AppText style={{ color: colors.medium }}>No result</AppText>
+          <AppText style={{ color: colors.medium }}>No result.</AppText>
         )}
       </View>
     </Screen>

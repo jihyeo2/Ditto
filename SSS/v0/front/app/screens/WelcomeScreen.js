@@ -20,9 +20,14 @@ function WelcomeScreen({ navigation }) {
       source={require("../assets/marketwithpeople2.jpg")}
     >
       <View style={styles.logoContainer}>
-        <Fontisto name="shopping-store" size={60} color={colors.third} />
+        <Image
+          style={styles.logo}
+          source={require("../assets/dittoClear.png")}
+        />
         <Text style={styles.tagline}>Ditto</Text>
-        <Text style={styles.subtagline}>Your Local Stores Finder</Text>
+        <Text style={styles.subtagline}>
+          Discover & Advertise Hidden Local Stores
+        </Text>
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton
@@ -59,9 +64,14 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "100%",
   },
+  logo: {
+    top: 50,
+    height: 80,
+    width: 80,
+  },
   logoContainer: {
     position: "absolute",
-    top: 100,
+    top: 50,
     alignItems: "center",
   },
   tagline: {
@@ -69,8 +79,8 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontFamily: Platform.OS === "android" ? "sans-serif" : "Georgia",
     fontStyle: "italic",
-    letterSpacing: 0.5,
-    paddingTop: 45,
+    letterSpacing: 1.5,
+    paddingTop: 80,
     color: colors.white,
     textShadowColor: colors.black,
     textShadowRadius: 8,
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 15,
     textTransform: "uppercase",
-    letterSpacing: 3,
+    letterSpacing: 7,
     textAlign: "center",
     textShadowColor: colors.black,
     textShadowRadius: 5,
