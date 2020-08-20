@@ -12,9 +12,9 @@ YOU MUST CAREFULLY READ BELOW!!
 
 Schema: 
 {
-  "name": "Sugju Choi",
-  "email": "schoi@hiride.com" OR 
-  "password": "123456"
+  "name": "<Fill in>",
+  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
+  "password": "<Fill in>"
 }
 
 
