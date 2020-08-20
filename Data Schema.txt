@@ -89,7 +89,7 @@ Choi)
 
 -----Store Data-----
 
-Restaurant)
+Restaurant) Choi
 
 {
   "name": "One Grandma Bossam",
@@ -113,6 +113,29 @@ Restaurant)
     "price": "24",
   }]
 }
+ 
+{
+  "name": "Panama Bread",
+  "category": "Restaurant",
+  "description": "Sweet tea and warm baked Bread",
+  "location": "Elgin St, Rapid City, Dacota",
+  "contact": "605 646 6084",
+  "openingHours": "08:00~18:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Kimchi Bread",
+    "price": "8",
+  }, {
+    "name": "Boba fied bread",
+    "price": "6",
+  }, {
+    "name": "Sweet tea",
+    "price": "7",
+  }, {
+    "name": "Chicken bread",
+    "price": "4",
+  }]
+}
 
 {
   "name": "BBQ Chicken House",
@@ -134,6 +157,29 @@ Restaurant)
   }, {
     "name": "Chicken Breast Meat",
     "price": "24",
+  }]
+}
+
+{
+  "name": "InBack Steak House",
+  "category": "Restaurant",
+  "description": "#1 steak house in the town",
+  "location": "6813, Marlin St, Hays, Kansas",
+  "contact": "78582980",
+  "openingHours": "12:00~24:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Steak Pasta",
+    "price": "12",
+  }, {
+    "name": "Pork Curtlet",
+    "price": "11",
+  }, {
+    "name": "Spring Seeds",
+    "price": "6",
+  }, {
+    "name": "Chicken Steak",
+    "price": "4",
   }]
 }
 
@@ -164,7 +210,7 @@ Coffee & Dessert) Julie
   ]
 }
 
-Clothing Store)
+Clothing Store) Choi
 
 {
   "name": "Yumi's Fashion",
