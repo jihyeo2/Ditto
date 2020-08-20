@@ -15,7 +15,7 @@ Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts - fro
 The Complete Node.js Course - backend
 
 Hackathons:  
-[Virtual Hacks 2020 - 08/21](https://virtualhacks.ca/)
+[Virtual Hacks 2020 - 08/23](https://virtualhacks.ca/)
 
 Timeline
 
