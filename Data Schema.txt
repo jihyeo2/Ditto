@@ -34,7 +34,6 @@ Schema:
 }
 
 
-}
 
 3. Menu: 
 {
@@ -45,6 +44,26 @@ Schema:
 -----User Data-----
 
 Jeong)
+{
+  "name": "Lala",
+  "email": "lalathecat@hiride.com",
+  "password": "pinkribbon"
+}
+
+{
+  "name": "Kelly Smith",
+  "email": "ksmith02@facedrive.com",
+  "password": "roseysky15"
+}
+
+{
+  "name": "Blue Whale",
+  "email": "oceanmaster@hiride.com",
+  "password": "msinjedi"
+}
+
+
+
 
 Oh)
 
@@ -64,7 +83,7 @@ Choi)
 
 {
   "name": "Sugju Choi",
-  "email": "schoi@hiride.com" OR 
+  "email": "schoi@hiride.com"
   "password": "123456"
 }
 
@@ -117,7 +136,7 @@ Restaurant) Choi
 {
   "name": "Panama Bread",
   "category": "Restaurant",
-  "description": "Sweet tea and warm baked Bread",
+  "description": "Sweet Tea and Freshly Baked Bread",
   "location": "Elgin St, Rapid City, Dacota",
   "contact": "605 646 6084",
   "openingHours": "08:00~18:00",
@@ -187,6 +206,38 @@ Restaurant) Choi
 
 
 Grocery Store)
+{
+  "name": "T-Mart",
+  "category": "Grocery Store",
+  "description": "Groceries, general goods, bakery, etc.",
+  "location": "26 Cloud Rd, Porter, RT",
+  "contact": "7958463225",
+  "openingHours": "10:00 ~ 21:00",
+  "delivery": "Available",
+  "menus": [
+    {
+      "name": "Various Items",
+      "price": "N/A"
+    },
+  ]
+}
+
+{
+  "name": "Chucks",
+  "category": "Grocery Store",
+  "description": "Fresh food straight from local farms!",
+  "location": "5 Pompick St, Roadebb, EG",
+  "contact": "1013256997",
+  "openingHours": "Mon-Sun 10:30 ~ 22:30",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "Various Items",
+      "price": "N/A"
+    },
+  ]
+}
+
 
 Coffee & Dessert) Julie
 
@@ -194,7 +245,7 @@ Coffee & Dessert) Julie
   "name": "Fluffy Puff",
   "category": "Coffee & Dessert",
   "description": "Enjoy your cloud-like puff",
-  "location": "600 Park St, Hays, KS 67601, US",
+  "location": "600 Park St, Hays, KS",
   "contact": "7851115555",
   "openingHours": "Mon - Sat: 09:00 ~ 18:00",
   "delivery": "Available",
@@ -209,6 +260,96 @@ Coffee & Dessert) Julie
     }
   ]
 }
+
+{
+  "name": "A Peace of Cake",
+  "category": "Coffee & Dessert",
+  "description": "It's just a peace of cake!",
+  "location": "55 This St, Thatpolis, Somestate",
+  "contact": "3167856119",
+  "openingHours": "Weekdays: 9am-7pm, Weedkend: 10am-5pm",
+  "delivery": "Not Available",
+  "menus": [
+   
+    {
+      "name": "Cheese cake",
+      "price": "6"
+    },
+    {
+      "name": "Babka ",
+      "price": "8"
+    },
+    {
+      "name": "Angel Cake",
+      "price": "8"
+    },
+    {
+      "name": "Cupcake",
+      "price": "4"
+    },
+    {
+      "name": "Carrot Cake",
+      "price": "6"
+    },
+    {
+      "name": "Baumkuhen",
+      "price": "6"
+    },
+    {
+      "name": "Brownie",
+      "price": "4"
+    },
+    {
+      "name": "Blondie",
+      "price": "4"
+    },
+  ]
+}
+
+{
+  "name": "Cafe Bean",
+  "category": "Coffee & Dessert",
+  "description": "Barista with 18 years of experience",
+  "location": "880 Cafe St, Jalen, OP",
+  "contact": "8957456336",
+  "openingHours": "Everyday 7:00-18:00",
+  "delivery": "Order through Uber Eats",
+  "menus": [
+  {
+      "name": "Americano",
+      "price": "3"
+    },
+    {
+      "name": "Cappuccino",
+      "price": "4"
+    },
+    {
+      "name": "Mocha",
+      "price": "4"
+    },
+    {
+      "name": "Espresso",
+      "price": "4"
+    },    
+    {
+      "name": "Cafe Latte",
+      "price": "4"
+    },
+    {
+      "name": "Caramel Macchiato",
+      "price": "4"
+    },
+    {
+      "name": "Fresh Orange Juice",
+      "price": "5"
+    },
+    {
+      "name": "Homemade Apple Juice",
+      "price": "4.5"
+    },
+  ]
+}
+
 
 Clothing Store) Choi
 
@@ -230,7 +371,7 @@ Clothing Store) Choi
     "name": "Coat",
     "price": "36",
   }, {
-    "name": "Skort",
+    "name": "Skirt",
     "price": "24",
   }]
 }
@@ -267,6 +408,28 @@ Beauty Salon/Barbershop)
 
 
 Others)
+{
+  "name": "Kat's Tattoo",
+  "category": "Others",
+  "description": "Get a beautiful tattoo you dreamed of :)",
+  "location": "789-6, Gouche st, Florett",
+  "contact": "0102569875",
+  "openingHours": "11:00~20:00",
+  "delivery": "Visits only",
+  "menus": [{
+    "name": "Tiny (under 2 in)",
+    "price": "45",
+  }, {
+    "name": "Small (under 4 in)",
+    "price": "80",
+  }, {
+    "name": "Medium (4-6 in)",
+    "price": "200",
+  }, {
+    "name": "Large (6+ in)",
+    "price": "500-3,000",
+  }]
+}
 
 
 
