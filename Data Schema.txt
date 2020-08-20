@@ -1,5 +1,5 @@
 YOU MUST CAREFULLY READ BELOW!!
-* You should remove <Fill in> and add your own input. Example is shown below the schema.
+* You should remove <Fill in> and add your own input. An example is shown below the schema.
 * Image is currently omitted as it cannot be saved properly. Julie will resolve the issue today.
 * The name "location" is just how it is saved in backend. UI will display it as "address".
 * Only specified parameters are numbers. For the rest, type a string. 
