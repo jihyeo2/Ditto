@@ -1,6 +1,5 @@
 const { Category, validate } = require("../models/category");
 const express = require("express");
-const { Store } = require("../models/store");
 const router = express.Router();
 
 router.get("/", async (req, res) => {

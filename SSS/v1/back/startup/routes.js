@@ -1,6 +1,7 @@
 const express = require("express");
 const categories = require("../routes/categories");
 const stores = require("../routes/stores");
+const storesInNeed = require("../routes/storesInNeed");
 const users = require("../routes/users");
 const user = require("../routes/user");
 const auth = require("../routes/auth");
@@ -14,4 +15,5 @@ module.exports = function (app) {
   app.use("/api/users", users);
   app.use("/api/auth", auth);
   app.use("/api/tests", tests);
+  app.use("/api/storesInNeed", storesInNeed);
 };
