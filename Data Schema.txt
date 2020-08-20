@@ -238,6 +238,39 @@ Grocery Store)
   ]
 }
 
+{
+  "name": "Tovette Super Market",
+  "category": "Grocery Store",
+  "description": "groceries",
+  "location": "26-6, Tovette, Complitos, OP",
+  "contact": "2586325100",
+  "openingHours": "10:30 ~ 23:00",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "N/A",
+      "price": "N/A"
+    },
+  ]
+}
+
+{
+  "name": "RB 25",
+  "category": "Grocery Store",
+  "description": "24/7 Convenient Store",
+  "location": "30 George St, Strein, KO",
+  "contact": "0102567885",
+  "openingHours": "All day, Every day",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "Most items",
+      "price": "Under 20"
+    },
+  ]
+}
+
+
 
 Coffee & Dessert) Julie
 
@@ -400,11 +433,136 @@ Clothing Store) Choi
 }
 
 Bar)
+{
+  "name": "The Kiwi Bird",
+  "category": "Bar",
+  "description": "Good Vibe for Good Day",
+  "location": "6 Brody st, Winchesst, TO",
+  "contact": "5894126358",
+  "openingHours": "16:00~26:00",
+  "delivery": "N/A",
+  "menus": [
+  {
+    "name": "Beer",
+    "price": "5-8",
+  },
+  {
+    "name": "Cocktail",
+    "price": "7-9",
+  }, 
+  {
+    "name": "Wine",
+    "price": "10-14",
+  }, 
+  {
+    "name": "Other Drinks",
+    "price": "5-7",
+  }]
+}
+
+{
+  "name": "Bell's Glass",
+  "category": "Bar",
+  "description": "The joy of best fun",
+  "location": "58 Goody st, Pubomice, TO",
+  "contact": "8563215478",
+  "openingHours": "15:00~27:00",
+  "delivery": "Nope.",
+  "menus": [
+  {
+    "name": "Beer",
+    "price": "6-9",
+  },
+  {
+    "name": "Cocktail",
+    "price": "7-10",
+  }, 
+  {
+    "name": "Wine",
+    "price": "13-18",
+  }, 
+  {
+    "name": "Other Drinks",
+    "price": "5-8",
+  },
+  {
+    "name": "Accompaniments",
+    "price": "5-23",
+  }]
+}
+
 
 Outside Market)
+{
+  "name": "Jones Natural",
+  "category": "Outside Market",
+  "description": "I grew'em all.",
+  "location": "1 Pine rd, Boyd, TO",
+  "contact": "0102567896",
+  "openingHours": "Tue-Sat 9AM-6PM",
+  "delivery": ".",
+  "menus": [
+  {
+    "name": "Vegetables",
+    "price": "2-5 per 0.5 lbs",
+  },
+  {
+    "name": "Fruits",
+    "price": "1-2",
+  }, 
+  {
+    "name": "Mushroom",
+    "price": "2-5",
+  }]
+}
+
+{
+  "name": "Farmers Market",
+  "category": "Outside Market",
+  "description": "Local Farmers Association.",
+  "location": "15 Bedilton, Molls, LI",
+  "contact": "4568931258",
+  "openingHours": "Mon-Thur 10am-7pm",
+  "delivery": "Available through phone call",
+  "menus": [
+  {
+    "name": "Vegetables",
+    "price": "2-5 per 0.5 lbs",
+  },
+  {
+    "name": "Fruits",
+    "price": "1-2",
+  }, 
+  {
+    "name": "Wood chips",
+    "price": "5-10",
+  }]
+}
 
 
 Beauty Salon/Barbershop)
+{
+  "name": "Lin's Hair Salon",
+  "category": "Beauty Salon/Barbershop",
+  "description": "Best Salon in Town",
+  "location": "256-20, Siloam St, Torent",
+  "contact": "5680123658",
+  "openingHours": "8:00~18:00",
+  "delivery": "Appointments available",
+  "menus": [{
+    "name": "Men's Hair Cuts",
+    "price": "12-22",
+  }, {
+    "name": "Women's Hair Cuts",
+    "price": "15-35",
+  }, {
+    "name": "Coloring",
+    "price": "35-80",
+  }, {
+    "name": "Perms and Straightening",
+    "price": "60-100",
+  }]
+}
 
 
 Others)
