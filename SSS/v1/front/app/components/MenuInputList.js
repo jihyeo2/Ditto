@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import MenuInput from "./MenuInput";
+import CachedMenu from "./CachedMenu";
 
 function MenuInputList({ menus = [], onRemoveMenu, onAddMenu }) {
   const scrollView = useRef();
@@ -14,7 +15,7 @@ function MenuInputList({ menus = [], onRemoveMenu, onAddMenu }) {
         <View>
           {menus.map((menu) => (
             <View key={menu.name} style={styles.menu}>
-              <MenuInput
+              <CachedMenu
                 key={menu.name}
                 menu={menu}
                 onChangeMenu={() => onRemoveMenu(menu)}

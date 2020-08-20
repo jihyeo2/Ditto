@@ -26,12 +26,18 @@ function AnImageInput({
   const imageUri = values[name];
 
   useEffect(() => {
-    requestPermission();
+    requestPermissionForCamera();
+    requestPermissionForLibrary();
   }, []);
 
-  const requestPermission = async () => {
+  const requestPermissionForLibrary = async () => {
     const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
     if (!granted) alert("You need to enable permission to access the library");
+  };
+
+  const requestPermissionForCamera = async () => {
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted) alert("You need to enable permission to access the camera");
   };
 
   const handlePress = () => {
@@ -44,6 +50,32 @@ function AnImageInput({
   };
 
   const selectImage = async () => {
+    Alert.alert(
+      "Choose a picture",
+      "Do you want to access camera or your library?",
+      [
+        { text: "Camera", onPress: () => imageFromCamera() },
+        { text: "Library", onPress: () => imageFromLibrary() },
+      ]
+    );
+  };
+
+  const imageFromCamera = async () => {
+    try {
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 0.5,
+      });
+      if (!result.cancelled) {
+        console.log(result.uri);
+        setFieldValue(name, result.uri);
+      }
+    } catch (error) {
+      console.log("Error reading an image", error);
+    }
+  };
+
+  const imageFromLibrary = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,

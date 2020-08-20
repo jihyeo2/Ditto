@@ -6,7 +6,7 @@ import colors from "../config/colors";
 import ListItem from "./lists/ListItem";
 import ListItemSeparator from "./lists/ListItemSeparator";
 
-function StoreInfoSub({ address, phone, hour, delivery }) {
+function StoreInfoSub({ address, phone, hour, delivery, onPress }) {
   return (
     <View style={styles.container}>
       <ListItem
@@ -26,7 +26,7 @@ function StoreInfoSub({ address, phone, hour, delivery }) {
           <SimpleLineIcons name="phone" size={24} color={colors.secondary} />
         }
         title={phone}
-        showChevrons={false}
+        onPress={onPress}
       />
       <ListItemSeparator />
       <ListItem

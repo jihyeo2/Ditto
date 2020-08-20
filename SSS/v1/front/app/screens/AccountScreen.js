@@ -77,6 +77,13 @@ function AccountScreen({ navigation }) {
         )}
         <ListItemSeparator />
         <ListItem
+          title="Stores In Need"
+          IconComponent={<Icon name="store" backgroundColor={colors.primary} />}
+          onPress={() => navigation.navigate(routes.STORES_IN_NEED)}
+          showChevrons={false}
+        />
+        <ListItemSeparator />
+        <ListItem
           title="Log out"
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
           onPress={() => logOut()}

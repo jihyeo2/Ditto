@@ -6,6 +6,7 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 
 import Screen from "../components/Screen";
@@ -21,6 +22,11 @@ function StoreMainScreen({ navigation, route }) {
   const item = route.params;
   console.log("well then", item);
   const { editButton } = route.params;
+
+  const onPress = () => {
+    Linking.openURL(`tel:${item.contact}`);
+  };
+
   return (
     <Screen style={styles.screen}>
       {editButton ? (
@@ -47,6 +53,7 @@ function StoreMainScreen({ navigation, route }) {
           phone={item.contact}
           hour={item.openingHours}
           delivery={item.delivery}
+          onPress={onPress}
         />
         <View style={styles.menuContainter}>
           <Text style={styles.heading}>Menu/Item</Text>

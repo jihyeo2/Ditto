@@ -1,12 +1,13 @@
 import React from "react";
 import { View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 function Icon({
   name,
   size = 40,
   backgroundColor = "#000",
   iconColor = "#fff",
+  type = "MaterialCommunityIcons",
 }) {
   return (
     <View
@@ -19,7 +20,15 @@ function Icon({
         alignItems: "center",
       }}
     >
-      <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />
+      {type === "MaterialCommunityIcons" ? (
+        <MaterialCommunityIcons
+          name={name}
+          color={iconColor}
+          size={size * 0.5}
+        />
+      ) : (
+        <MaterialIcons name={name} color={iconColor} size={size * 0.5} />
+      )}
     </View>
   );
 }
