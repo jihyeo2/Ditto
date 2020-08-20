@@ -25,7 +25,7 @@ Schema:
   "category": "<Fill in>",
   "description": "<Fill in>",
   "location": "<Fill in>",
-  "contact": "<Fill in>",
+  "contact": "<Fill in - number>",
   "openingHours": "<Fill in>",
   "delivery": "<Fill in>",
   "menus": [Menu_Schema]
@@ -34,7 +34,7 @@ Schema:
 3. Menu: 
 {
   "name": "<Fill in>",
-  "price": "<Fill in>",
+  "price": "<Fill in - number>",
 }
 
 -----User Data-----
@@ -68,7 +68,7 @@ Oh)
   "category": "Coffee & Dessert",
   "description": "Enjoy your cloud-like puff",
   "location": "600 Park St, Hays, KS 67601, US",
-  "contact": "785-111-5555",
+  "contact": "7851115555",
   "openingHours": "Mon - Sat: 09:00 ~ 18:00",
   "delivery": "Available",
   "menus": [
