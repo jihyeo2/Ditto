@@ -12,6 +12,27 @@ YOU MUST CAREFULLY READ BELOW!!
 
 Schema: 
 {
+  "name": "Sugju Choi",
+  "email": "<Fill in>schoi@hiride.com" OR 
+  "password": "<Fill in>"
+}
+
+Schema: 
+{
+  "name": "Jonny Liu",
+  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
+  "password": "<Fill in>"
+}
+
+Schema: 
+{
+  "name": "Yulmoo Kim",
+  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
+  "password": "<Fill in>"
+}
+
+Schema: 
+{
   "name": "<Fill in>",
   "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
   "password": "<Fill in>"
