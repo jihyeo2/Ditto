@@ -13,30 +13,11 @@ YOU MUST CAREFULLY READ BELOW!!
 Schema: 
 {
   "name": "Sugju Choi",
-  "email": "<Fill in>schoi@hiride.com" OR 
-  "password": "<Fill in>"
+  "email": "schoi@hiride.com" OR 
+  "password": "123456"
 }
 
-Schema: 
-{
-  "name": "Jonny Liu",
-  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
-  "password": "<Fill in>"
-}
 
-Schema: 
-{
-  "name": "Yulmoo Kim",
-  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
-  "password": "<Fill in>"
-}
-
-Schema: 
-{
-  "name": "<Fill in>",
-  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
-  "password": "<Fill in>"
-}
 
 2. Store:
 
@@ -50,6 +31,9 @@ Schema:
   "openingHours": "<Fill in>",
   "delivery": "<Fill in>",
   "menus": [Menu_Schema]
+}
+
+
 }
 
 3. Menu: 
@@ -78,9 +62,89 @@ Oh)
 
 Choi)
 
+{
+  "name": "Sugju Choi",
+  "email": "schoi@hiride.com" OR 
+  "password": "123456"
+}
+
+{
+  "name": "Jonny Liu",
+  "email": "jonny_liu@facedrive.com"
+  "password": "789019"
+}
+ 
+{
+  "name": "Yulmoo Kim",
+  "email": "ykim858@hiride.com"
+  "password": "123456"
+}
+
+
+{
+  "name": "Taylor Swift",
+  "email": "t_swift33@hiride.com"
+  "password": "0987654"
+}
+
 -----Store Data-----
 
 Restaurant)
+
+{
+  "name": "One Grandma Bossam",
+  "category": "Restaurant",
+  "description": "feel the taste of a fresh bossam!",
+  "location": "3-4 Songdo-dong, Yeonsu-gu, Incheon",
+  "contact": "<Fill in - number>",
+  "openingHours": "<Fill in>",
+  "delivery": " 032-858-0030",
+  "menus": [{
+    "name": "Bossam",
+    "price": "19",
+  }, {
+    "name": "Pork",
+    "price": "28",
+  }, {
+    "name": "Beef Bossam",
+    "price": "36",
+  }, {
+    "name": "Chicken Bossam",
+    "price": "24",
+  }]
+}
+Schema:
+{
+  "name": "<Fill in>",
+  "category": "<Fill in>",
+  "description": "<Fill in>",
+  "location": "<Fill in>",
+  "contact": "<Fill in - number>",
+  "openingHours": "<Fill in>",
+  "delivery": "<Fill in>",
+  "menus": [Menu_Schema]
+}
+Schema:
+{
+  "name": "<Fill in>",
+  "category": "<Fill in>",
+  "description": "<Fill in>",
+  "location": "<Fill in>",
+  "contact": "<Fill in - number>",
+  "openingHours": "<Fill in>",
+  "delivery": "<Fill in>",
+  "menus": [Menu_Schema]
+}
+Schema:
+{
+  "name": "<Fill in>",
+  "category": "<Fill in>",
+  "description": "<Fill in>",
+  "location": "<Fill in>",
+  "contact": "<Fill in - number>",
+  "openingHours": "<Fill in>",
+  "delivery": "<Fill in>",
+  "menus": [Menu_Schema]
 
 Grocery Store)
 
