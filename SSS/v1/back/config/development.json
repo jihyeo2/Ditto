@@ -1,0 +1,6 @@
+{
+  "assetsBaseUrl": "http://192.168.219.131:9000/assets/",
+  "port": 9000,
+  "jwtPrivateKey": "",
+  "db": "mongodb://localhost/sss"
+}
