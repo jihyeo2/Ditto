@@ -1,0 +1,10 @@
+Finalization steps:
+
+1. (UI)Deploy UI to expo using: expo publish --release-channel staging
+2. (Backend) update DittoBackend out of JOC
+3. (Backend) git push master Heroku
+
+Address for apiUrl: https://de-tout.herokuapp.com/apiUrl
+
+Address for mongod Cluster is saved in your mongod Atlas account.
+
