@@ -1,0 +1,92 @@
+YOU MUST READ CAREFULLY BELOW!!
+* You should remove <Fill in> and add your own input. Example is shown below the schema.
+* Image is currently omitted as it cannot be saved properly. Julie will resolve the issue today.
+* The name "location" is just how it is saved in backend. UI will display it as "address".
+* Only specified parameters are numbers. For the rest, type a string. 
+* For Menu_Schema, look at number 3. Menu below Store Schema.
+* For anyone wondering what hiride and facedrive is, they are the one hosting this Hackathon.
+* Side note: Now that I'd written an example, it is irritably taking quite a time. Good Luck, folks.
+*** You must follow the given schema unless you want to make Julie sleep-deprived. Just letting you know, I'm already on my third...juice, not coffee.***
+
+1. User
+
+Schema: 
+{
+  "name": "<Fill in>",
+  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
+  "password": "<Fill in>"
+}
+
+2. Store:
+
+Schema:
+{
+  "name": "<Fill in>",
+  "category": "<Fill in>",
+  "description": "<Fill in>",
+  "location": "<Fill in>",
+  "contact": "<Fill in>",
+  "openingHours": "<Fill in>",
+  "delivery": "<Fill in>",
+  "menus": [Menu_Schema]
+}
+
+3. Menu: 
+{
+  "name": "<Fill in>",
+  "price": "<Fill in>",
+}
+
+-----User Data-----
+
+Jeong)
+
+Oh)
+
+{
+  "name": "Teddy",
+  "email": "gozilla22@hiride.com"
+  "password": "nosqueezing"
+}
+
+{
+  "name": "Joe",
+  "email": "abnormaljoe@hiride.com"
+  "password": "password"
+}
+
+Choi)
+
+-----Store Data-----
+
+Jeong)
+
+Oh)
+
+{
+  "name": "Fluffy Puff",
+  "category": "Coffee & Dessert",
+  "description": "Enjoy your cloud-like puff",
+  "location": "600 Park St, Hays, KS 67601, US",
+  "contact": "785-111-5555",
+  "openingHours": "Mon - Sat: 09:00 ~ 18:00",
+  "delivery": "Available",
+  "menus": [
+    {
+      "name": "Fluff",
+      "price": "11"
+    },
+   {
+      "name": "Candy Cane",
+      "price": "1"
+    }
+  ]
+}
+
+Choi)
+
+
+
+
+
+  
