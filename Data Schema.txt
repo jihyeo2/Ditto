@@ -59,9 +59,11 @@ Choi)
 
 -----Store Data-----
 
-Jeong)
+Restaurant)
 
-Oh)
+Grocery Store)
+
+Coffee & Dessert) Julie
 
 {
   "name": "Fluffy Puff",
@@ -83,7 +85,19 @@ Oh)
   ]
 }
 
-Choi)
+Clothing Store)
+
+Bar)
+
+Outside Market)
+
+Beauty Salon/Barbershop)
+
+Others)
+
+
+
+
 
 
 
