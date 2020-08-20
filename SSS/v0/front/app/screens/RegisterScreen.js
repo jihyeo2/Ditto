@@ -110,7 +110,7 @@ function RegisterScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    margin: 12,
   },
 });
 

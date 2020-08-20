@@ -3,6 +3,7 @@ import { useFormikContext } from "formik";
 
 import SearchBarAppTextInput from "./SearchBarAppTextInput";
 import ErrorMessage from "./forms/ErrorMessage";
+import SearchItemContext from "./SearchItemContext";
 
 function SearchBarField({ name, width, height, ...otherProps }) {
   const {

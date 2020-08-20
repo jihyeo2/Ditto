@@ -80,6 +80,7 @@ function AccountScreen({ navigation }) {
           title="Log out"
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
           onPress={() => logOut()}
+          showChevrons={false}
         />
       </View>
 

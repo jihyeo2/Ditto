@@ -14,7 +14,14 @@ import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import ErrorMessage from "../components/forms/ErrorMessage";
 
-function AnImageInput({ name, width = 150, height = 150 }) {
+function AnImageInput({
+  name,
+  width = 150,
+  height = 150,
+  borderWidth,
+  borderColor,
+  borderRadius,
+}) {
   const { setFieldValue, errors, touched, values } = useFormikContext();
   const imageUri = values[name];
 
@@ -56,7 +63,16 @@ function AnImageInput({ name, width = 150, height = 150 }) {
   return (
     <>
       <TouchableWithoutFeedback onPress={handlePress}>
-        <View style={[styles.container, { width }, { height }]}>
+        <View
+          style={[
+            styles.container,
+            { width },
+            { height },
+            { borderWidth },
+            { borderColor },
+            { borderRadius },
+          ]}
+        >
           {!imageUri && (
             <View style={styles.pic}>
               <MaterialCommunityIcons

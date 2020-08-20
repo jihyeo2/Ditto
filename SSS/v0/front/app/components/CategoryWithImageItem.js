@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  Platform,
 } from "react-native";
 
 import colors from "../config/colors";
@@ -49,9 +50,11 @@ function CategoryWithImageItem({ item, onPress }) {
 
 const styles = StyleSheet.create({
   button: {
-    width: "50%",
-    height: 159,
-    backgroundColor: colors.white,
+    width: 155,
+    height: 155,
+    borderRadius: 30,
+    marginVertical: 10,
+    marginHorizontal: 5,
     overflow: "hidden",
   },
   imageUri: {
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 23,
     fontWeight: "400",
-    // fontFamily: "Georgia",
+    fontFamily: Platform.OS === "android" ? "sans-serif-light" : "Georgia",
     color: colors.white,
     textAlign: "center",
     textShadowColor: colors.black,

@@ -4,6 +4,8 @@ import routes from "../navigation/routes";
 import * as Yup from "yup";
 import { AppForm as Form } from "../components/forms";
 import SearchBarField from "./SearchBarField";
+import SearchItemContext from "./SearchItemContext";
+import SearchBarAppTextInput from "./SearchBarAppTextInput";
 
 const validationSchema = Yup.object().shape({
   searchItem: Yup.string().label("searchItem"),
@@ -18,16 +20,6 @@ function Header({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <Image
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          marginLeft: 17,
-          marginRight: 10, 
-        }}
-        source={require("../assets/icon.png")}
-      /> */}
       <Form
         initialValues={{ searchItem: "" }}
         onSubmit={handleSubmit}
@@ -40,7 +32,8 @@ function Header({ navigation }) {
           autoCorrect={false}
           placeholder="Search items"
           searchButton
-          height={40}
+          height={45}
+          top={10}
         />
       </Form>
     </View>
