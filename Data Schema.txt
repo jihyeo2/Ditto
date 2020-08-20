@@ -4,7 +4,7 @@ YOU MUST READ CAREFULLY BELOW!!
 * The name "location" is just how it is saved in backend. UI will display it as "address".
 * Only specified parameters are numbers. For the rest, type a string. 
 * For Menu_Schema, look at number 3. Menu below Store Schema.
-* For anyone wondering what hiride and facedrive is, they are the one hosting this Hackathon.
+* For anyone wondering what hiride and facedrive are, they are the one hosting this Hackathon. Let's turn our nose brown!
 * Side note: Now that I'd written an example, it is irritably taking quite a time. Good Luck, folks.
 *** You must follow the given schema unless you want to make Julie sleep-deprived. Just letting you know, I'm already on my third...juice, not coffee.***
 
