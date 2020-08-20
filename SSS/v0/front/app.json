@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SSS",
-    "slug": "SSS",
+    "name": "Ditto",
+    "slug": "Ditto",
     "privacy": "unlisted",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,7 +26,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "This is an app I created following Mosh's tutorial. I am uploading this just to see how publishing works in expo.",
+    "description": "Ditto was created to connect local sellers who are struggling in online marketing and students who are willing to help them",
     "notification": {
       "iosDisplayInForeground": true
     },
@@ -36,12 +36,7 @@
       }
     },
     "hooks": {
-      "postPublish": [
-        {
-          "file": "@bugsnag/expo/hooks/post-publish.js",
-          "config": {}
-        }
-      ]
+      "postPublish": []
     }
   }
 }
