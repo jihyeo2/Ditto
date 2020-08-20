@@ -12,8 +12,9 @@ Frontend
 0. Change logo to ours("ditto")
 1. (iOS) vertically center "Search items" in search bar
 2. (iOS) let the formfield appear above the keyboard
-3. Improve phone number and price entry form (ex. dollar sign in front of price field)
-4. Make one line for store name in StorePickerItem
+3. Add Logo next to the search bar so that the user can directly go to ShoppingScreen
+4. Improve phone number and price entry form (ex. dollar sign in front of price field)
+5. Make one line for store name in StorePickerItem
 
 
 Must at the end
