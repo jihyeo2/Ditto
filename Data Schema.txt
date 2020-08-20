@@ -96,9 +96,9 @@ Restaurant)
   "category": "Restaurant",
   "description": "feel the taste of a fresh bossam!",
   "location": "3-4 Songdo-dong, Yeonsu-gu, Incheon",
-  "contact": "<Fill in - number>",
-  "openingHours": "<Fill in>",
-  "delivery": " 032-858-0030",
+  "contact": "0328580030",
+  "openingHours": "10:00~23:00",
+  "delivery": "UBER EATS",
   "menus": [{
     "name": "Bossam",
     "price": "19",
@@ -113,38 +113,32 @@ Restaurant)
     "price": "24",
   }]
 }
-Schema:
+
 {
-  "name": "<Fill in>",
-  "category": "<Fill in>",
-  "description": "<Fill in>",
-  "location": "<Fill in>",
-  "contact": "<Fill in - number>",
-  "openingHours": "<Fill in>",
-  "delivery": "<Fill in>",
-  "menus": [Menu_Schema]
+  "name": "BBQ Chicken House",
+  "category": "Restaurant",
+  "description": "Freshly cooked southern fied chicken!",
+  "location": "25th st, Fultron city, Atlanta",
+  "contact": "0718440030",
+  "openingHours": "11:00~23:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Chicken & Waffle",
+    "price": "10",
+  }, {
+    "name": "Cheeze Chicken",
+    "price": "20",
+  }, {
+    "name": "Spicy Chicken Set",
+    "price": "36",
+  }, {
+    "name": "Chicken Breast Meat",
+    "price": "24",
+  }]
 }
-Schema:
-{
-  "name": "<Fill in>",
-  "category": "<Fill in>",
-  "description": "<Fill in>",
-  "location": "<Fill in>",
-  "contact": "<Fill in - number>",
-  "openingHours": "<Fill in>",
-  "delivery": "<Fill in>",
-  "menus": [Menu_Schema]
-}
-Schema:
-{
-  "name": "<Fill in>",
-  "category": "<Fill in>",
-  "description": "<Fill in>",
-  "location": "<Fill in>",
-  "contact": "<Fill in - number>",
-  "openingHours": "<Fill in>",
-  "delivery": "<Fill in>",
-  "menus": [Menu_Schema]
+
+
+
 
 Grocery Store)
 
@@ -172,11 +166,59 @@ Coffee & Dessert) Julie
 
 Clothing Store)
 
+{
+  "name": "Yumi's Fashion",
+  "category": "Clothing Store",
+  "description": "Fast Fashion right here with Yumi",
+  "location": "84th st, baker building",
+  "contact": "032844030",
+  "openingHours": "09:00~23:00",
+  "delivery": "Call delivery",
+  "menus": [{
+    "name": "High Heel",
+    "price": "10",
+  }, {
+    "name": "Boots",
+    "price": "20",
+  }, {
+    "name": "Coat",
+    "price": "36",
+  }, {
+    "name": "Skort",
+    "price": "24",
+  }]
+}
+
+{
+  "name": "Boki's Hanbok Shop",
+  "category": "Clothing Store",
+  "description": "Try Korean Traditional Hanbok with Boki",
+  "location": "331-1019, Spring st, Atlanta",
+  "contact": "082834030",
+  "openingHours": "09:00~23:00",
+  "delivery": "Call delivery",
+  "menus": [{
+    "name": "Pink Hanbok",
+    "price": "10",
+  }, {
+    "name": "Mom's Hanbok",
+    "price": "20",
+  }, {
+    "name": "Dad's Hanok",
+    "price": "36",
+  }, {
+    "name": "Baby Hanbok",
+    "price": "24",
+  }]
+}
+
 Bar)
 
 Outside Market)
 
+
 Beauty Salon/Barbershop)
+
 
 Others)
 
