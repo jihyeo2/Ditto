@@ -1,5 +1,8 @@
 # JOC
 
+### Try out our app via expo: https://exp.host/@umum3006/Ditto?release-channel=staging  
+#### * You need to install expo application on your phone *  
+
 Repo for Summer2020 Hackathon
 
 Helpful source: Type "CS196 at Illinois" on YouTube
