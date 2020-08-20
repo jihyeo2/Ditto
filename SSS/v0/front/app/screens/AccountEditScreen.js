@@ -16,6 +16,7 @@ import AppText from "../components/AppText";
 import AnImageInput from "../components/AnImageInput";
 import authStorage from "../auth/storage";
 import UploadScreen from "./UploadScreen";
+import colors from "../config/colors";
 
 function AccountEditScreen({ navigation, route }) {
   const validationSchema = Yup.object().shape({
@@ -58,7 +59,6 @@ function AccountEditScreen({ navigation, route }) {
         visible={uploadVisible}
       />
       <ScrollView>
-        {/* Issue: saved profileImage not getting uploaded */}
         <Form
           initialValues={{
             profileImage: user.profileImage,
@@ -70,19 +70,39 @@ function AccountEditScreen({ navigation, route }) {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <AnImageInput name="profileImage" />
-          <View style={styles.horiz}>
-            <AppText>Name: </AppText>
+          <View style={{ top: 10, marginBottom: 30 }}>
+            <AppText
+              style={{
+                fontSize: 30,
+                fontWeight: "bold",
+                marginTop: 15,
+                marginLeft: 10,
+                marginBottom: 10,
+              }}
+            >
+              Change Profile
+            </AppText>
+            <AnImageInput
+              name="profileImage"
+              height={170}
+              width={170}
+              borderWidth={10}
+              borderColor={colors.light}
+              borderRadius={85}
+            />
+          </View>
+          <View style={styles.infoInput}>
+            <AppText style={styles.infoTitle}>Name : </AppText>
             <FormField name="name"></FormField>
           </View>
 
-          <View style={styles.horiz}>
-            <AppText>Email: </AppText>
+          <View style={styles.infoInput}>
+            <AppText style={styles.infoTitle}>Email : </AppText>
             <FormField name="email"></FormField>
           </View>
 
-          <View style={styles.horizPassword}>
-            <AppText>Change Password: </AppText>
+          <View style={styles.infoInput}>
+            <AppText style={styles.infoTitle}>Password : </AppText>
             <View style={styles.vertical}>
               <FormField
                 name="currentPassword"
@@ -118,26 +138,19 @@ function AccountEditScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-
-    paddingTop: 20,
-    alignContent: "center",
-    alignItems: "center",
+    margin: 12,
   },
   images: {
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  horiz: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    paddingRight: 10,
+  infoInput: {
+    marginBottom: 20,
   },
-  horizPassword: {
-    alignItems: "flex-start",
-    padding: 10,
-    paddingRight: 10,
+  infoTitle: {
+    fontSize: 19,
+
+    marginLeft: 12,
   },
   vertical: {
     flex: 1,
