@@ -2,7 +2,7 @@ import Constants from "expo-constants";
 
 const settings = {
   dev: {
-    apiUrl: "https://de-tout.herokuapp.com/api",
+    apiUrl: "https://192.168.219.131/api",
   },
   staging: {
     apiUrl: "https://de-tout.herokuapp.com/api",
