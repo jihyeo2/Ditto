@@ -5,7 +5,7 @@ const fs = require("fs");
 const outputFolder = "public/assets";
 
 module.exports = async (req, res, next) => {
-  const images = [];
+  const images = []; 
 
   const resizePromises = req.files.map(async (file) => {
     await sharp(file.path)
