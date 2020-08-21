@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   FlatList,
   Text,
@@ -25,15 +25,11 @@ import ListItemSeparator from "../components/lists/ListItemSeparator";
 function AccountScreen({ navigation }) {
   const token = authStorage.getToken();
   const getUserApi = useApi(userApi.show);
-  const [hasStore, setHasStore] = useState(false);
   const { logOut } = useAuth();
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await getUserApi.request(token);
-      if (data.stores[0]) {
-        setHasStore(true);
-      }
+      const response = await getUserApi.request(token);
     }
     fetchData();
   }, []);
@@ -108,7 +104,7 @@ function AccountScreen({ navigation }) {
             <Icon name="plus" size={40} backgroundColor={colors.secondary} />
           </TouchableOpacity>
         </View>
-        {hasStore ? (
+        {getUserApi.data.stores && getUserApi.data.stores.length > 0 ? (
           <ScrollView style={{ height: "45%" }}>
             <FlatList
               data={getUserApi.data.stores}

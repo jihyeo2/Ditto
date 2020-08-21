@@ -47,9 +47,12 @@ function StoresInfoAddScreen({ navigation, route }) {
     fetchData();
   }, []);
 
+  const menuImages = [];
+
   const handleSubmit = async (menus, { resetForm }) => {
     setProgress(0);
     setUploadVisible(true);
+    menus.menus.forEach((menu) => menuImages.push(menu.image));
     if (basicInfo.menus) {
       const unwrap = (({
         _id,
@@ -74,37 +77,47 @@ function StoresInfoAddScreen({ navigation, route }) {
         backgroundImage,
         mainImage,
       }))(basicInfo);
-      console.log({
-        ...menus,
-        ...unwrap,
-      });
       const result = await editListingsApi.request(
         authToken,
         {
           ...menus,
           ...unwrap,
+          menuImages,
         },
         (progress) => setProgress(progress)
       );
-      if (!result.ok) {
-        setUploadVisible(false);
-        return alert("Could not save the listing.");
-      }
+      // if (!result.ok) {
+      //   setUploadVisible(false);
+      //   return alert("Could not save the listing.");
+      // }
       resetForm();
       navigation.navigate(routes.MYACCOUNT);
     } else {
+      console.log("1", {
+        ...menus,
+        ...basicInfo,
+        menuImages,
+      });
+      console.log("2", {
+        ...menus,
+        ...basicInfo,
+        ...menuImages,
+      });
       const result = await addListingsApi.request(
         authToken,
         {
           ...menus,
           ...basicInfo,
+          menuImages,
         },
         (progress) => setProgress(progress)
       );
-      if (!result.ok) {
-        setUploadVisible(false);
-        return alert("Could not save the listing.");
-      }
+      // console.log("result 1", result);
+      // if (!result.ok) {
+      //   setUploadVisible(false);
+      //   return alert("Could not save the listing.");
+      // }
+      setProgress(100);
       resetForm();
       navigation.navigate(routes.MYACCOUNT);
     }
