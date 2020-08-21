@@ -17,6 +17,8 @@ Schema:
   "password": "<Fill in>"
 }
 
+
+
 2. Store:
 
 Schema:
@@ -31,6 +33,8 @@ Schema:
   "menus": [Menu_Schema]
 }
 
+
+
 3. Menu: 
 {
   "name": "<Fill in>",
@@ -40,6 +44,26 @@ Schema:
 -----User Data-----
 
 Jeong)
+{
+  "name": "Lala",
+  "email": "lalathecat@hiride.com",
+  "password": "pinkribbon"
+}
+
+{
+  "name": "Kelly Smith",
+  "email": "ksmith02@facedrive.com",
+  "password": "roseysky15"
+}
+
+{
+  "name": "Blue Whale",
+  "email": "oceanmaster@hiride.com",
+  "password": "msinjedi"
+}
+
+
+
 
 Oh)
 
@@ -57,11 +81,196 @@ Oh)
 
 Choi)
 
+{
+  "name": "Sugju Choi",
+  "email": "schoi@hiride.com"
+  "password": "123456"
+}
+
+{
+  "name": "Jonny Liu",
+  "email": "jonny_liu@facedrive.com"
+  "password": "789019"
+}
+ 
+{
+  "name": "Yulmoo Kim",
+  "email": "ykim858@hiride.com"
+  "password": "123456"
+}
+
+
+{
+  "name": "Taylor Swift",
+  "email": "t_swift33@hiride.com"
+  "password": "0987654"
+}
+
 -----Store Data-----
 
-Restaurant)
+Restaurant) Choi
+
+{
+  "name": "One Grandma Bossam",
+  "category": "Restaurant",
+  "description": "feel the taste of a fresh bossam!",
+  "location": "3-4 Songdo-dong, Yeonsu-gu, Incheon",
+  "contact": "0328580030",
+  "openingHours": "10:00~23:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Bossam",
+    "price": "19",
+  }, {
+    "name": "Pork",
+    "price": "28",
+  }, {
+    "name": "Beef Bossam",
+    "price": "36",
+  }, {
+    "name": "Chicken Bossam",
+    "price": "24",
+  }]
+}
+ 
+{
+  "name": "Panama Bread",
+  "category": "Restaurant",
+  "description": "Sweet Tea and Freshly Baked Bread",
+  "location": "Elgin St, Rapid City, Dacota",
+  "contact": "605 646 6084",
+  "openingHours": "08:00~18:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Kimchi Bread",
+    "price": "8",
+  }, {
+    "name": "Boba fied bread",
+    "price": "6",
+  }, {
+    "name": "Sweet tea",
+    "price": "7",
+  }, {
+    "name": "Chicken bread",
+    "price": "4",
+  }]
+}
+
+{
+  "name": "BBQ Chicken House",
+  "category": "Restaurant",
+  "description": "Freshly cooked southern fied chicken!",
+  "location": "25th st, Fultron city, Atlanta",
+  "contact": "0718440030",
+  "openingHours": "11:00~23:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Chicken & Waffle",
+    "price": "10",
+  }, {
+    "name": "Cheeze Chicken",
+    "price": "20",
+  }, {
+    "name": "Spicy Chicken Set",
+    "price": "36",
+  }, {
+    "name": "Chicken Breast Meat",
+    "price": "24",
+  }]
+}
+
+{
+  "name": "InBack Steak House",
+  "category": "Restaurant",
+  "description": "#1 steak house in the town",
+  "location": "6813, Marlin St, Hays, Kansas",
+  "contact": "78582980",
+  "openingHours": "12:00~24:00",
+  "delivery": "UBER EATS",
+  "menus": [{
+    "name": "Steak Pasta",
+    "price": "12",
+  }, {
+    "name": "Pork Curtlet",
+    "price": "11",
+  }, {
+    "name": "Spring Seeds",
+    "price": "6",
+  }, {
+    "name": "Chicken Steak",
+    "price": "4",
+  }]
+}
+
+
+
 
 Grocery Store)
+{
+  "name": "T-Mart",
+  "category": "Grocery Store",
+  "description": "Groceries, general goods, bakery, etc.",
+  "location": "26 Cloud Rd, Porter, RT",
+  "contact": "7958463225",
+  "openingHours": "10:00 ~ 21:00",
+  "delivery": "Available",
+  "menus": [
+    {
+      "name": "Various Items",
+      "price": "N/A"
+    },
+  ]
+}
+
+{
+  "name": "Chucks",
+  "category": "Grocery Store",
+  "description": "Fresh food straight from local farms!",
+  "location": "5 Pompick St, Roadebb, EG",
+  "contact": "1013256997",
+  "openingHours": "Mon-Sun 10:30 ~ 22:30",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "Various Items",
+      "price": "N/A"
+    },
+  ]
+}
+
+{
+  "name": "Tovette Super Market",
+  "category": "Grocery Store",
+  "description": "groceries",
+  "location": "26-6, Tovette, Complitos, OP",
+  "contact": "2586325100",
+  "openingHours": "10:30 ~ 23:00",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "N/A",
+      "price": "N/A"
+    },
+  ]
+}
+
+{
+  "name": "RB 25",
+  "category": "Grocery Store",
+  "description": "24/7 Convenient Store",
+  "location": "30 George St, Strein, KO",
+  "contact": "0102567885",
+  "openingHours": "All day, Every day",
+  "delivery": "Not Available",
+  "menus": [
+    {
+      "name": "Most items",
+      "price": "Under 20"
+    },
+  ]
+}
+
+
 
 Coffee & Dessert) Julie
 
@@ -69,7 +278,7 @@ Coffee & Dessert) Julie
   "name": "Fluffy Puff",
   "category": "Coffee & Dessert",
   "description": "Enjoy your cloud-like puff",
-  "location": "600 Park St, Hays, KS 67601, US",
+  "location": "600 Park St, Hays, KS",
   "contact": "7851115555",
   "openingHours": "Mon - Sat: 09:00 ~ 18:00",
   "delivery": "Available",
@@ -85,15 +294,300 @@ Coffee & Dessert) Julie
   ]
 }
 
-Clothing Store)
+{
+  "name": "A Peace of Cake",
+  "category": "Coffee & Dessert",
+  "description": "It's just a peace of cake!",
+  "location": "55 This St, Thatpolis, Somestate",
+  "contact": "3167856119",
+  "openingHours": "Weekdays: 9am-7pm, Weedkend: 10am-5pm",
+  "delivery": "Not Available",
+  "menus": [
+   
+    {
+      "name": "Cheese cake",
+      "price": "6"
+    },
+    {
+      "name": "Babka ",
+      "price": "8"
+    },
+    {
+      "name": "Angel Cake",
+      "price": "8"
+    },
+    {
+      "name": "Cupcake",
+      "price": "4"
+    },
+    {
+      "name": "Carrot Cake",
+      "price": "6"
+    },
+    {
+      "name": "Baumkuhen",
+      "price": "6"
+    },
+    {
+      "name": "Brownie",
+      "price": "4"
+    },
+    {
+      "name": "Blondie",
+      "price": "4"
+    },
+  ]
+}
+
+{
+  "name": "Cafe Bean",
+  "category": "Coffee & Dessert",
+  "description": "Barista with 18 years of experience",
+  "location": "880 Cafe St, Jalen, OP",
+  "contact": "8957456336",
+  "openingHours": "Everyday 7:00-18:00",
+  "delivery": "Order through Uber Eats",
+  "menus": [
+  {
+      "name": "Americano",
+      "price": "3"
+    },
+    {
+      "name": "Cappuccino",
+      "price": "4"
+    },
+    {
+      "name": "Mocha",
+      "price": "4"
+    },
+    {
+      "name": "Espresso",
+      "price": "4"
+    },    
+    {
+      "name": "Cafe Latte",
+      "price": "4"
+    },
+    {
+      "name": "Caramel Macchiato",
+      "price": "4"
+    },
+    {
+      "name": "Fresh Orange Juice",
+      "price": "5"
+    },
+    {
+      "name": "Homemade Apple Juice",
+      "price": "4.5"
+    },
+  ]
+}
+
+
+Clothing Store) Choi
+
+{
+  "name": "Yumi's Fashion",
+  "category": "Clothing Store",
+  "description": "Fast Fashion right here with Yumi",
+  "location": "84th st, baker building",
+  "contact": "032844030",
+  "openingHours": "09:00~23:00",
+  "delivery": "Call delivery",
+  "menus": [{
+    "name": "High Heel",
+    "price": "10",
+  }, {
+    "name": "Boots",
+    "price": "20",
+  }, {
+    "name": "Coat",
+    "price": "36",
+  }, {
+    "name": "Skirt",
+    "price": "24",
+  }]
+}
+
+{
+  "name": "Boki's Hanbok Shop",
+  "category": "Clothing Store",
+  "description": "Try Korean Traditional Hanbok with Boki",
+  "location": "331-1019, Spring st, Atlanta",
+  "contact": "082834030",
+  "openingHours": "09:00~23:00",
+  "delivery": "Call delivery",
+  "menus": [{
+    "name": "Pink Hanbok",
+    "price": "10",
+  }, {
+    "name": "Mom's Hanbok",
+    "price": "20",
+  }, {
+    "name": "Dad's Hanok",
+    "price": "36",
+  }, {
+    "name": "Baby Hanbok",
+    "price": "24",
+  }]
+}
 
 Bar)
+{
+  "name": "The Kiwi Bird",
+  "category": "Bar",
+  "description": "Good Vibe for Good Day",
+  "location": "6 Brody st, Winchesst, TO",
+  "contact": "5894126358",
+  "openingHours": "16:00~26:00",
+  "delivery": "N/A",
+  "menus": [
+  {
+    "name": "Beer",
+    "price": "5-8",
+  },
+  {
+    "name": "Cocktail",
+    "price": "7-9",
+  }, 
+  {
+    "name": "Wine",
+    "price": "10-14",
+  }, 
+  {
+    "name": "Other Drinks",
+    "price": "5-7",
+  }]
+}
+
+{
+  "name": "Bell's Glass",
+  "category": "Bar",
+  "description": "The joy of best fun",
+  "location": "58 Goody st, Pubomice, TO",
+  "contact": "8563215478",
+  "openingHours": "15:00~27:00",
+  "delivery": "Nope.",
+  "menus": [
+  {
+    "name": "Beer",
+    "price": "6-9",
+  },
+  {
+    "name": "Cocktail",
+    "price": "7-10",
+  }, 
+  {
+    "name": "Wine",
+    "price": "13-18",
+  }, 
+  {
+    "name": "Other Drinks",
+    "price": "5-8",
+  },
+  {
+    "name": "Accompaniments",
+    "price": "5-23",
+  }]
+}
+
 
 Outside Market)
+{
+  "name": "Jones Natural",
+  "category": "Outside Market",
+  "description": "I grew'em all.",
+  "location": "1 Pine rd, Boyd, TO",
+  "contact": "0102567896",
+  "openingHours": "Tue-Sat 9AM-6PM",
+  "delivery": ".",
+  "menus": [
+  {
+    "name": "Vegetables",
+    "price": "2-5 per 0.5 lbs",
+  },
+  {
+    "name": "Fruits",
+    "price": "1-2",
+  }, 
+  {
+    "name": "Mushroom",
+    "price": "2-5",
+  }]
+}
+
+{
+  "name": "Farmers Market",
+  "category": "Outside Market",
+  "description": "Local Farmers Association.",
+  "location": "15 Bedilton, Molls, LI",
+  "contact": "4568931258",
+  "openingHours": "Mon-Thur 10am-7pm",
+  "delivery": "Available through phone call",
+  "menus": [
+  {
+    "name": "Vegetables",
+    "price": "2-5 per 0.5 lbs",
+  },
+  {
+    "name": "Fruits",
+    "price": "1-2",
+  }, 
+  {
+    "name": "Wood chips",
+    "price": "5-10",
+  }]
+}
+
 
 Beauty Salon/Barbershop)
+{
+  "name": "Lin's Hair Salon",
+  "category": "Beauty Salon/Barbershop",
+  "description": "Best Salon in Town",
+  "location": "256-20, Siloam St, Torent",
+  "contact": "5680123658",
+  "openingHours": "8:00~18:00",
+  "delivery": "Appointments available",
+  "menus": [{
+    "name": "Men's Hair Cuts",
+    "price": "12-22",
+  }, {
+    "name": "Women's Hair Cuts",
+    "price": "15-35",
+  }, {
+    "name": "Coloring",
+    "price": "35-80",
+  }, {
+    "name": "Perms and Straightening",
+    "price": "60-100",
+  }]
+}
+
 
 Others)
+{
+  "name": "Kat's Tattoo",
+  "category": "Others",
+  "description": "Get a beautiful tattoo you dreamed of :)",
+  "location": "789-6, Gouche st, Florett",
+  "contact": "0102569875",
+  "openingHours": "11:00~20:00",
+  "delivery": "Visits only",
+  "menus": [{
+    "name": "Tiny (under 2 in)",
+    "price": "45",
+  }, {
+    "name": "Small (under 4 in)",
+    "price": "80",
+  }, {
+    "name": "Medium (4-6 in)",
+    "price": "200",
+  }, {
+    "name": "Large (6+ in)",
+    "price": "500-3,000",
+  }]
+}
 
 
 
