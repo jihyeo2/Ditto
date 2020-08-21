@@ -68,7 +68,7 @@ function RegisterScreen(props) {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <AnImageInput name="profileImage" />
+          <AnImageInput name="Profile Image" />
           <FormField
             name="name"
             textInputStyle={{
@@ -110,7 +110,7 @@ function RegisterScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 12,
+    marginHorizontal: 12,
   },
 });
 

@@ -138,7 +138,7 @@ function AccountEditScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 12,
+    marginHorizontal: 12,
   },
   images: {
     flexDirection: "row",

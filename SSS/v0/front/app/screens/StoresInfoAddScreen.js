@@ -144,8 +144,18 @@ function StoresInfoAddScreen({ navigation, route }) {
             placeholder="Delivery Option (Example: Available through Uber Eats."
           ></FormField>
           <View style={styles.images}>
-            <AnImageInput name="backgroundImage" width="47%" height={100} />
-            <AnImageInput name="mainImage" width="47%" height={100} />
+            <AnImageInput
+              name="backgroundImage"
+              width="47%"
+              height={100}
+              borderRadius={15}
+            />
+            <AnImageInput
+              name="mainImage"
+              width="47%"
+              height={100}
+              borderRadius={15}
+            />
           </View>
           <SubmitButton title="Next" />
         </Form>
@@ -156,7 +166,7 @@ function StoresInfoAddScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    marginHorizontal: 12,
     paddingTop: 20,
   },
   images: {

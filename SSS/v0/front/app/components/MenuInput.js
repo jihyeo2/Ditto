@@ -40,9 +40,9 @@ function MenuInput({ menu, onChangeMenu }) {
 
   let icon = null;
   if (menu) {
-    icon = "close";
+    icon = "Remove";
   } else {
-    icon = "plus";
+    icon = "Add Menu";
   }
   console.log("this is icon", icon);
 
@@ -61,9 +61,8 @@ function MenuInput({ menu, onChangeMenu }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.secondary,
-    width: 400,
-    height: 400,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 5,
