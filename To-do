@@ -1,26 +1,27 @@
 Frontend & Backend 
   
-1. Allow users to delete stores & their accounts  
+
 2. Modify StoreAdd pg1 to save its data when returned from pg2  
 3. Change profileImage optional 
-4. Sign-up lists for storesInNeed?
 
 Frontend
 
-0. Apply Erin's design for MenuAdd element and polish StoresMenuAddScreen
-1. (Android) vertically center "Search items" in search bar
-2. (iOS) let the formfield appear above the keyboard
+0. Polish storesInNeed
+1. fix the camera issue
+2. (iOS) Close button goes above statusBar when opening category modal in StoreInfoAddScreen
 3. Add Logo next to the search bar so that the user can directly go to ShoppingScreen
 4. Improve phone number and price entry form (ex. dollar sign in front of price field)
-5. Make one line for store name in StorePickerItem
-6. Make searchResultsScreen pretty
+5. Make one line (ex)name...) for store name in StorePickerItem
+6. Make my stores view in accountscreen scroll horizontally
+
 
 Backend
 
-1. Put/ Delete request for all
+1. Don't know why I cannot delete users -- no errors found
 
 Must at the end
 1. remove all "console.log"s
+2. publish
 
 Later
 
