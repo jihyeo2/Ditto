@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
 import SearchButton from "./forms/SearchButton";
+import colors from "../config/colors";
 
 function SearchBarAppTextInput({
   searchButton,
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     marginVertical: 5,
-    paddingVertical: 5,
     alignItems: "center",
     justifyContent: "center",
     width: 50,
@@ -47,13 +47,7 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-
-  searchIcon: {
-    alignSelf: "flex-end",
-    marginRight: 5,
-  },
   text: {
-    alignSelf: "flex-start",
     flex: 1,
     fontSize: 15,
     marginLeft: 15,

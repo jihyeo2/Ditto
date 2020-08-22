@@ -9,6 +9,7 @@ export default Object.freeze({
   MYACCOUNT: "MyAccount",
   ACCOUNTEDIT: "AccountEdit",
   STORES_IN_NEED: "StoresInNeed",
+  MESSAGES: "Messages",
   STORESINFO_ADD: "StoresInfoAdd",
   STORESMENU_ADD: "StoresMenuAdd",
   AUTH: "Auth",

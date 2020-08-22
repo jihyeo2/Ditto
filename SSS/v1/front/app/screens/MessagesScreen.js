@@ -13,13 +13,13 @@ const initialMessages = [
       "T1aesdrtfgyhuijliuyjthgrefsdesfdrthyujhjiokjihgfdfsddfhgjhukijo;iytrgsfdghfjygkuhlij;okojlihukgyjfhdfgdfdgfhgjhjk",
     description:
       "D1sdfhgjhjkjhgfdsasfdgyjhukijlhkgjfhdgsfadesfrdytfyulijo;jkhgfdsdfedtrtyuyuiljkhgjfhdggfghjdfghj",
-    image: require("../assets/mosh.jpg"),
+    image: require("../assets/splash.png"),
   },
   {
     id: 2,
     title: "T2",
     description: "D2",
-    image: require("../assets/mosh.jpg"),
+    image: require("../assets/splash.png"),
   },
 ];
 
@@ -56,7 +56,7 @@ function MessagesScreen(props) {
               id: 2,
               title: "T2",
               description: "D2",
-              image: require("../assets/mosh.jpg"),
+              image: require("../assets/splash.png"),
             },
           ]);
         }}

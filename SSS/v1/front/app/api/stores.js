@@ -16,9 +16,17 @@ const editStores = (authToken, store, onUploadProgress) => {
       onUploadProgress(progress.loaded / progress.total),
   });
 };
+const deleteStores = (authToken, id) =>
+  client.delete(
+    `/stores/${id}`,
+    {},
+    { headers: { "x-auth-token": authToken } }
+  );
+
 export default {
   getStoresById,
   getStoresByKeyword,
   addStores,
   editStores,
+  deleteStores,
 };

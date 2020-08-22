@@ -9,5 +9,10 @@ const edit = (authToken, userInfo, onUploadProgress) =>
     onUploadProgress: (progress) =>
       onUploadProgress(progress.loaded / progress.total),
   });
+const remove = (authToken) => {
+  console.log(authToken);
+  client.delete("/users/me", {}, { headers: { "x-auth-token": authToken } });
+  console.log("requested delete");
+};
 
-export default { register, show, edit };
+export default { register, show, edit, remove };

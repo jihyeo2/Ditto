@@ -11,12 +11,14 @@ import {
 
 import userApi from "../api/users";
 import useApi from "../hooks/useApi";
+import useAuth from "../auth/useAuth";
 import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 import AnImageInput from "../components/AnImageInput";
 import authStorage from "../auth/storage";
 import UploadScreen from "./UploadScreen";
 import colors from "../config/colors";
+import AppButton from "../components/AppButton";
 
 function AccountEditScreen({ navigation, route }) {
   const validationSchema = Yup.object().shape({
@@ -32,10 +34,15 @@ function AccountEditScreen({ navigation, route }) {
   });
 
   const user = route.params;
-  const token = authStorage.getToken();
+  let token = null;
+  const { logOut } = useAuth();
   const editUserApi = useApi(userApi.edit);
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    token = authStorage.getToken();
+  }, []);
 
   const handleSubmit = async (userInfo) => {
     console.log("userInfo", userInfo);
@@ -49,6 +56,11 @@ function AccountEditScreen({ navigation, route }) {
     }
     //resetForm();
     navigation.navigate(routes.MYACCOUNT);
+  };
+
+  const handlePress = () => {
+    logOut();
+    const result = userApi.remove(token);
   };
 
   return (
@@ -130,6 +142,7 @@ function AccountEditScreen({ navigation, route }) {
           </View>
 
           <SubmitButton title="Save" />
+          <AppButton title="Delete my Account" onPress={handlePress} />
         </Form>
       </ScrollView>
     </Screen>
@@ -138,7 +151,7 @@ function AccountEditScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 12,
+    marginHorizontal: 12,
   },
   images: {
     flexDirection: "row",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -54,9 +54,9 @@ function RegisterScreen(props) {
   };
 
   return (
-    <>
+    <ScrollView>
       <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
-      <Screen style={styles.container}>
+      <View style={styles.container}>
         <ErrorMessage error={error} visible={registerFailed} />
         <Form
           initialValues={{
@@ -103,8 +103,8 @@ function RegisterScreen(props) {
           ></FormField>
           <SubmitButton title="Register" />
         </Form>
-      </Screen>
-    </>
+      </View>
+    </ScrollView>
   );
 }
 

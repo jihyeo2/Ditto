@@ -9,18 +9,20 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useFormikContext } from "formik";
+import * as ImagePickerAlternative from "react-native-image-picker";
 
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import ErrorMessage from "../components/forms/ErrorMessage";
+import colors from "../config/colors";
 
 function AnImageInput({
   name,
   width = 150,
   height = 150,
-  borderWidth,
-  borderColor,
-  borderRadius,
+  borderWidth = 0,
+  borderColor = colors.black,
+  borderRadius = 15,
 }) {
   const { setFieldValue, errors, touched, values } = useFormikContext();
   const imageUri = values[name];
@@ -43,10 +45,15 @@ function AnImageInput({
   const handlePress = () => {
     if (!imageUri) selectImage();
     else
-      Alert.alert("Delete", "Are you sure you want to delete this?", [
-        { text: "Yes", onPress: () => setFieldValue(name, null) },
-        { text: "No" },
-      ]);
+      Alert.alert(
+        "Delete",
+        "Are you sure you want to delete this?",
+        [
+          { text: "Yes", onPress: () => setFieldValue(name, null) },
+          { text: "No" },
+        ],
+        { cancelable: true, onDismiss: () => {} }
+      );
   };
 
   const selectImage = async () => {
@@ -56,13 +63,14 @@ function AnImageInput({
       [
         { text: "Camera", onPress: () => imageFromCamera() },
         { text: "Library", onPress: () => imageFromLibrary() },
-      ]
+      ],
+      { cancelable: true, onDismiss: () => {} }
     );
   };
 
   const imageFromCamera = async () => {
     try {
-      const result = await ImagePicker.launchCameraAsync({
+      const result = await ImagePickerAlternative.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       });
@@ -132,7 +140,6 @@ function AnImageInput({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

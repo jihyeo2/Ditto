@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import Constants from "expo-constants";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "../components/Screen";
@@ -45,7 +46,6 @@ function AccountScreen({ navigation }) {
           style={{
             fontSize: 30,
             fontWeight: "bold",
-            marginTop: 20,
             marginLeft: 15,
             marginBottom: 10,
           }}
@@ -84,6 +84,15 @@ function AccountScreen({ navigation }) {
         />
         <ListItemSeparator />
         <ListItem
+          title="My Messages"
+          IconComponent={
+            <Icon name="message" backgroundColor={colors.secondary} />
+          }
+          onPress={() => navigation.navigate(routes.MESSAGES)}
+          showChevrons={false}
+        />
+        <ListItemSeparator />
+        <ListItem
           title="Log out"
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
           onPress={() => logOut()}
@@ -117,11 +126,10 @@ function AccountScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         {hasStore ? (
-          <ScrollView style={{ height: "45%" }}>
+          <ScrollView style={{ height: "32%" }}>
             <FlatList
               data={getUserApi.data.stores}
               keyExtractor={(item) => item._id.toString()}
-              numColumns={1}
               width="100%"
               renderItem={({ item }) => (
                 <StorePickerItem
@@ -159,7 +167,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
   },
   container: {
-    marginVertical: 15,
+    marginBottom: 15,
   },
   addButton: {
     position: "absolute",

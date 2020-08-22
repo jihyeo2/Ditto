@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import MenuInput from "./MenuInput";
 import CachedMenu from "./CachedMenu";
 
@@ -14,7 +14,7 @@ function MenuInputList({ menus = [], onRemoveMenu, onAddMenu }) {
       >
         <View>
           {menus.map((menu) => (
-            <View key={menu.name} style={styles.menu}>
+            <View key={menu.name}>
               <CachedMenu
                 key={menu.name}
                 menu={menu}
@@ -28,10 +28,5 @@ function MenuInputList({ menus = [], onRemoveMenu, onAddMenu }) {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  menu: {
-    marginRight: 10,
-  },
-});
 
 export default MenuInputList;

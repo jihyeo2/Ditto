@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 
-import Screen from "../components/Screen";
 import StorePickerItem from "../components/StorePickerItem";
 import routes from "../navigation/routes";
 import useApi from "../hooks/useApi";
@@ -25,47 +24,46 @@ function SearchResultsScreen({ route, navigation }) {
   }, [searchItem.searchItem]);
 
   return (
-    <Screen>
-      <View style={styles.container}>
-        <AppText
-          style={{
-            margin: 5,
-            marginLeft: 10,
-            alignSelf: "center",
-            color: colors.secondary,
-          }}
-        >
-          You searched "{searchItem.searchItem}"
-        </AppText>
-        {getListingsApi.data[0] ? (
-          <FlatList
-            data={getListingsApi.data}
-            keyExtractor={(item) => item._id.toString()}
-            numColumns={1}
-            width="100%"
-            renderItem={({ item }) => (
-              <StorePickerItem
-                item={item}
-                onPress={() =>
-                  navigation.navigate(routes.STORE_MAIN, {
-                    ...item,
-                    editButton: false,
-                  })
-                }
-              />
-            )}
-          />
-        ) : (
-          <AppText style={{ color: colors.medium }}>No result.</AppText>
-        )}
-      </View>
-    </Screen>
+    <View style={styles.container}>
+      <AppText
+        style={{
+          margin: 5,
+          marginLeft: 10,
+          alignSelf: "center",
+          color: colors.secondary,
+        }}
+      >
+        You searched "{searchItem.searchItem}"
+      </AppText>
+      {getListingsApi.data[0] ? (
+        <FlatList
+          data={getListingsApi.data}
+          keyExtractor={(item) => item._id.toString()}
+          numColumns={1}
+          width="100%"
+          renderItem={({ item }) => (
+            <StorePickerItem
+              item={item}
+              onPress={() =>
+                navigation.navigate(routes.STORE_MAIN, {
+                  ...item,
+                  editButton: false,
+                })
+              }
+            />
+          )}
+        />
+      ) : (
+        <AppText style={{ color: colors.medium }}>No result.</AppText>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
+    alignItems: "center",
   },
 });
 

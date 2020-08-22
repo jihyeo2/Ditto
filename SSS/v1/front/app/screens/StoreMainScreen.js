@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
+  Alert,
 } from "react-native";
 
 import Screen from "../components/Screen";
@@ -17,29 +18,65 @@ import StoreInfoMain from "../components/StoreInfoMain";
 import StoreInfoSub from "../components/StoreInfoSub";
 import Icon from "../components/Icon";
 import routes from "../navigation/routes";
+import useApi from "../hooks/useApi";
+import storesApi from "../api/stores";
+import authStorage from "../auth/storage";
 
 function StoreMainScreen({ navigation, route }) {
   const item = route.params;
   console.log("well then", item);
   const { editButton } = route.params;
 
+  let authToken = null;
+  useEffect(() => {
+    async function fetchData() {
+      authToken = authStorage.getToken();
+    }
+    fetchData();
+  }, []);
+
+  const deleteStoresApi = useApi(storesApi.deleteStores);
+
   const onPress = () => {
     Linking.openURL(`tel:${item.contact}`);
+  };
+
+  const handlePress = () => {
+    Alert.alert(
+      "Delete",
+      "Are you sure you want to delete this store?",
+      [
+        {
+          text: "Yes",
+          onPress: async () => {
+            const reponse = await deleteStoresApi.request(authToken, item._id);
+            navigation.navigate(routes.MYACCOUNT);
+          },
+        },
+        { text: "No" },
+      ],
+      { cancelable: true, onDismiss: () => {} }
+    );
   };
 
   return (
     <Screen style={styles.screen}>
       {editButton ? (
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate(routes.STORESINFO_ADD, item)}
-        >
-          <Icon
-            name="lead-pencil"
-            size={60}
-            backgroundColor={colors.secondary}
-          />
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity
+            style={styles.edit}
+            onPress={() => navigation.navigate(routes.STORESINFO_ADD, item)}
+          >
+            <Icon
+              name="lead-pencil"
+              size={60}
+              backgroundColor={colors.secondary}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.delete} onPress={handlePress}>
+            <Icon name="trash-can" size={60} backgroundColor={colors.primary} />
+          </TouchableOpacity>
+        </>
       ) : null}
       <ScrollView>
         <StoreInfoMain
@@ -76,7 +113,13 @@ function StoreMainScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  button: {
+  edit: {
+    position: "absolute",
+    right: 100,
+    bottom: 20,
+    zIndex: 1,
+  },
+  delete: {
     position: "absolute",
     right: 20,
     bottom: 20,

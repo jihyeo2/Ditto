@@ -5,6 +5,7 @@ import CategoryWithImageItem from "../components/CategoryWithImageItem";
 import routes from "../navigation/routes";
 import categoriesApi from "../api/categories";
 import useApi from "../hooks/useApi";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 function ShoppingScreen({ navigation }) {
   const getListingsApi = useApi(categoriesApi.getCategories);
@@ -21,9 +22,10 @@ function ShoppingScreen({ navigation }) {
       data={getListingsApi.data}
       keyExtractor={(item) => item._id.toString()}
       numColumns={2}
+      style={{ padding: 10 }}
       columnWrapperStyle={styles.list}
       renderItem={({ item }) => (
-        <CategoryWithImageItem
+        <CategoryPickerItem
           item={item}
           onPress={() =>
             navigation.navigate(routes.CATEGORYSHOPPING_RESULTS, item)
@@ -38,7 +40,8 @@ function ShoppingScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   list: {
-    justifyContent: "space-evenly",
+    marginTop: 10,
+    justifyContent: "center",
   },
 });
 

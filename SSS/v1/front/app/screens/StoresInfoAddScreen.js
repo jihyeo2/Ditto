@@ -156,8 +156,7 @@ function StoresInfoAddScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    paddingTop: 20,
+    marginHorizontal: 12,
   },
   images: {
     flexDirection: "row",

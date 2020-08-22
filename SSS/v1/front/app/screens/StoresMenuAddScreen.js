@@ -118,7 +118,16 @@ function StoresInfoAddScreen({ navigation, route }) {
         visible={uploadVisible}
       />
       <ScrollView>
-        <AppText>Menu/Service</AppText>
+        <AppText
+          style={{
+            fontSize: 30,
+            fontWeight: "bold",
+            marginVertical: 20,
+            marginLeft: 12,
+          }}
+        >
+          Menu Entry
+        </AppText>
         <Form
           initialValues={initial}
           onSubmit={handleSubmit}
@@ -134,8 +143,7 @@ function StoresInfoAddScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    paddingTop: 20,
+    marginHorizontal: 12,
   },
   images: {
     flexDirection: "row",

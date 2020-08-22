@@ -33,7 +33,6 @@ function Header({ navigation }) {
           placeholder="Search items"
           searchButton
           height={45}
-          top={10}
         />
       </Form>
     </View>

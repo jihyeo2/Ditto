@@ -22,7 +22,7 @@ function SearchButton(props) {
 
 const styles = StyleSheet.create({
   searchIcon: {
-    alignSelf: "flex-end",
+    alignSelf: "center",
     marginRight: 10,
   },
 });

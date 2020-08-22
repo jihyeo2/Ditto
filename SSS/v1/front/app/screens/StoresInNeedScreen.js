@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, ScrollView, StyleSheet } from "react-native";
+import Constants from "expo-constants";
 
-import Screen from "../components/Screen";
 import StoreIntroCard from "../components/StoreIntroCard";
 import AppText from "../components/AppText";
 import useApi from "../hooks/useApi";
@@ -21,26 +21,40 @@ function StoresInNeedScreen(props) {
   }, []);
 
   return (
-    <Screen>
-      <AppText>Stores looking for help</AppText>
+    <ScrollView style={styles.container}>
+      <AppText
+        style={{
+          fontSize: 27,
+          fontWeight: "bold",
+          marginVertical: 10,
+          marginLeft: 12,
+        }}
+      >
+        Stores looking for help
+      </AppText>
       {getStoresInNeedApi.data[0] ? (
         <FlatList
           data={getStoresInNeedApi.data}
           keyExtractor={(item) => item._id.toString()}
           numColumns={1}
-          width="100%"
+          width="95%"
           renderItem={({ item }) => <StoreIntroCard store={item} />}
+          style={{ alignSelf: "center" }}
         />
       ) : (
-        <AppText style={{ color: colors.medium }}>
+        <AppText style={{ color: colors.medium, alignSelf: "center" }}>
           No one is looking for help yet.
         </AppText>
       )}
-    </Screen>
+    </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingTop: Constants.statusBarHeight,
+    flex: 1,
+  },
 });
 
 export default StoresInNeedScreen;

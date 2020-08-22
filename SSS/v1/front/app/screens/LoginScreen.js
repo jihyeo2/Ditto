@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -29,7 +29,7 @@ function LoginScreen(props) {
   };
 
   return (
-    <Screen style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image style={styles.logo} source={require("../assets/dittoBlack.png")} />
 
       <AppForm
@@ -67,13 +67,13 @@ function LoginScreen(props) {
         />
         <SubmitButton title="Login" />
       </AppForm>
-    </Screen>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 12,
+    marginHorizontal: 12,
   },
   logo: {
     width: 100,
