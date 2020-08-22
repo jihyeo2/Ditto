@@ -52,11 +52,11 @@ function validateUser(user) {
     email: Joi.string().required().min(5).max(255).email(),
     currentPassword: Joi.string().min(5).max(1024),
     password: Joi.string().required().min(5).max(1024),
-    // store: Joi.objectId(),
   };
 
   return Joi.validate(user, schema);
 }
 
 exports.User = User;
+exports.userSchema = userSchema;
 exports.validate = validateUser;

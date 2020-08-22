@@ -146,6 +146,7 @@ router.put("/:id", auth, async (req, res) => {
     },
     { arrayFilters: [{ "elem._id": update._id }] }
   );
+  if (!user) return res.status(400).send("Invalid user.");
 
   const category = await Category.findByIdAndUpdate(
     update.category._id,
@@ -168,6 +169,7 @@ router.put("/:id", auth, async (req, res) => {
     },
     { arrayFilters: [{ "elem._id": update._id }] }
   );
+  if (!category) return res.status(400).send("Invalid category.");
 
   try {
     new Fawn.Task()
@@ -189,23 +191,21 @@ router.put("/:id", auth, async (req, res) => {
 });
 
 router.delete("/:id", auth, async (req, res) => {
+  console.log("welcome deleting");
   const store = await Store.findById(req.params.id);
   if (!store)
     return res.status(404).send("The store with the given ID was not found.");
 
-  try {
-    new Fawn.Task()
-      .remove("stores", { _id: store._id })
-      .update(
-        "categories",
-        { _id: store.category._id },
-        {
-          $pull: { stores: store },
-        }
-      )
-      .update("users", { _id: store.user._id }, { $pull: { stores: "" } })
-      .run();
+  const user = await User.findByIdAndUpdate(req.user._id, {
+    $pull: { stores: { _id: store._id } },
+  });
 
+  const category = await Category.findByIdAndUpdate(store.category._id, {
+    $pull: { stores: { _id: store._id } },
+  });
+
+  try {
+    new Fawn.Task().remove("stores", { _id: store._id }).run();
     res.send(store);
   } catch (ex) {
     res

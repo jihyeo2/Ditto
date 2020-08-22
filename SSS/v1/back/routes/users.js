@@ -88,39 +88,21 @@ router.put("/me", auth, async (req, res) => {
 });
 
 router.delete("/me", auth, async (req, res) => {
+  console.log("welcome delteing users");
   const user = await User.findById(req.user._id).select(
     "-password -__v -profileImage"
   );
   if (!user)
     return res.status(404).send("The user with the given ID was not found.");
 
-  if (user.store) {
-    const store = await Store.findById(user.store._id);
-    if (!store) return res.status(400).send("Invalid store.");
-
-    const category = await Category.findById(store.category._id);
-    if (!category) return res.status(400).send("Invalid category.");
-
-    try {
-      new Fawn.Task()
-        .remove("users", { _id: user._id })
-        .remove("stores", { _id: store._id }) //should remove multiple or none
-        .update(
-          "categories",
-          { _id: category._id },
-          { $pull: { stores: store } }
-        )
-        .run();
-      res.send(user);
-    } catch (ex) {
-      console.log(ex);
-      res
-        .status(500)
-        .send("Error occured, thus the user was not deleted successfully.");
-    }
+  try {
+    new Fawn.Task().remove("users", { _id: user._id }).run();
+    res.send(user);
+  } catch (ex) {
+    res
+      .status(500)
+      .send("Error occured, thus the user was not deleted successfully.");
   }
-  await user.remove();
-  res.send(user);
 });
 
 module.exports = router;

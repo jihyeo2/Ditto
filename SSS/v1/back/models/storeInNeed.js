@@ -2,6 +2,23 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 
+const userSchema = {
+  type: new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+      minlength: 3,
+      maxlength: 50,
+    },
+    email: {
+      type: String,
+      required: true,
+      minlength: 5,
+      maxlength: 255,
+    },
+  }),
+};
+
 const storeInNeedSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -32,6 +49,7 @@ const storeInNeedSchema = new mongoose.Schema({
     minlength: 9,
     maxlength: 12,
   },
+  users: [userSchema],
 });
 
 const StoreInNeed = mongoose.model("StoreInNeed", storeInNeedSchema);
