@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
     maxlength: 1024,
   },
   stores: [storeSchema],
+  expoPushToken: String,
 });
 
 userSchema.methods.generateAuthToken = function () {

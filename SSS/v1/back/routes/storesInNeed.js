@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   const category = await Category.findById(req.body.categoryId);
   if (!category) return res.status(400).send("Invalid category.");
 
-  console.log("there");
+  console.log("there", category);
 
   const storeInNeed = new StoreInNeed({
     name: req.body.name,

@@ -1,47 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
+import { Notifications } from "expo";
 
 import Screen from "../components/Screen";
 import ListItem from "../components/lists/ListItem";
 import ListItemSeparator from "../components/lists/ListItemSeparator";
 import ListItemDeleteAction from "../components/lists/ListItemDeleteAction";
-
-const initialMessages = [
-  {
-    id: 1,
-    title:
-      "T1aesdrtfgyhuijliuyjthgrefsdesfdrthyujhjiokjihgfdfsddfhgjhukijo;iytrgsfdghfjygkuhlij;okojlihukgyjfhdfgdfdgfhgjhjk",
-    description:
-      "D1sdfhgjhjkjhgfdsasfdgyjhukijlhkgjfhdgsfadesfrdytfyulijo;jkhgfdsdfedtrtyuyuiljkhgjfhdggfghjdfghj",
-    image: require("../assets/splash.png"),
-  },
-  {
-    id: 2,
-    title: "T2",
-    description: "D2",
-    image: require("../assets/splash.png"),
-  },
-];
+import useApi from "../hooks/useApi";
+import messagesApi from "../api/messages";
+import authStorage from "../auth/storage";
 
 function MessagesScreen(props) {
-  const [messages, setMessages] = useState(initialMessages);
   const [refreshing, setRefreshing] = useState(false);
+  const token = authStorage.getToken();
+  const getMessagesApi = useApi(messagesApi.get);
+  const discardMessagesApi = useApi(messagesApi.discard);
+
+  useEffect(() => {
+    const response = getMessagesApi.request(token);
+  }, []);
 
   const handleDelete = (message) => {
-    setMessages(messages.filter((m) => m.id !== message.id));
+    const response = discardMessagesApi.request(message._id);
+    const res = getMessagesApi.request(token);
   };
 
   return (
     <Screen>
       <FlatList
-        data={messages}
-        keyExtractor={(message) => message.id.toString()}
+        data={getMessagesApi.data}
+        keyExtractor={(message) => message._id.toString()}
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
-            subTitle={item.description}
-            image={item.image}
-            onPress={() => console.log("message selected", item)}
+            subTitle={item.body}
+            image={require("../assets/dittoBlack.png")}
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
@@ -51,14 +44,7 @@ function MessagesScreen(props) {
         ItemSeparatorComponent={ListItemSeparator}
         refreshing={refreshing}
         onRefresh={() => {
-          setMessages([
-            {
-              id: 2,
-              title: "T2",
-              description: "D2",
-              image: require("../assets/splash.png"),
-            },
-          ]);
+          const response = getMessagesApi.request(token);
         }}
       />
     </Screen>

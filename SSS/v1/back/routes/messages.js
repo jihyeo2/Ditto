@@ -1,62 +1,53 @@
-// const express = require("express");
-// const router = express.Router();
-// const Joi = require("joi");
-// const { Expo } = require("expo-server-sdk");
+const { Message, validate } = require("../models/message");
+const { Expo } = require("expo-server-sdk");
+const { User } = require("../models/user");
+const express = require("express");
+const router = express.Router();
+const auth = require("../middleware/auth");
+const sendPushNotification = require("../utilities/pushNotifications");
 
-// const usersStore = require("../store/users");
-// const listingsStore = require("../store/listings");
-// const messagesStore = require("../store/messages");
-// const sendPushNotification = require("../utilities/pushNotifications");
-// const auth = require("../middleware/auth");
-// const validateWith = require("../middleware/validation");
+router.get("/", auth, async (req, res) => {
+  const message = await Message.find({ userId: req.user._id });
 
-// const schema = {
-//   listingId: Joi.number().required(),
-//   message: Joi.string().required(),
-// };
+  if (!message)
+    return res.status(404).send("The message with the given ID was not found.");
 
-// router.get("/", auth, (req, res) => {
-//   const messages = messagesStore.getMessagesForUser(req.user.userId);
+  res.send(message);
+});
 
-//   const mapUser = (userId) => {
-//     const user = usersStore.getUserById(userId);
-//     return { id: user.id, name: user.name };
-//   };
+router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-//   const resources = messages.map((message) => ({
-//     id: message.id,
-//     listingId: message.listingId,
-//     dateTime: message.dateTime,
-//     content: message.content,
-//     fromUser: mapUser(message.fromUserId),
-//     toUser: mapUser(message.toUserId),
-//   }));
+  console.log("body", req.body);
 
-//   res.send(resources);
-// });
+  const message = new Message({
+    title: req.body.title,
+    body: req.body.body,
+    userId: req.body.userId,
+  });
 
-// router.post("/", [auth, validateWith(schema)], async (req, res) => {
-//   const { listingId, message } = req.body;
+  console.log(message);
 
-//   const listing = listingsStore.getListing(listingId);
-//   if (!listing) return res.status(400).send({ error: "Invalid listingId." });
+  const user = await User.findById(req.body.userId);
+  if (!user) return res.status(400).send("Invalid category.");
+  console.log("haha", user);
 
-//   const targetUser = usersStore.getUserById(parseInt(listing.userId));
-//   if (!targetUser) return res.status(400).send({ error: "Invalid userId." });
+  if (Expo.isExpoPushToken(user.expoPushToken)) {
+    console.log("message sent!");
+    await sendPushNotification(user.expoPushToken, message);
+  }
 
-//   messagesStore.add({
-//     fromUserId: req.user.userId,
-//     toUserId: listing.userId,
-//     listingId,
-//     content: message,
-//   });
+  console.log("just passed");
 
-//   const { expoPushToken } = targetUser;
+  await message.save();
 
-//   if (Expo.isExpoPushToken(expoPushToken))
-//     await sendPushNotification(expoPushToken, message);
+  res.send(message);
+});
 
-//   res.status(201).send();
-// });
+router.delete("/:id", async (req, res) => {
+  const message = await Message.findOneAndRemove({ _id: req.params.id });
+  res.send(message);
+});
 
-// module.exports = router;
+module.exports = router;
