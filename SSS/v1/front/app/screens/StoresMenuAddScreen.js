@@ -13,7 +13,7 @@ import UploadScreen from "./UploadScreen";
 import routes from "../navigation/routes";
 import FormMenuPicker from "../components/forms/FormMenuPicker";
 
-function StoresInfoAddScreen({ navigation, route }) {
+function StoresMenuAddScreen({ navigation, route }) {
   console.log("stores edit");
 
   const validationSchema = Yup.object().shape({
@@ -47,9 +47,12 @@ function StoresInfoAddScreen({ navigation, route }) {
     fetchData();
   }, []);
 
+  const menuImages = [];
+
   const handleSubmit = async (menus, { resetForm }) => {
     setProgress(0);
     setUploadVisible(true);
+    menus.menus.forEach((menu) => menuImages.push(menu.image));
     if (basicInfo.menus) {
       const unwrap = (({
         _id,
@@ -98,13 +101,14 @@ function StoresInfoAddScreen({ navigation, route }) {
         {
           ...menus,
           ...basicInfo,
+          menuImages,
         },
         (progress) => setProgress(progress)
       );
-      if (!result.ok) {
-        setUploadVisible(false);
-        return alert("Could not save the listing.");
-      }
+      // if (!result.ok) {
+      //   setUploadVisible(false);
+      //   return alert("Could not save the listing.");
+      // }
       resetForm();
       navigation.navigate(routes.MYACCOUNT);
     }
@@ -150,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoresInfoAddScreen;
+export default StoresMenuAddScreen;

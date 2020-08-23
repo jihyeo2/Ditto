@@ -31,20 +31,20 @@ function RegisterScreen(props) {
 
   const handleSubmit = async (userInfo) => {
     console.log("userInfo", userInfo);
-    const result = await registerApi.request(userInfo);
+    const result = await usersApi.register(userInfo);
 
-    if (!result.ok) {
-      console.log(result);
-      if (result.data) {
-        console.log(result.data.error);
-        setError(result.data.error);
-      } else {
-        setError("An unexpected error occurred.");
-        console.log(result);
-      }
-      setRegisterFailed(true);
-      return;
-    }
+    // if (!result.ok) {
+    //   console.log(result);
+    //   if (result.data) {
+    //     console.log(result.data.error);
+    //     setError(result.data.error);
+    //   } else {
+    //     setError("An unexpected error occurred.");
+    //     console.log(result);
+    //   }
+    //   setRegisterFailed(true);
+    //   return;
+    // }
 
     const { data: authToken } = await loginApi.request(
       userInfo.email,

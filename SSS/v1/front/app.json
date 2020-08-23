@@ -37,12 +37,7 @@
       }
     },
     "hooks": {
-      "postPublish": [
-        {
-          "file": "@bugsnag/expo/hooks/post-publish.js",
-          "config": {}
-        }
-      ]
+      "postPublish": []
     }
   }
 }

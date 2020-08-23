@@ -37,62 +37,57 @@ router.get("/search/:keyword", async (req, res) => {
   res.send(stores);
 });
 
-router.post(
-  "/",
-  auth,
-  // upload.array("images", config.get("maxImageCount")),
-  async (req, res) => {
-    // const { error } = validate(req.body);
-    // if (error) return res.status(400).send(error.details[0].message);
-    //find another way to validate the request body
+router.post("/", auth, async (req, res) => {
+  // const { error } = validate(req.body);
+  // if (error) return res.status(400).send(error.details[0].message);
+  //find another way to validate the request body
 
-    let store = await Store.findOne({ name: req.body.name }); //TODO: later change to userId
-    if (store) return res.status(400).send("Store already registered.");
+  let store = await Store.findOne({ name: req.body.name }); //TODO: later change to userId
+  if (store) return res.status(400).send("Store already registered.");
 
-    const category = await Category.findById(req.body.category._id);
-    if (!category) return res.status(400).send("Invalid category.");
+  const category = await Category.findById(req.body.category._id);
+  if (!category) return res.status(400).send("Invalid category.");
 
-    const user = await User.findById(req.user._id);
-    if (!user) return res.status(400).send("Invalid user.");
+  const user = await User.findById(req.user._id);
+  if (!user) return res.status(400).send("Invalid user.");
 
-    store = new Store({
-      name: req.body.name,
-      category: {
-        _id: category._id,
-        label: category.label,
-      },
-      description: req.body.description,
-      delivery: req.body.delivery,
-      location: req.body.location,
-      contact: req.body.contact,
-      openingHours: req.body.openingHours,
-      backgroundImage: req.body.backgroundImage,
-      mainImage: req.body.mainImage,
-      menus: req.body.menus,
-    });
+  store = new Store({
+    name: req.body.name,
+    category: {
+      _id: category._id,
+      label: category.label,
+    },
+    description: req.body.description,
+    delivery: req.body.delivery,
+    location: req.body.location,
+    contact: req.body.contact,
+    openingHours: req.body.openingHours,
+    backgroundImage: req.body.backgroundImage,
+    mainImage: req.body.mainImage,
+    menus: req.body.menus,
+  });
 
-    console.log("useId", req.user._id);
+  console.log("useId", req.user._id);
 
-    try {
-      new Fawn.Task()
-        .save("stores", store)
-        .update("users", { _id: user._id }, { $addToSet: { stores: store } })
-        .update(
-          "categories",
-          { _id: category._id },
-          {
-            $addToSet: { stores: store },
-          }
-        )
-        .run();
-      res.send(store);
-    } catch (ex) {
-      res
-        .status(500)
-        .send("Error occured, thus the store was not added successfully.");
-    }
+  try {
+    new Fawn.Task()
+      .save("stores", store)
+      .update("users", { _id: user._id }, { $addToSet: { stores: store } })
+      .update(
+        "categories",
+        { _id: category._id },
+        {
+          $addToSet: { stores: store },
+        }
+      )
+      .run();
+    res.send(store);
+  } catch (ex) {
+    res
+      .status(500)
+      .send("Error occured, thus the store was not added successfully.");
   }
-);
+});
 
 /*
 put request should be done in the following manner: 

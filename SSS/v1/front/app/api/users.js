@@ -2,7 +2,23 @@ import client from "./client";
 
 const show = (authToken) =>
   client.get("/users/me", {}, { headers: { "x-auth-token": authToken } });
-const register = (userInfo) => client.post("/users", userInfo);
+const register = (userInfo) => {
+  console.log("registery");
+  const data = new FormData();
+  data.append("name", userInfo.name);
+  data.append("email", userInfo.email);
+  data.append("password", userInfo.password);
+
+  let index = 0;
+  data.append("images", {
+    name: "image" + index,
+    type: "image/jpeg",
+    uri: userInfo.profileImage,
+  });
+  console.log(data);
+
+  client.post("/users", data);
+};
 const edit = (authToken, userInfo, onUploadProgress) =>
   client.put("/users/me", userInfo, {
     headers: { "x-auth-token": authToken },
