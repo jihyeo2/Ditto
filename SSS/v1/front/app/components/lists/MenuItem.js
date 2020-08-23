@@ -1,6 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View, StyleSheet, Image } from "react-native";
 
 import colors from "../../config/colors";
 import AppText from "../AppText";
@@ -15,7 +14,7 @@ function MenuItem({ title, subTitle, image }) {
         </AppText>
         {subTitle && (
           <AppText style={styles.subTitle} numberOfLines={2}>
-            {subTitle}
+            $ {subTitle}
           </AppText>
         )}
       </View>

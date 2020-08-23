@@ -19,33 +19,31 @@ function CategoryPickerItem({ item, onPress }) {
   switch (item.imageUri) {
     case 0:
       IconComponent = (
-        <MaterialIcons name="restaurant" size={50} color="silver" />
+        <MaterialIcons name="restaurant" size={50} color="orange" />
       );
       break;
     case 1:
-      IconComponent = (
-        <FontAwesome5 name="carrot" size={50} color={colors.secondary} />
-      );
+      IconComponent = <FontAwesome5 name="carrot" size={50} color="orange" />;
       break;
     case 2:
-      IconComponent = <FontAwesome name="coffee" size={50} color="navy" />;
+      IconComponent = <FontAwesome name="coffee" size={50} color="orange" />;
       break;
     case 3:
-      IconComponent = <FontAwesome5 name="tshirt" size={50} color="red" />;
+      IconComponent = <FontAwesome5 name="tshirt" size={50} color="orange" />;
       break;
     case 4:
-      IconComponent = <Fontisto name="cocktail" size={50} color="lime" />;
+      IconComponent = <Fontisto name="cocktail" size={50} color="orange" />;
       break;
     case 5:
       IconComponent = (
-        <MaterialIcons name="local-mall" size={50} color="purple" />
+        <MaterialIcons name="local-mall" size={50} color="orange" />
       );
       break;
     case 6:
-      IconComponent = <Fontisto name="scissors" size={50} />;
+      IconComponent = <Fontisto name="scissors" size={50} color="orange" />;
       break;
     case 7:
-      IconComponent = <Fontisto name="quote-right" size={40} color="yellow" />;
+      IconComponent = <Fontisto name="quote-right" size={40} color="orange" />;
       break;
     default:
       break;
@@ -70,8 +68,9 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   category: {
-    borderColor: colors.black,
-    borderWidth: 2,
+    borderColor: colors.light,
+    borderWidth: 6,
+    borderRadius: 15,
     height: screenHeight / 5.5,
     width: screenWidth / 2.5,
     alignItems: "center",

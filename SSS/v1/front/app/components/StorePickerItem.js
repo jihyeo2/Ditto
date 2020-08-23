@@ -35,7 +35,9 @@ function StorePickerItem({ item, onPress }) {
               <AppText style={{ fontSize: 13, color: colors.primary }}>
                 {item.category.label}
               </AppText>
-              <AppText style={{ fontSize: 13, color: colors.medium }}>
+              <AppText
+                style={{ fontSize: 13, color: colors.medium, marginBottom: 5 }}
+              >
                 {item.contact}
               </AppText>
             </View>

@@ -39,18 +39,20 @@ function StoreIntroCard({ store }) {
   };
 
   return (
-    <View style={styles.bubble}>
-      <View style={styles.textContainer}>
-        <AppText style={{ fontSize: 25 }}>{store.name}</AppText>
-        <AppText style={{ fontSize: 17, color: colors.secondary }}>
+    <TouchableOpacity onPress={() => Linking.openURL(`tel:${store.contact}`)}>
+      <View style={styles.bubble}>
+        <AppText style={{ fontSize: 25, alignSelf: "center" }}>
+          {store.name}
+        </AppText>
+        <AppText style={{ fontSize: 17, color: colors.primary }}>
           {store.category.label}
         </AppText>
-      </View>
-      <View style={styles.optionsContainer}>
-        <View>
-          <AppText style={{ color: colors.primary }}>{store.contact}</AppText>
-          <AppText>{store.location}</AppText>
-        </View>
+
+        <AppText style={{ color: "blue", textDecorationLine: "underline" }}>
+          {store.contact}
+        </AppText>
+        <AppText>{store.location}</AppText>
+
         {signed ? (
           <View style={styles.signUp}>
             <AppButton
@@ -65,26 +67,15 @@ function StoreIntroCard({ store }) {
           <View style={styles.signUp}>
             <AppButton
               title="Sign Up"
-              color="third"
+              color="primary"
               fontSize={15}
               padding={10}
               onPress={handlePressSignUp}
             />
           </View>
         )}
-        <TouchableOpacity
-          style={styles.call}
-          onPress={() => Linking.openURL(`tel:${store.contact}`)}
-        >
-          <Icon
-            name="call"
-            size={45}
-            backgroundColor={"brown"}
-            type="MaterialIcons"
-          />
-        </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -113,8 +104,7 @@ const styles = StyleSheet.create({
     marginRight: -5,
   },
   signUp: {
-    marginLeft: "20%",
-    alignSelf: "baseline",
+    alignSelf: "center",
   },
 });
 

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import {
   View,
-  TextInput,
   StyleSheet,
   Button,
-  Platform,
   FlatList,
   TouchableWithoutFeedback,
   Modal,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import PickerItem from "./PickerItem";
+import colors from "../config/colors";
 
 function AppPicker({
   icon,
@@ -51,7 +51,13 @@ function AppPicker({
           />
         </View>
       </TouchableWithoutFeedback>
-      <Modal visible={modalVisible} animationType="slide">
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        style={{
+          paddingTop: Constants.statusBarHeight,
+        }}
+      >
         <Button title="Close" onPress={() => setModalVisible(false)} />
         <FlatList
           data={items}

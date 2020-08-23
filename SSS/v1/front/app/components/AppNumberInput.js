@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
 import SearchButton from "./forms/SearchButton";
-import colors from "../config/colors";
 
-function SearchBarAppTextInput({
+function AppNumberInput({
   searchButton,
   icon,
   width = "100%",
-  height,
+  textInputStyle,
   ...otherProps
 }) {
   return (
-    <View style={[styles.container, { width }, { height }]}>
+    <View style={[styles.container, { width }]}>
       <TextInput
         placeholderTextColor={defaultStyles.colors.medium}
-        style={[defaultStyles.text, styles.text]}
+        style={[defaultStyles.text, styles.text, textInputStyle]}
         {...otherProps}
       />
       {searchButton && <SearchButton />}
@@ -28,22 +26,24 @@ function SearchBarAppTextInput({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 20,
+    borderRadius: 15,
     flexDirection: "row",
     marginVertical: 5,
+    width: "100%",
+    padding: 15,
     alignItems: "center",
-    justifyContent: "center",
-    width: 50,
-    bottom: 10,
   },
   icon: {
     marginRight: 10,
   },
+
+  searchIcon: {
+    alignSelf: "flex-end",
+    marginRight: 10,
+  },
   text: {
     flex: 1,
-    fontSize: 15,
-    marginLeft: 15,
   },
 });
 
-export default SearchBarAppTextInput;
+export default AppNumberInput;

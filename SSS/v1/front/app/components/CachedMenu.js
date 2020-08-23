@@ -13,7 +13,7 @@ function CachedMenu({ menu, onChangeMenu }) {
           <Image style={styles.image} source={{ uri: menu.image }} />
           <View style={{ alignSelf: "center" }}>
             <AppText style={{ fontWeight: "500" }}>{menu.name}</AppText>
-            <AppText style={{ color: colors.third }}>{menu.price}</AppText>
+            <AppText style={{ color: colors.third }}>$ {menu.price}</AppText>
           </View>
         </View>
         <View>

@@ -24,7 +24,7 @@ function Menu({ icon }) {
             name="price"
             keyboardType="numeric"
             maxlength={8}
-            placeholder="Price"
+            placeholder="Price ($)"
           ></FormField>
         </View>
       </View>

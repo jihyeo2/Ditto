@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 import routes from "../navigation/routes";
 import * as Yup from "yup";
 import { AppForm as Form } from "../components/forms";
 import SearchBarField from "./SearchBarField";
-import SearchItemContext from "./SearchItemContext";
-import SearchBarAppTextInput from "./SearchBarAppTextInput";
 
 const validationSchema = Yup.object().shape({
   searchItem: Yup.string().label("searchItem"),
@@ -20,6 +23,14 @@ function Header({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate(routes.CATEGORY_SHOPPING)}
+      >
+        <Image
+          style={styles.logo}
+          source={require("../assets/dittoBlack.png")}
+        />
+      </TouchableWithoutFeedback>
       <Form
         initialValues={{ searchItem: "" }}
         onSubmit={handleSubmit}
@@ -27,7 +38,7 @@ function Header({ navigation }) {
       >
         <SearchBarField
           name="searchItem"
-          width="100%"
+          width="85%"
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Search items"
@@ -43,6 +54,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  logo: {
+    height: 45,
+    width: 45,
+    margin: 8,
+    alignSelf: "baseline",
   },
 });
 
