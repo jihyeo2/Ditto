@@ -13,7 +13,7 @@ YOU MUST CAREFULLY READ BELOW!!
 Schema: 
 {
   "name": "<Fill in>",
-  "email": "<Fill in>@hiride.com" OR "<Fill in>@facedrive.com"
+  "email": "<Fill in>@hiride.ca" OR "<Fill in>@facedrive.com"
   "password": "<Fill in>"
 }
 
@@ -46,7 +46,7 @@ Schema:
 Jeong)
 {
   "name": "Lala",
-  "email": "lalathecat@hiride.com",
+  "email": "lalathecat@hiride.ca",
   "password": "pinkribbon"
 }
 
@@ -58,7 +58,7 @@ Jeong)
 
 {
   "name": "Blue Whale",
-  "email": "oceanmaster@hiride.com",
+  "email": "oceanmaster@hiride.ca",
   "password": "msinjedi"
 }
 
@@ -69,13 +69,13 @@ Oh)
 
 {
   "name": "Teddy",
-  "email": "gozilla22@hiride.com"
+  "email": "gozilla22@hiride.ca"
   "password": "nosqueezing"
 }
 
 {
   "name": "Joe",
-  "email": "abnormaljoe@hiride.com"
+  "email": "abnormaljoe@hiride.ca"
   "password": "password"
 }
 
@@ -83,7 +83,7 @@ Choi)
 
 {
   "name": "Sugju Choi",
-  "email": "schoi@hiride.com"
+  "email": "schoi@hiride.ca"
   "password": "123456"
 }
 
@@ -95,14 +95,14 @@ Choi)
  
 {
   "name": "Yulmoo Kim",
-  "email": "ykim858@hiride.com"
+  "email": "ykim858@hiride.ca"
   "password": "123456"
 }
 
 
 {
   "name": "Taylor Swift",
-  "email": "t_swift33@hiride.com"
+  "email": "t_swift33@hiride.ca"
   "password": "0987654"
 }
 
