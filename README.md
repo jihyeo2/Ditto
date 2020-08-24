@@ -1,47 +1,33 @@
-# JOC
+# Ditto
 
-### Try out our app via expo: https://expo.io/@umum3006/SSS?release-channel=staging
-#### * You need to install expo application on your phone *  
+**"Ditto"** derived from the french phrase **"de tout"** meaning "of all", Ditto is an app for anyone and everyone, regardless of their age or the ability to use mobile applications. We have created this app for seniors who are unable to advertise their stores via online, by the help of student volunteers. Ditto will help the sales of senior sellers in local stores, especially in this time of period since people have started to use online delivery services even more rather than physically visiting stores due to the COVID-19 situation and social distancing.
 
-Repo for Summer2020 Hackathon
 
-Helpful source: Type "CS196 at Illinois" on YouTube
+## How to test out app
+Because of an unexpected error, we are having some issues in our app. Therefore, we'd like to add some notes:
+* Registration process is not working at all right now, so instead please login using the following account:  
+ID - kakao@hiride.ca
+password - kakao
+* We did not have enough time to add enough data in each category of our app. Try look at "Restaurants" or "Coffee & Dessert".
 
-Market App Tutorial_Mosh:  
-https://codewithmosh.com/  
-Id - umum3006@gmail.com
-Password - 제이오씨화이팅!  
-Course: The Ultimate React Native Series: Fundamentals & Advanced Concepts - frontend  
-The Complete Node.js Course - backend
+Release link via Expo: https://expo.io/@umum3006/Ditto?release-channel=staging
+*** You must have an android phone and install Expo application before accessing the given link. ***
 
-Hackathons:  
-[Virtual Hacks 2020 - 08/23](https://virtualhacks.ca/)
+## What it does
 
-Timeline
+Ditto is an integration of online shopping platform and volunteering platform. Our app provides numerous benefits:
 
-| Date                            | About                                                               |
-| ------------------------------- | ------------------------------------------------------------------- |
-|                                 |                                                                     |
-| [Sat 06/06](/Timeline/06-06.md) | Introduction to Hackathon                                           |
-| [Thu 06/11](/Timeline/06-11.md) | Sharing Project Ideas                                               |
-| [Sat 06/13](/Timeline/06-13)    | Ideas cont. & Platform                                              |
-| Sat 06/20                       | Introduction to Ubuntu & Bash                                       |
-| [Thu 06/25](/Timeline/06-25)    | Introduction to React                                               |
-| [Sat 06/27](/Timeline/06-27.md) | Confirmed UI knowledge & Learned Git                                |
-| [Thu 07/02](/SSS/Page_2.png)    | Final Decision for the project idea                                 |
-| [Sat 07/04](/Timeline/07-04)    | Drew the general skeleton of our app & Quarter-complete UI tutorial |
-| Tue 07/07                       | Half-complete UI tutorial & Decide further modifications            |
-| Sat 07/11                       | Continue learning UI/Backend & Merge ideas on wireframe             |
-| Thu 07/16                       | Continue learning UI/Backend & Merge ideas on wireframe             |
-| Sat 07/18                       | Half-complete tutorial & Finalize wireframe                         |
-| Thu 07/23                       | Complete tutorial & Continue app development                        |
-| Sat 07/25                       | Continue dev                                                        |
-| Thu 07/30                       | Continue dev                                                        |
-| Sat 08/01                       | Continue dev                                                        |
-| Thu 08/06                       | Continue dev                                                        |
-| Thu 08/13                       | Continue dev                                                        |
-| Sat 08/15                       | Continue dev                                                        |
-| [Mon 08/17](/Timeline/08-17)    | 7:30pm - Continue dev                                               |
-| Thu 08/20                       | Continue dev                                                        |
-| Fri 08/21                       | Final Product & Start creating documentation & Intro video          |
-| Sun 08/23                       | Finalization & Submission                                           |
+* Shoppers can find local stores nearby and easily view their basic information and available items/services
+* Students can fulfill their volunteering requirement and learn other useful skills such as skillsets for running a business directly from store owners. (We are assuming most of the volunteers as students if applied in Korea, but it does not restrict it to students only. Any volunteers are welcomed!)
+* Local sellers can successfully advertise their stores online and if further features added, learn how to use basic mobile technologies and become online-independent
+
+
+## How it works
+
+1. Local merchandisers may contact the Ditto service center for advertisement
+2. Ditto service center posts the store's basic information such as their contact and name and post it to the "Stores in Need" page
+3. Volunteers sign up for stores they are willing to help
+4. After approval, volunteers contact or visit the stores to get more information about the products and services
+5. The volunteer can add the store in the DItto app
+6. Volunteers can also update the store information, events, or discounts.
+7. Customers can easily view local stores nearby and contact them using Ditto.
