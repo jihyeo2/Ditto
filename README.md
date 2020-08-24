@@ -1,6 +1,6 @@
 # JOC
 
-### Try out our app via expo: https://expo.host/@umum3006/SSS?release-channel=staging  
+### Try out our app via expo: https://expo.io/@umum3006/SSS?release-channel=staging
 #### * You need to install expo application on your phone *  
 
 Repo for Summer2020 Hackathon
