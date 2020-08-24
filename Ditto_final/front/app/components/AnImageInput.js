@@ -33,13 +33,21 @@ function AnImageInput({
   }, []);
 
   const requestPermissionForLibrary = async () => {
-    const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (!granted) alert("You need to enable permission to access the library");
+    const { granted } = await ImagePicker.getCameraRollPermissionsAsync();
+    if (!granted) {
+      const response = await ImagePicker.requestCameraRollPermissionsAsync();
+      if (!response.granted)
+        alert("You need to enable permission to access the library");
+    }
   };
 
   const requestPermissionForCamera = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) alert("You need to enable permission to access the camera");
+    const { granted } = await ImagePicker.getCameraPermissionsAsync();
+    if (!granted) {
+      const reponse = await ImagePicker.requestCameraPermissionsAsync();
+      if (!response.granted)
+        alert("You need to enable permission to access the camera");
+    }
   };
 
   const handlePress = () => {
@@ -70,7 +78,7 @@ function AnImageInput({
 
   const imageFromCamera = async () => {
     try {
-      const result = await ImagePickerAlternative.launchCameraAsync({
+      const result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       });

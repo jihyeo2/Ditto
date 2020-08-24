@@ -15,6 +15,7 @@ import authApi from "../api/auth";
 import ActivityIndicator from "../components/ActivityIndicator";
 import useApi from "../hooks/useApi";
 import AnImageInput from "../components/AnImageInput";
+import { NativeViewGestureHandler } from "react-native-gesture-handler/GestureHandler";
 
 function RegisterScreen(props) {
   const validationSchema = Yup.object().shape({
@@ -32,6 +33,7 @@ function RegisterScreen(props) {
   const handleSubmit = async (userInfo) => {
     console.log("userInfo", userInfo);
     const result = await usersApi.register(userInfo);
+    console.log("sdfg", result);
 
     // if (!result.ok) {
     //   console.log(result);
@@ -46,7 +48,7 @@ function RegisterScreen(props) {
     //   return;
     // }
 
-    const { data: authToken } = await loginApi.request(
+    const { data: authToken } = await authApi.login(
       userInfo.email,
       userInfo.password
     );
