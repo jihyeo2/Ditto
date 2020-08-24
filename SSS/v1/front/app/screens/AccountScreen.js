@@ -30,6 +30,7 @@ function AccountScreen({ navigation }) {
   useEffect(() => {
     async function fetchData() {
       const response = await getUserApi.request(token);
+      const response1 = await getUserApi.request(token);
     }
     fetchData();
   }, []);

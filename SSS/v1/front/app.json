@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SSS",
-    "slug": "SSS",
+    "name": "Ditto",
+    "slug": "Ditto",
     "privacy": "unlisted",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -25,9 +25,9 @@
       "versionCode": 1
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./app/assets/opening.png"
     },
-    "description": "This is an app I created following Mosh's tutorial. I am uploading this just to see how publishing works in expo.",
+    "description": "Ditto is created to support local store owners and students who have been severly affected by the recent outbreak of COVID-19.",
     "notification": {
       "iosDisplayInForeground": true
     },
