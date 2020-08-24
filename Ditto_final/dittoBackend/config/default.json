@@ -1,0 +1,6 @@
+{
+  "delay": 1000,
+  "maxImageCount": 32,
+  "jwtPrivateKey": "",
+  "db": "mongodb://localhost/ditto"
+}

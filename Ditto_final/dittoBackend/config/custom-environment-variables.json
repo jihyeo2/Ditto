@@ -1,0 +1,4 @@
+{
+  "jwtPrivateKey": "ditto_jwtPrivateKey",
+  "db": "ditto_db"
+}

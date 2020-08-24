@@ -1,0 +1,6 @@
+{
+  "assetsBaseUrl": "https://de-tout.herokuapp.com/assets/",
+  "port": 9000,
+  "jwtPrivateKey": "",
+  "db": "mongodb://localhost/ditto"
+}
