@@ -3,7 +3,7 @@
 **"Ditto"** derived from the french phrase **"de tout"** meaning "of all", Ditto is an app for anyone and everyone, regardless of their age or the ability to use mobile applications. We have created this app for seniors who are unable to advertise their stores via online, by the help of student volunteers. Ditto will help the sales of senior sellers in local stores, especially in this time of period since people have started to use online delivery services even more rather than physically visiting stores due to the COVID-19 situation and social distancing.
 
 
-## How to test out app
+## How to test out app (No longer available)
 Because of an unexpected error, we are having some issues in our app. Therefore, we'd like to add some notes:
 * Registration process is not working at all right now, so instead please login using the following account:  
 ID - kakao@hiride.ca
